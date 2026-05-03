@@ -105,6 +105,9 @@ a { color: inherit; }
   align-items: center;
   position: relative;
 }
+.hero-grid > * {
+  min-width: 0;
+}
 .hero-eyebrow {
   font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
   font-weight: 700; color: var(--orange);
@@ -169,6 +172,7 @@ a { color: inherit; }
   display: flex;
   align-items: center;
   gap: 18px;
+  width: 100%;
   max-width: 620px;
   margin: 30px 0 0;
   padding: 12px;
@@ -190,7 +194,7 @@ a { color: inherit; }
   height: 132px;
   padding: 9px;
   border-radius: 18px;
-  background: #fff;
+  background: #020202;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -206,16 +210,19 @@ a { color: inherit; }
   object-fit: contain;
 }
 .slogan-text {
+  flex: 1 1 auto;
   min-width: 0;
+  max-width: 100%;
 }
 .slogan-en {
   font-family: var(--serif);
   font-size: clamp(24px, 3vw, 34px);
-  line-height: 1;
+  line-height: 1.04;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   color: var(--navy);
   margin-bottom: 8px;
+  overflow-wrap: break-word;
 }
 .slogan-lockup.on-dark .slogan-en {
   color: var(--ivory);
@@ -227,6 +234,7 @@ a { color: inherit; }
   font-weight: 700;
   color: var(--orange);
   margin-bottom: 5px;
+  overflow-wrap: break-word;
 }
 .slogan-roman {
   font-family: var(--mono);
@@ -235,9 +243,15 @@ a { color: inherit; }
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(8,40,69,0.66);
+  overflow-wrap: break-word;
 }
 .slogan-lockup.on-dark .slogan-roman {
   color: rgba(244,239,230,0.72);
+}
+.slogan-en span,
+.slogan-iu span,
+.slogan-roman span {
+  display: block;
 }
 .hero .slogan-lockup {
   margin-bottom: 28px;
@@ -954,8 +968,8 @@ a { color: inherit; }
     border-radius: 14px;
     padding: 7px;
   }
-  .slogan-en { font-size: 23px; }
-  .slogan-iu { font-size: 18px; }
+  .slogan-en { font-size: 20px; }
+  .slogan-iu { font-size: 16px; }
   .slogan-roman { font-size: 9px; letter-spacing: 0.08em; }
   .slogan-lockup.slogan-band { margin-bottom: 32px; }
   .hero-ballot { margin-top: 42px; padding: 12px; border-radius: 14px; }
@@ -1963,8 +1977,11 @@ const ISSUES = window.OKALIK_ISSUES;
 const VOLUNTEER_EMAIL_LINK = "mailto:buscemi.franco@gmail.com?subject=I%20want%20to%20Volunteer%20for%20Okalik";
 const CAMPAIGN_SLOGAN = {
   en: "For Inuit, By Inuit and with Inuit",
-  syllabics: "ᐃᓄᐃᓐᓄᑦ, ᐃᓄᓐᓂᑦ, ᐃᓄᐃᑦ ᐱᖃᑎᒋᓪᓗᒋᑦ",
+  enLines: ["For Inuit, By Inuit", "and with Inuit"],
+  syllabics: "ᐃᓄᓐᓄᑦ, ᐃᓄᓐᓂᑦ,  ᐃᓄᐃᑦ ᐱᖃᑎᒋᓪᓗᒋᑦ",
+  syllabicsLines: ["ᐃᓄᓐᓄᑦ, ᐃᓄᓐᓂᑦ,", "ᐃᓄᐃᑦ ᐱᖃᑎᒋᓪᓗᒋᑦ"],
   roman: "Inuinnut, Inunnit, Inuit piqatigillugit",
+  romanLines: ["Inuinnut, Inunnit,", "Inuit piqatigillugit"],
 };
 
 // ─── Default tweak values ────────────────────────────────────────────
@@ -2001,12 +2018,18 @@ function SloganLockup({ tone = "light", className = "" }) {
   return (
     <div className={`slogan-lockup ${tone === "dark" ? "on-dark" : "on-light"} ${className}`.trim()}>
       <div className="slogan-art">
-        <img src={"assets/tattooed-fist.jpeg" + location.search} alt="Tattooed fist illustration" />
+        <img src={"assets/tattooed-fist-inverted.png" + location.search} alt="Tattooed fist illustration" />
       </div>
       <div className="slogan-text">
-        <div className="slogan-en">{CAMPAIGN_SLOGAN.en}</div>
-        <div className="slogan-iu">{CAMPAIGN_SLOGAN.syllabics}</div>
-        <div className="slogan-roman">{CAMPAIGN_SLOGAN.roman}</div>
+        <div className="slogan-en" aria-label={CAMPAIGN_SLOGAN.en}>
+          {CAMPAIGN_SLOGAN.enLines.map((line) => <span key={line} aria-hidden="true">{line}</span>)}
+        </div>
+        <div className="slogan-iu" aria-label={CAMPAIGN_SLOGAN.syllabics}>
+          {CAMPAIGN_SLOGAN.syllabicsLines.map((line) => <span key={line} aria-hidden="true">{line}</span>)}
+        </div>
+        <div className="slogan-roman" aria-label={CAMPAIGN_SLOGAN.roman}>
+          {CAMPAIGN_SLOGAN.romanLines.map((line) => <span key={line} aria-hidden="true">{line}</span>)}
+        </div>
       </div>
     </div>
   );
