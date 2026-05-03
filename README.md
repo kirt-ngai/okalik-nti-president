@@ -6,6 +6,7 @@ Static GitHub Pages landing page for Okalik Eegeesiak's NTI President campaign.
 
 - `index.html` - the public landing page
 - `assets/okalik-portrait.jpg` - hero portrait
+- `assets/tattooed-fist.jpeg` - slogan illustration
 - `assets/Okalik_Eegeesiak_Campaign_Bio.docx` - downloadable campaign bio
 - `.nojekyll` - tells GitHub Pages to serve files as plain static assets
 

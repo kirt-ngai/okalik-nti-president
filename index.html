@@ -6,7 +6,7 @@
 <title>Okalik Eegeesiak — for NTI President</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Canadian+Aboriginal:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Okalik landing page styles
    Companion to Okalik Social Ads — same palette and type system.
@@ -27,6 +27,7 @@
   --serif: "Bricolage Grotesque", "DM Serif Display", Georgia, serif;
   --sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --syllabics: "Noto Sans Canadian Aboriginal", "Manrope", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -163,6 +164,83 @@ a { color: inherit; }
 .keydates .kd-meta {
   font-size: 13px; color: rgba(244,239,230,0.7);
   font-variant-numeric: tabular-nums;
+}
+.slogan-lockup {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  max-width: 620px;
+  margin: 30px 0 0;
+  padding: 12px;
+  border: 1px solid rgba(8,40,69,0.22);
+  background: rgba(251,248,241,0.82);
+}
+.slogan-lockup.on-dark {
+  border-color: rgba(244,239,230,0.24);
+  background: rgba(244,239,230,0.08);
+}
+.slogan-lockup.slogan-band {
+  max-width: none;
+  margin: -22px 0 48px;
+  padding: 16px 18px;
+}
+.slogan-art {
+  flex: 0 0 108px;
+  width: 108px;
+  height: 132px;
+  padding: 9px;
+  border-radius: 18px;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(8,40,69,0.18);
+}
+.slogan-lockup.on-dark .slogan-art {
+  border-color: rgba(244,239,230,0.32);
+}
+.slogan-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.slogan-text {
+  min-width: 0;
+}
+.slogan-en {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.slogan-lockup.on-dark .slogan-en {
+  color: var(--ivory);
+}
+.slogan-iu {
+  font-family: var(--syllabics);
+  font-size: 22px;
+  line-height: 1.05;
+  font-weight: 700;
+  color: var(--orange);
+  margin-bottom: 5px;
+}
+.slogan-roman {
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(8,40,69,0.66);
+}
+.slogan-lockup.on-dark .slogan-roman {
+  color: rgba(244,239,230,0.72);
+}
+.hero .slogan-lockup {
+  margin-bottom: 28px;
 }
 .btn {
   font-family: var(--sans);
@@ -660,6 +738,9 @@ a { color: inherit; }
   background: transparent; color: white; border-color: rgba(255,255,255,0.5);
 }
 .stand .btn-ghost:hover { border-color: white; }
+.stand .slogan-lockup {
+  margin: 30px 0 28px;
+}
 
 .stand-form {
   background: var(--paper); color: var(--navy);
@@ -717,6 +798,23 @@ a { color: inherit; }
 }
 .foot-brand .dot { color: var(--orange); }
 .foot-tag { font-size: 14px; line-height: 1.5; opacity: 0.7; max-width: 320px; }
+.foot .slogan-lockup {
+  max-width: 360px;
+  margin-top: 22px;
+  padding: 10px;
+}
+.foot .slogan-art {
+  flex-basis: 76px;
+  width: 76px;
+  height: 92px;
+  border-radius: 14px;
+}
+.foot .slogan-en {
+  font-size: 20px;
+}
+.foot .slogan-iu {
+  font-size: 17px;
+}
 .foot-bottom {
   border-top: 1px solid rgba(244,239,230,0.12);
   padding-top: 24px;
@@ -733,6 +831,7 @@ a { color: inherit; }
   .promise-inner { grid-template-columns: 1fr; gap: 24px; }
   .priority-motion { grid-template-columns: 1fr; }
   .priority-stage { min-height: 340px; }
+  .slogan-lockup.slogan-band { margin-top: -24px; }
   .issues-grid { grid-template-columns: repeat(2, 1fr); }
   .stand-inner { grid-template-columns: 1fr; }
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
@@ -740,6 +839,22 @@ a { color: inherit; }
 @media (max-width: 640px) {
   .wrap, .wrap-narrow { width: min(1280px, calc(100% - 32px)); }
   .topnav { display: none; }
+  .slogan-lockup {
+    align-items: flex-start;
+    gap: 14px;
+    padding: 10px;
+  }
+  .slogan-art {
+    flex-basis: 78px;
+    width: 78px;
+    height: 98px;
+    border-radius: 14px;
+    padding: 7px;
+  }
+  .slogan-en { font-size: 23px; }
+  .slogan-iu { font-size: 18px; }
+  .slogan-roman { font-size: 9px; letter-spacing: 0.08em; }
+  .slogan-lockup.slogan-band { margin-bottom: 32px; }
   .priority-motion { margin-top: -24px; }
   .priority-stage { min-height: 260px; padding: 16px; }
   .priority-story { padding: 28px 24px; }
@@ -1737,6 +1852,11 @@ Object.assign(window, {
 
 const ISSUES = window.OKALIK_ISSUES;
 const VOLUNTEER_EMAIL_LINK = "mailto:buscemi.franco@gmail.com?subject=I%20want%20to%20Volunteer%20for%20Okalik";
+const CAMPAIGN_SLOGAN = {
+  en: "For Inuit, By Inuit and with Inuit",
+  syllabics: "ᐃᓄᐃᓐᓄᑦ, ᐃᓄᓐᓂᑦ, ᐃᓄᐃᑦ ᐱᖃᑎᒋᓪᓗᒋᑦ",
+  roman: "Inuinnut, Inunnit, Inuit piqatigillugit",
+};
 
 // ─── Default tweak values ────────────────────────────────────────────
 // Kept inside the EDITMODE markers so the host can rewrite them.
@@ -1767,6 +1887,21 @@ const ICON_MAP = {
   saimaqatigiingniq:  { C: UluBridgeIcon,  scale: 105, rot: 0,   y: 0 },
   business:           { C: UluTHandleIcon, scale: 100, rot: 4,   y: 0 },
 };
+
+function SloganLockup({ tone = "light", className = "" }) {
+  return (
+    <div className={`slogan-lockup ${tone === "dark" ? "on-dark" : "on-light"} ${className}`.trim()}>
+      <div className="slogan-art">
+        <img src={"assets/tattooed-fist.jpeg" + location.search} alt="Tattooed fist illustration" />
+      </div>
+      <div className="slogan-text">
+        <div className="slogan-en">{CAMPAIGN_SLOGAN.en}</div>
+        <div className="slogan-iu">{CAMPAIGN_SLOGAN.syllabics}</div>
+        <div className="slogan-roman">{CAMPAIGN_SLOGAN.roman}</div>
+      </div>
+    </div>
+  );
+}
 
 function IssueIcon({ id }) {
   const cfg = ICON_MAP[id];
@@ -1825,8 +1960,9 @@ function Hero({ t }) {
             <span className="accent">building hope.</span>
           </h1>
           <p className="hero-sub">
-            Okalik Eegeesiak is running for President of Nunavut Tunngavik Inc. — bringing decades of Inuit leadership home to Nunavut. Eleven priorities. One promise: a Nunavut where every Inuk thrives.
+            Okalik Eegeesiak is running for President of Nunavut Tunngavik Inc. — bringing decades of Inuit leadership home to Nunavut. Eleven priorities. One promise: For Inuit, By Inuit and with Inuit.
           </p>
+          <SloganLockup tone="dark" />
           <div className="hero-ctas">
             <a href="#issues" className="btn btn-primary">
               See the priorities <span className="arrow">→</span>
@@ -2268,6 +2404,7 @@ function Issues({ t }) {
           </div>
           <div className="count">11 areas · for Nunavummiut</div>
         </div>
+        <SloganLockup className="slogan-band" />
         <MotionPriorityFeature issues={ISSUES} />
         <div className="issues-grid">
           {ISSUES.map((issue, idx) => (
@@ -2309,7 +2446,8 @@ function Stand({ t }) {
       <div className="wrap stand-inner">
         <div>
           <h2>Stand with Okalik.</h2>
-          <p>Volunteer your time, donate to the campaign, or just stay informed. Every voice across Nunavut matters — and the work begins now.</p>
+          <p>Volunteer your time, donate to the campaign, or just stay informed. Every voice across Nunavut matters — and the work begins now: For Inuit, By Inuit and with Inuit.</p>
+          <SloganLockup tone="dark" />
           <div className="hero-ctas">
             <a href="https://kirt-ngai.github.io/Okalik-for-NTI-President-Donation-Page/" className="btn btn-primary">Donate <span className="arrow">→</span></a>
             <a href={VOLUNTEER_EMAIL_LINK} className="btn btn-ghost">Volunteer</a>
@@ -2347,7 +2485,8 @@ function Foot({ t }) {
         <div className="foot-grid">
           <div>
             <div className="foot-brand">OKALIK<span className="dot">.</span></div>
-            <p className="foot-tag">Building homes, building hope. Okalik Eegeesiak for President of Nunavut Tunngavik Inc.</p>
+            <p className="foot-tag">Building homes, building hope. For Inuit, By Inuit and with Inuit.</p>
+            <SloganLockup tone="dark" />
           </div>
           <div>
             <h4>Campaign</h4>
