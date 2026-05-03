@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Okalik Eegeesiak — for NTI President</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Okalik landing page styles
+   Companion to Okalik Social Ads — same palette and type system.
+   Palette:  --okalik-orange #E65A2C   --okalik-navy #082845   --okalik-ivory #F4EFE6
+*/
+
+:root {
+  --orange: #E65A2C;
+  --orange-deep: #C44818;
+  --navy: #082845;
+  --navy-soft: #0E3A5F;
+  --ivory: #F4EFE6;
+  --ivory-warm: #ECE3D2;
+  --paper: #FBF8F1;
+  --ink: #0E0E10;
+  --rule: rgba(8, 40, 69, 0.18);
+  --muted: rgba(8, 40, 69, 0.62);
+  --serif: "Bricolage Grotesque", "DM Serif Display", Georgia, serif;
+  --sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--navy);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "cv11";
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+
+/* ─── Layout helpers ──────────────────────────────────────────────── */
+.wrap { width: min(1280px, calc(100% - 48px)); margin: 0 auto; }
+.wrap-narrow { width: min(880px, calc(100% - 48px)); margin: 0 auto; }
+
+/* ─── Top bar ─────────────────────────────────────────────────────── */
+.topbar {
+  background: var(--navy);
+  color: var(--ivory);
+  border-bottom: 1px solid rgba(244,239,230,0.1);
+}
+.topbar-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 0; gap: 24px;
+}
+.brand-mark {
+  display: flex; align-items: baseline; gap: 10px;
+  text-decoration: none; color: inherit;
+  font-family: var(--serif); font-weight: 800;
+  font-size: 22px; letter-spacing: -0.01em;
+}
+.brand-mark .dot { color: var(--orange); }
+.brand-mark .role {
+  font-family: var(--sans); font-weight: 600;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(244,239,230,0.7);
+}
+.topnav { display: flex; gap: 28px; }
+.topnav a {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+  text-decoration: none; opacity: 0.85;
+  transition: opacity 0.15s ease;
+}
+.topnav a:hover { opacity: 1; }
+.topbar .cta {
+  background: var(--orange); color: white;
+  padding: 9px 18px; border-radius: 999px;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+.topbar .cta:hover { background: var(--orange-deep); }
+
+/* ─── Hero ────────────────────────────────────────────────────────── */
+.hero {
+  background: var(--navy);
+  color: var(--ivory);
+  padding: 64px 0 88px;
+  position: relative;
+  overflow: hidden;
+}
+/* Hero background pattern is rendered as <KakiniitBg> SVG inside <Hero>.
+   It sits absolutely behind the .hero-grid; keep grid above via z-index. */
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+}
+.hero-eyebrow {
+  font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 700; color: var(--orange);
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 24px;
+}
+.hero-eyebrow::before {
+  content: ""; width: 36px; height: 2px; background: var(--orange);
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(48px, 6vw, 84px);
+  line-height: 0.96;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin: 0 0 28px;
+  text-wrap: balance;
+}
+.hero h1 .accent { color: var(--orange); font-style: italic; }
+.hero-sub {
+  font-size: 19px; line-height: 1.55;
+  color: rgba(244,239,230,0.82);
+  max-width: 540px;
+  margin: 0 0 36px;
+}
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ─── Key dates strip (in hero) ──────────────────────────────────── */
+.keydates {
+  margin-top: 40px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid rgba(244,239,230,0.22);
+  border-bottom: 1px solid rgba(244,239,230,0.22);
+  max-width: 540px;
+}
+.keydates .kd {
+  padding: 18px 24px 18px 0;
+  position: relative;
+}
+.keydates .kd + .kd {
+  padding-left: 24px;
+  border-left: 1px solid rgba(244,239,230,0.22);
+}
+.keydates .kd-label {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 700; color: var(--orange);
+  margin-bottom: 6px;
+}
+.keydates .kd-day {
+  font-family: var(--serif);
+  font-size: 32px; line-height: 1; font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ivory);
+  margin-bottom: 4px;
+}
+.keydates .kd-meta {
+  font-size: 13px; color: rgba(244,239,230,0.7);
+  font-variant-numeric: tabular-nums;
+}
+.btn {
+  font-family: var(--sans);
+  font-size: 15px; font-weight: 700; letter-spacing: 0.01em;
+  padding: 16px 28px; border-radius: 999px;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+  border: 2px solid transparent;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.btn-primary { background: var(--orange); color: white; }
+.btn-primary:hover { background: var(--orange-deep); transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--ivory); border-color: rgba(244,239,230,0.4); }
+.btn-ghost:hover { border-color: var(--ivory); }
+.btn .arrow { transition: transform 0.15s ease; }
+.btn:hover .arrow { transform: translateX(3px); }
+
+/* Hero portrait */
+.hero-portrait {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--orange);
+}
+.hero-portrait img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: contrast(1.05) saturate(0.95);
+}
+.hero-portrait::after {
+  content: ""; position: absolute; inset: 0;
+  border: 1px solid rgba(244,239,230,0.15);
+  pointer-events: none;
+}
+.hero-portrait .caption {
+  position: absolute; left: 0; bottom: -28px;
+  background: var(--ivory); color: var(--navy);
+  padding: 14px 22px 16px;
+  border-left: 4px solid var(--orange);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.hero-portrait .caption .name-en {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.hero-portrait .caption .name-iu {
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.05;
+  font-weight: 700;
+  color: var(--navy);
+  opacity: 0.85;
+  letter-spacing: -0.005em;
+}
+.hero-portrait .caption .role {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em;
+  text-transform: uppercase; font-weight: 600;
+  color: var(--orange);
+  margin-top: 2px;
+}
+
+/* ─── Marquee/ticker — Inuktitut words ────────────────────────────── */
+.ticker {
+  background: var(--orange); color: white;
+  padding: 18px 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.ticker-track {
+  display: flex; gap: 48px;
+  animation: ticker 60s linear infinite;
+  white-space: nowrap;
+  font-family: var(--serif); font-weight: 700;
+  font-size: 28px; letter-spacing: -0.01em;
+}
+.ticker-track span { display: inline-flex; align-items: center; gap: 16px; }
+.ticker-track .sep { opacity: 0.5; font-weight: 400; }
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ─── Promise section ─────────────────────────────────────────────── */
+.promise {
+  padding: 88px 0 96px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+.promise-inner {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 64px;
+  align-items: start;
+}
+.section-label {
+  font-family: var(--mono); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--orange);
+  display: flex; align-items: center; gap: 10px;
+}
+.section-label::before {
+  content: ""; width: 24px; height: 1px; background: var(--orange);
+}
+.promise h2 {
+  font-family: var(--serif); font-size: clamp(36px, 4.5vw, 56px);
+  line-height: 1.02; font-weight: 800; letter-spacing: -0.02em;
+  margin: 16px 0 0;
+  text-wrap: balance;
+  color: var(--navy);
+}
+.promise-body p {
+  font-size: 18px; line-height: 1.6; color: var(--navy);
+  margin: 0 0 20px;
+}
+.promise-body p:first-child {
+  font-size: 22px; line-height: 1.5; font-weight: 500;
+}
+
+/* ─── About / Bio ─────────────────────────────────────────────────── */
+.about {
+  background: var(--ivory);
+  padding: 88px 0 96px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+  overflow: hidden;
+}
+.about-inner {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 80px;
+  align-items: start;
+}
+.about-head .section-label {
+  font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 700; color: var(--orange);
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 18px;
+}
+.about-head .section-label::before {
+  content: ""; width: 24px; height: 1px; background: var(--orange);
+}
+.about h2 {
+  font-family: var(--serif); font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.04; font-weight: 800; letter-spacing: -0.02em;
+  margin: 0 0 24px; color: var(--navy);
+}
+.about-meta { display: grid; gap: 14px; margin-top: 24px; }
+.about-meta .row {
+  display: grid; grid-template-columns: 110px 1fr;
+  gap: 16px; align-items: baseline;
+  padding: 10px 0; border-top: 1px solid var(--rule);
+  font-size: 14px;
+}
+.about-meta .row:last-child { border-bottom: 1px solid var(--rule); }
+.about-meta .label {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  font-weight: 700; color: var(--muted);
+}
+.about-meta .val { font-weight: 600; color: var(--navy); }
+
+.about-body p {
+  font-size: 17.5px; line-height: 1.62; color: var(--navy);
+  margin: 0 0 18px;
+}
+.about-body p:first-child {
+  font-size: 22px; line-height: 1.45; font-weight: 500;
+  color: var(--navy);
+}
+.about-body p:first-child .lede-mark {
+  color: var(--orange); font-style: italic;
+}
+.about-cta {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-top: 28px;
+  padding: 14px 22px;
+  border: 1.5px solid var(--navy);
+  background: transparent; color: var(--navy);
+  border-radius: 999px; text-decoration: none;
+  font-size: 14px; font-weight: 700; letter-spacing: 0.02em;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.about-cta:hover { background: var(--navy); color: var(--ivory); }
+.about-cta .download-icon {
+  display: inline-block; width: 14px; height: 14px;
+  border: 1.5px solid currentColor; border-top: none;
+  position: relative;
+}
+.about-cta .download-icon::before {
+  content: ""; position: absolute;
+  width: 1.5px; height: 8px; background: currentColor;
+  left: 50%; top: -8px; transform: translateX(-50%);
+}
+.about-cta .download-icon::after {
+  content: ""; position: absolute;
+  width: 6px; height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  left: 50%; top: -3px; margin-left: -3px;
+}
+@media (max-width: 720px) {
+  .about-inner { grid-template-columns: 1fr; gap: 32px; }
+  .about-meta .row { grid-template-columns: 100px 1fr; }
+}
+.signature {
+  margin-top: 32px; padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  display: flex; align-items: center; gap: 16px;
+}
+.signature .name { font-family: var(--serif); font-weight: 800; font-size: 20px; }
+.signature .role { font-size: 13px; color: var(--muted); }
+
+/* ─── Issues section ──────────────────────────────────────────────── */
+.issues {
+  padding: 96px 0;
+  background: var(--ivory);
+  position: relative;
+}
+.issues-head {
+  display: flex; align-items: end; justify-content: space-between;
+  gap: 48px; margin-bottom: 56px;
+  padding-bottom: 32px; border-bottom: 2px solid var(--navy);
+}
+.issues-head h2 {
+  font-family: var(--serif);
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1; font-weight: 800; letter-spacing: -0.02em;
+  margin: 16px 0 0;
+  text-wrap: balance;
+  max-width: 720px;
+}
+.issues-head .count {
+  font-family: var(--mono); font-size: 13px; font-weight: 600;
+  color: var(--muted); white-space: nowrap;
+}
+.issues-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--navy);
+  border-left: 1px solid var(--navy);
+}
+.issue-card {
+  background: var(--ivory);
+  border-right: 1px solid var(--navy);
+  border-bottom: 1px solid var(--navy);
+  padding: 32px 28px 28px;
+  display: flex; flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+  min-height: 380px;
+  cursor: pointer;
+}
+.issue-card:hover { background: var(--navy); color: var(--ivory); }
+.issue-card:hover .issue-num,
+.issue-card:hover .issue-iu,
+.issue-card:hover .issue-promise { color: var(--ivory); }
+.issue-card:hover .issue-icon-wrap { color: var(--orange); }
+.issue-card:hover .issue-stat { color: var(--orange); }
+.issue-card:hover .issue-cta { border-color: var(--orange); color: var(--orange); }
+
+.issue-num {
+  font-family: var(--mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; color: var(--muted);
+  transition: color 0.4s ease;
+}
+.issue-icon-wrap {
+  height: 120px;
+  display: flex; align-items: flex-end; justify-content: flex-start;
+  margin: 14px 0 18px;
+  color: var(--ink);
+  transition: color 0.4s ease;
+}
+.issue-iu {
+  font-family: var(--serif); font-size: 28px;
+  font-weight: 700; line-height: 1.05; letter-spacing: -0.015em;
+  color: var(--navy); margin: 0 0 4px;
+  transition: color 0.4s ease;
+}
+.issue-en {
+  font-family: var(--sans); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--orange); margin: 0 0 14px;
+}
+.issue-promise {
+  font-size: 15px; line-height: 1.45;
+  color: var(--navy); margin: 0 0 auto;
+  transition: color 0.4s ease;
+}
+.issue-stat-row {
+  display: flex; align-items: baseline; gap: 10px;
+  margin: 24px 0 14px; padding-top: 14px;
+  border-top: 1px solid var(--rule);
+}
+.issue-card:hover .issue-stat-row { border-top-color: rgba(244,239,230,0.2); }
+.issue-stat {
+  font-family: var(--serif); font-size: 28px; font-weight: 800;
+  line-height: 1; color: var(--navy);
+  transition: color 0.4s ease;
+}
+.issue-stat-label {
+  font-size: 12px; line-height: 1.3; color: var(--muted);
+}
+.issue-card:hover .issue-stat-label { color: rgba(244,239,230,0.7); }
+.issue-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; padding-bottom: 4px;
+  border-bottom: 1px solid var(--navy);
+  align-self: flex-start;
+  transition: all 0.3s ease;
+}
+
+/* ─── Stand With section ──────────────────────────────────────────── */
+.stand {
+  background: var(--orange);
+  color: white;
+  padding: 96px 0;
+  position: relative;
+  overflow: hidden;
+}
+.stand-inner {
+  display: grid; grid-template-columns: 1.2fr 1fr;
+  gap: 64px; align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.stand h2 {
+  font-family: var(--serif); font-size: clamp(40px, 5vw, 64px);
+  line-height: 1; font-weight: 800; letter-spacing: -0.02em;
+  margin: 0 0 24px;
+}
+.stand p {
+  font-size: 19px; line-height: 1.55;
+  color: rgba(255,255,255,0.92);
+  max-width: 540px;
+  margin: 0 0 32px;
+}
+.stand .btn-primary {
+  background: var(--navy); color: white;
+}
+.stand .btn-primary:hover { background: #051b30; }
+.stand .btn-ghost {
+  background: transparent; color: white; border-color: rgba(255,255,255,0.5);
+}
+.stand .btn-ghost:hover { border-color: white; }
+
+.stand-form {
+  background: var(--paper); color: var(--navy);
+  padding: 40px;
+  position: relative;
+}
+.stand-form::before {
+  content: ""; position: absolute; top: -10px; left: -10px;
+  width: 100%; height: 100%; background: var(--navy);
+  z-index: -1;
+}
+.stand-form h3 {
+  font-family: var(--serif); font-size: 24px; font-weight: 800;
+  margin: 0 0 6px;
+}
+.stand-form .small { font-size: 13px; color: var(--muted); margin: 0 0 24px; }
+.field { margin-bottom: 14px; }
+.field label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+  display: block; margin-bottom: 6px;
+}
+.field input {
+  width: 100%; padding: 12px 14px;
+  background: white; border: 1px solid var(--rule);
+  font-family: var(--sans); font-size: 15px; color: var(--navy);
+}
+.field input:focus { outline: 2px solid var(--orange); outline-offset: -1px; }
+.stand-form .btn { width: 100%; justify-content: center; margin-top: 8px; }
+.stand-form .disclaimer {
+  font-size: 11px; color: var(--muted); margin-top: 14px; line-height: 1.5;
+}
+
+/* ─── Footer ──────────────────────────────────────────────────────── */
+.foot {
+  background: var(--navy); color: var(--ivory);
+  padding: 56px 0 32px;
+}
+.foot-grid {
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+}
+.foot h4 {
+  font-family: var(--mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--orange); margin: 0 0 16px;
+}
+.foot ul { list-style: none; padding: 0; margin: 0; }
+.foot li { margin-bottom: 10px; font-size: 14px; }
+.foot a { text-decoration: none; opacity: 0.8; }
+.foot a:hover { opacity: 1; }
+.foot-brand {
+  font-family: var(--serif); font-size: 28px; font-weight: 800;
+  margin-bottom: 12px;
+}
+.foot-brand .dot { color: var(--orange); }
+.foot-tag { font-size: 14px; line-height: 1.5; opacity: 0.7; max-width: 320px; }
+.foot-bottom {
+  border-top: 1px solid rgba(244,239,230,0.12);
+  padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; opacity: 0.6;
+  flex-wrap: wrap; gap: 16px;
+}
+.foot-bottom .meta { font-family: var(--mono); letter-spacing: 0.05em; }
+
+/* ─── Responsive ──────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .hero-portrait { max-width: 480px; }
+  .promise-inner { grid-template-columns: 1fr; gap: 24px; }
+  .issues-grid { grid-template-columns: repeat(2, 1fr); }
+  .stand-inner { grid-template-columns: 1fr; }
+  .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (max-width: 640px) {
+  .topnav { display: none; }
+  .issues-grid { grid-template-columns: 1fr; }
+  .issues-head { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .foot-grid { grid-template-columns: 1fr; }
+  .ticker-track { font-size: 22px; gap: 32px; }
+}
+
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script>
+// Okalik Eegeesiak — 11 priority areas
+// Each entry has: inuktitut name (Latin transliteration), english title, one-liner,
+// a Nunavut-specific stat to anchor the ad, and stat source label.
+// Stats are placeholders sourced from publicly-known northern indicators —
+// VERIFY before publishing any of these on Facebook ads.
+
+window.OKALIK_ISSUES = [
+  {
+    id: "iglu",
+    iu: "Iglu",
+    en: "Home for All",
+    syllabics: "ᐃᒡᓗ",
+    promise: "Building homes, building hope.",
+    stat: "3,000+",
+    statLabel: "homes Nunavut needs to close the gap",
+    statSource: "Nunavut Housing Corporation, public estimates",
+    keyword: "Housing",
+  },
+  {
+    id: "niqi",
+    iu: "Niqi",
+    en: "Food Sovereignty Now",
+    syllabics: "ᓂᕿ",
+    promise: "Affordable food and Inuit-led food security.",
+    stat: "57%",
+    statLabel: "of Nunavut households face food insecurity",
+    statSource: "Statistics Canada, recent survey data",
+    keyword: "Food",
+  },
+  {
+    id: "aanniaqarnirmut",
+    iu: "Aanniaqarnirmut",
+    en: "Healthy Futures",
+    syllabics: "ᐋᓐᓂᐊᖃᕐᓂᕐᒧᑦ",
+    promise: "Culturally safe care close to home.",
+    stat: "1 in 4",
+    statLabel: "Nunavummiut travel south for routine care",
+    statSource: "Government of Nunavut Health, public data",
+    keyword: "Health",
+  },
+  {
+    id: "surusiit",
+    iu: "Surusiit",
+    en: "Protect Our Kids",
+    syllabics: "ᓱᕈᓰᑦ",
+    promise: "Every child deserves safety and support.",
+    stat: "33%",
+    statLabel: "of Nunavut's population is under 15",
+    statSource: "Statistics Canada census",
+    keyword: "Children",
+  },
+  {
+    id: "pinasuarniq",
+    iu: "Pinasuarniq",
+    en: "Jobs for Nunavummiut",
+    syllabics: "ᐱᓇᓱᐊᕐᓂᖅ",
+    promise: "Investing in jobs and Inuit entrepreneurship.",
+    stat: "14%",
+    statLabel: "Nunavut unemployment — nearly 3× the national rate",
+    statSource: "Statistics Canada labour force",
+    keyword: "Jobs",
+  },
+  {
+    id: "ilinniarniq",
+    iu: "Ilinniarniq",
+    en: "Education & Culture",
+    syllabics: "ᐃᓕᓐᓂᐊᕐᓂᖅ",
+    promise: "Empower youth and honour our heritage.",
+    stat: "50%",
+    statLabel: "high-school completion in Nunavut",
+    statSource: "Nunavut Bureau of Statistics",
+    keyword: "Education",
+  },
+  {
+    id: "infrastructure",
+    iu: "Pivalliajuq",
+    en: "Modern Infrastructure",
+    syllabics: "ᐱᕙᓪᓕᐊᔪᖅ",
+    promise: "Reliable power, clean water, and fast internet.",
+    stat: "0",
+    statLabel: "communities connected by all-weather road",
+    statSource: "Government of Nunavut Transportation",
+    keyword: "Infrastructure",
+  },
+  {
+    id: "sila",
+    iu: "Silaup Asijjipallianinga",
+    en: "Climate Resilience",
+    syllabics: "ᓯᓚᐅᑉ ᐊᓯᔾᔨᐸᓪᓕᐊᓂᖓ",
+    promise: "Protecting Nunavut from permafrost to sea ice.",
+    stat: "3×",
+    statLabel: "the Arctic is warming faster than the global average",
+    statSource: "AMAP Arctic Climate report",
+    keyword: "Climate",
+  },
+  {
+    id: "nunatta",
+    iu: "Nunavut, Nunatta",
+    en: "Our Land, Our Rules",
+    syllabics: "ᓄᓇᕗᑦ ᓄᓇᑦᑕ",
+    promise: "Self-determined resource management and planning.",
+    stat: "1.9M km²",
+    statLabel: "of Inuit-owned and co-managed land in Nunavut",
+    statSource: "Nunavut Land Claims Agreement",
+    keyword: "Land",
+  },
+  {
+    id: "saimaqatigiingniq",
+    iu: "Saimaqatigiingniq",
+    en: "Safe Communities",
+    syllabics: "ᓴᐃᒪᖃᑎᒌᖕᓂᖅ",
+    promise: "Ending violence and protecting women, girls, and 2SLGBTQ+ people.",
+    stat: "13×",
+    statLabel: "the national rate of violence against Indigenous women",
+    statSource: "Statistics Canada, RCMP figures",
+    keyword: "Safety",
+  },
+  {
+    id: "business",
+    iu: "Inuit Pinngusaarniq",
+    en: "Inuit Business Empowerment",
+    syllabics: "ᐃᓄᐃᑦ ᐱᓐᖑᓴᕐᓂᖅ",
+    promise: "Revamp the registry — strengthen 100% Inuit-owned enterprises.",
+    stat: "100%",
+    statLabel: "Inuit-owned businesses we will protect and grow",
+    statSource: "NTI Inuit Firm Registry",
+    keyword: "Business",
+  },
+];
+
+</script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+// Hand-traced black silhouettes derived from Okalik's harpoon head and ulu collection.
+// All sized in a 200×200 viewBox unless noted; designed to read at 24px and at 600px.
+// Use as React components: <HarpoonIcon size={120} />
+
+const ICON_BLACK = "#0e0e10";
+
+function HarpoonIcon({ size = 120, color = ICON_BLACK, className = "", style = {} }) {
+  // Vertical harpoon head — point up, with toggle hole and three lashing bands.
+  // viewBox tall to match real proportions (roughly 1:3.5).
+  return (
+    <svg viewBox="0 0 100 350" width={size} height={size * 3.5} className={className} style={style} aria-hidden="true">
+      <g fill={color}>
+        {/* Outer body — point at top, swallow tail at bottom */}
+        <path d="
+          M 50 6
+          C 60 22, 72 50, 78 95
+          L 78 240
+          C 78 260, 76 278, 74 300
+          L 64 348
+          L 56 320
+          L 50 332
+          L 44 320
+          L 36 348
+          L 26 300
+          C 24 278, 22 260, 22 240
+          L 22 95
+          C 28 50, 40 22, 50 6
+          Z
+        " />
+        {/* Inverted-V notch separating the point from the body (white inset) */}
+        <path d="
+          M 50 30
+          C 56 50, 64 75, 68 100
+          L 68 110
+          C 60 90, 54 75, 50 65
+          C 46 75, 40 90, 32 110
+          L 32 100
+          C 36 75, 44 50, 50 30
+          Z
+        " fill="#ffffff" />
+      </g>
+      {/* Toggle hole (oval) — punched through */}
+      <ellipse cx="50" cy="160" rx="11" ry="22" fill="#ffffff" />
+      {/* Three lashing bands — diagonal bars across mid-lower body */}
+      <g fill="#ffffff">
+        <path d="M 18 245 L 82 233 L 82 240 L 18 252 Z" />
+        <path d="M 18 260 L 82 248 L 82 255 L 18 267 Z" />
+        <path d="M 18 275 L 82 263 L 82 270 L 18 282 Z" />
+      </g>
+    </svg>
+  );
+}
+
+// ULU 1 — wide shallow arc with straight horizontal handle on top.
+// Like the big one at top-center of the photo.
+function UluWideIcon({ size = 200, color = ICON_BLACK, className = "", style = {} }) {
+  return (
+    <svg viewBox="0 0 200 130" width={size} height={size * 0.65} className={className} style={style} aria-hidden="true">
+      <g fill={color}>
+        {/* Handle — flat horizontal block on top */}
+        <rect x="55" y="6" width="90" height="22" rx="3" />
+        {/* Stem connecting handle to blade */}
+        <rect x="92" y="22" width="16" height="14" />
+        {/* Blade — wide shallow arc, like a half-moon segment */}
+        <path d="
+          M 16 36
+          L 184 36
+          C 184 70, 160 110, 100 122
+          C 40 110, 16 70, 16 36
+          Z
+        " />
+      </g>
+    </svg>
+  );
+}
+
+// ULU 2 — deep quarter-circle fan with curved bridge handle.
+// Like the right-side dark ulu in the photo.
+function UluFanIcon({ size = 200, color = ICON_BLACK, className = "", style = {} }) {
+  return (
+    <svg viewBox="0 0 200 200" width={size} height={size} className={className} style={style} aria-hidden="true">
+      <g fill={color}>
+        {/* Curved bridge handle on top */}
+        <path d="
+          M 60 12
+          C 80 4, 120 4, 140 12
+          C 138 22, 130 28, 120 28
+          L 80 28
+          C 70 28, 62 22, 60 12
+          Z
+        " />
+        {/* Connector stem */}
+        <rect x="93" y="26" width="14" height="22" />
+        {/* Deep fan blade — quarter-circle */}
+        <path d="
+          M 30 48
+          L 170 48
+          C 168 110, 145 165, 100 188
+          C 55 165, 32 110, 30 48
+          Z
+        " />
+      </g>
+    </svg>
+  );
+}
+
+// ULU 3 — closed-grip bridge handle (center of photo, rounded rectangular wood frame).
+function UluBridgeIcon({ size = 200, color = ICON_BLACK, className = "", style = {} }) {
+  return (
+    <svg viewBox="0 0 200 160" width={size} height={size * 0.8} className={className} style={style} aria-hidden="true">
+      <g fill={color}>
+        {/* Closed bridge handle (rounded rectangle with hole) */}
+        <path d="
+          M 50 6
+          L 150 6
+          C 165 6, 172 14, 172 26
+          L 172 50
+          C 172 58, 166 62, 158 62
+          L 42 62
+          C 34 62, 28 58, 28 50
+          L 28 26
+          C 28 14, 35 6, 50 6
+          Z
+          M 60 22
+          L 140 22
+          C 144 22, 146 24, 146 28
+          L 146 42
+          C 146 46, 144 48, 140 48
+          L 60 48
+          C 56 48, 54 46, 54 42
+          L 54 28
+          C 54 24, 56 22, 60 22
+          Z
+        " fillRule="evenodd" />
+        {/* Blade — classic curved smile */}
+        <path d="
+          M 16 64
+          L 184 64
+          C 182 96, 158 138, 100 154
+          C 42 138, 18 96, 16 64
+          Z
+        " />
+      </g>
+    </svg>
+  );
+}
+
+// ULU 4 — t-handle (vertical post + crossbar), asymmetric blade.
+// Like the bottom-right one in the photo.
+function UluTHandleIcon({ size = 200, color = ICON_BLACK, className = "", style = {} }) {
+  return (
+    <svg viewBox="0 0 200 200" width={size} height={size} className={className} style={style} aria-hidden="true">
+      <g fill={color}>
+        {/* Curved crossbar at top */}
+        <path d="
+          M 50 10
+          C 70 4, 130 4, 150 10
+          C 148 22, 140 30, 128 30
+          L 72 30
+          C 60 30, 52 22, 50 10
+          Z
+        " />
+        {/* Vertical post */}
+        <rect x="93" y="28" width="14" height="62" />
+        {/* Asymmetric fan blade — slightly wider on right */}
+        <path d="
+          M 26 86
+          L 174 90
+          C 172 130, 148 174, 100 192
+          C 52 174, 30 130, 26 86
+          Z
+        " />
+      </g>
+    </svg>
+  );
+}
+
+// ULU 5 — short knob handle, narrow tall blade (the small dark one with single
+// wood knob, top-right of photo).
+function UluKnobIcon({ size = 200, color = ICON_BLACK, className = "", style = {} }) {
+  return (
+    <svg viewBox="0 0 200 220" width={size} height={size * 1.1} className={className} style={style} aria-hidden="true">
+      <g fill={color}>
+        {/* Wood knob handle (rounded mound) */}
+        <path d="
+          M 70 14
+          C 78 6, 122 6, 130 14
+          C 134 22, 134 32, 130 40
+          L 70 40
+          C 66 32, 66 22, 70 14
+          Z
+        " />
+        {/* Vertical metal post */}
+        <rect x="94" y="38" width="12" height="46" />
+        {/* Crossbar */}
+        <rect x="78" y="78" width="44" height="10" rx="2" />
+        {/* Narrow deep blade */}
+        <path d="
+          M 38 88
+          L 162 88
+          C 160 130, 138 178, 100 212
+          C 62 178, 40 130, 38 88
+          Z
+        " />
+      </g>
+    </svg>
+  );
+}
+
+Object.assign(window, { HarpoonIcon, UluWideIcon, UluFanIcon, UluBridgeIcon, UluTHandleIcon, UluKnobIcon });
+
+</script>
+
+<script type="text/babel">
+// Kakiniit pattern — Inuit forearm tattoo motifs as a tileable SVG <pattern>.
+//
+// Inspired by the design behind Okalik's portrait on her campaign poster:
+// - Vertical chevron / "Y" stem motif (the soaring arrowhead form)
+// - Stacked triple-line horizontal bands (classic kakiniit forearm rhythm)
+// - Repeated as columns
+//
+// Renders as <KakiniitBg /> — a full-fill SVG you absolutely-position behind
+// content. Props let the user dial scale, opacity, color, motif mix.
+//
+// All numeric values in the pattern are normalized to a single TILE so changing
+// `scale` resizes the whole thing proportionally.
+
+function KakiniitPattern({
+  id = "kak",
+  color = "#F4EFE6",
+  opacity = 0.18,
+  scale = 1,
+  motif = "mixed",      // kept for prop compatibility, ignored — banded design is fixed
+  strokeWeight = 1,
+}) {
+  // ── Banded kakiniit ─────────────────────────────────────────────
+  // Horizontal repeating tile of three band types stacked vertically:
+  //   1. Dotted band  — row of dots between two thin rules
+  //   2. Tick band    — closely-spaced vertical ticks between rules
+  //   3. Y-glyph band — alternating Y-fork glyphs with tally lines, between rules
+  // Tile is wide and short so it tiles horizontally across the page.
+
+  const sw = 1.4 * strokeWeight;          // thin rule weight (px in svg user-space)
+  const W = 600 * scale;                   // tile width (one full repeat horizontally)
+  // Section heights
+  const hDot   = 36;
+  const hTick  = 44;
+  const hYsm   = 56;   // small-Y band
+  const hYlg   = 84;   // large-Y band
+  const padRule = 6;   // space between section rules
+
+  // Row1: dots between two horizontal rules
+  const dotR = 2.2;
+  const dotCount = 28;
+  const dotStep = W / dotCount;
+  const dots = [];
+  for (let i = 0; i < dotCount; i++) {
+    dots.push(<circle key={"d"+i} cx={dotStep * i + dotStep / 2} cy={hDot/2} r={dotR} />);
+  }
+
+  // Row2: tightly-spaced vertical ticks between rules
+  const tickCount = 60;
+  const tickStep = W / tickCount;
+  const ticks = [];
+  for (let i = 0; i < tickCount; i++) {
+    ticks.push(<rect key={"t"+i} x={tickStep * i + tickStep/2 - sw/2} y={6} width={sw} height={hTick - 12} />);
+  }
+
+  // Row3: small Y glyphs with double tally between
+  const ySmCount = 8;
+  const ySmStep = W / ySmCount;
+  const ySm = [];
+  for (let i = 0; i < ySmCount; i++) {
+    const cx = ySmStep * i + ySmStep / 2;
+    // Y glyph: stem + two arms
+    ySm.push(
+      <g key={"ys"+i}>
+        <rect x={cx - sw/2} y={hYsm/2 - 2} width={sw} height={hYsm/2 + 2} />
+        <line x1={cx} y1={hYsm/2} x2={cx - 14} y2={hYsm/2 - 18} stroke={color} strokeWidth={sw} />
+        <line x1={cx} y1={hYsm/2} x2={cx + 14} y2={hYsm/2 - 18} stroke={color} strokeWidth={sw} />
+        {/* paired tally lines after */}
+        <rect x={cx + ySmStep/2 - 6 - sw/2} y={4} width={sw} height={hYsm - 8} />
+        <rect x={cx + ySmStep/2 + 4 - sw/2} y={4} width={sw} height={hYsm - 8} />
+      </g>
+    );
+  }
+
+  // Row4 (between sections): another dotted band
+  const dotsB = [];
+  for (let i = 0; i < dotCount; i++) {
+    dotsB.push(<circle key={"db"+i} cx={dotStep * i + dotStep / 2} cy={hDot/2} r={dotR} />);
+  }
+
+  // Row5: large Y glyphs with single tally lines between
+  const yLgCount = 6;
+  const yLgStep = W / yLgCount;
+  const yLg = [];
+  for (let i = 0; i < yLgCount; i++) {
+    const cx = yLgStep * i + yLgStep / 2;
+    yLg.push(
+      <g key={"yl"+i}>
+        {/* Y stem + arms */}
+        <rect x={cx - sw/2} y={hYlg/2 - 4} width={sw} height={hYlg/2 + 4} />
+        <line x1={cx} y1={hYlg/2} x2={cx - 26} y2={hYlg/2 - 32} stroke={color} strokeWidth={sw} />
+        <line x1={cx} y1={hYlg/2} x2={cx + 26} y2={hYlg/2 - 32} stroke={color} strokeWidth={sw} />
+        {/* two single tally lines spaced between this Y and the next */}
+        <rect x={cx + yLgStep/3 - sw/2} y={6} width={sw} height={hYlg - 12} />
+        <rect x={cx + yLgStep*2/3 - sw/2} y={6} width={sw} height={hYlg - 12} />
+      </g>
+    );
+  }
+
+  // Compose tile vertically with rule lines between sections
+  let y = 0;
+  const sections = [];
+  // Top double rule
+  sections.push(<rect key="r0a" x={0} y={y} width={W} height={sw} />); y += sw + 4;
+  sections.push(<rect key="r0b" x={0} y={y} width={W} height={sw} />); y += sw + 6;
+  // Dotted band
+  sections.push(<g key="dotrow" transform={`translate(0 ${y})`}>{dots}</g>); y += hDot;
+  sections.push(<rect key="r1a" x={0} y={y} width={W} height={sw} />); y += sw + 4;
+  sections.push(<rect key="r1b" x={0} y={y} width={W} height={sw} />); y += sw + padRule;
+  // Tick band
+  sections.push(<g key="tickrow" transform={`translate(0 ${y})`}>{ticks}</g>); y += hTick;
+  sections.push(<rect key="r2" x={0} y={y} width={W} height={sw} />); y += sw + padRule;
+  // Small-Y band
+  sections.push(<g key="ysmrow" transform={`translate(0 ${y})`}>{ySm}</g>); y += hYsm;
+  sections.push(<rect key="r3a" x={0} y={y} width={W} height={sw} />); y += sw + 4;
+  sections.push(<rect key="r3b" x={0} y={y} width={W} height={sw} />); y += sw + 6;
+  // Second dotted band
+  sections.push(<g key="dotrowB" transform={`translate(0 ${y})`}>{dotsB}</g>); y += hDot;
+  sections.push(<rect key="r4a" x={0} y={y} width={W} height={sw} />); y += sw + 4;
+  sections.push(<rect key="r4b" x={0} y={y} width={W} height={sw} />); y += sw + padRule;
+  // Large-Y band
+  sections.push(<g key="ylgrow" transform={`translate(0 ${y})`}>{yLg}</g>); y += hYlg;
+  sections.push(<rect key="r5a" x={0} y={y} width={W} height={sw} />); y += sw + 4;
+  sections.push(<rect key="r5b" x={0} y={y} width={W} height={sw} />); y += sw + 6;
+
+  const H = y * scale;
+
+  return (
+    <pattern
+      id={id}
+      x="0" y="0"
+      width={W} height={H}
+      patternUnits="userSpaceOnUse"
+    >
+      <g fill={color} stroke="none" style={{ opacity }}>
+        {sections}
+      </g>
+    </pattern>
+  );
+}
+
+// Full-fill background using the pattern. Drop this absolute-positioned inside
+// any container that has `position: relative; overflow: hidden`.
+function KakiniitBg({
+  color = "#F4EFE6",
+  opacity = 0.18,
+  scale = 1,
+  motif = "mixed",
+  strokeWeight = 1,
+  rotate = 0,            // degrees
+  patternId,             // optional override; auto-generates one per instance
+  style = {},
+}) {
+  const idRef = React.useRef(patternId || `kak-${Math.random().toString(36).slice(2, 8)}`);
+  const id = idRef.current;
+  return (
+    <svg
+      aria-hidden="true"
+      style={{
+        position: "absolute", inset: 0,
+        width: "100%", height: "100%",
+        pointerEvents: "none",
+        ...style,
+      }}
+      preserveAspectRatio="none"
+    >
+      <defs>
+        <KakiniitPattern
+          id={id}
+          color={color}
+          opacity={opacity}
+          scale={scale}
+          motif={motif}
+          strokeWeight={strokeWeight}
+        />
+      </defs>
+      <g transform={rotate ? `rotate(${rotate} 50 50)` : undefined}>
+        <rect x="-50%" y="-50%" width="200%" height="200%" fill={`url(#${id})`} />
+      </g>
+    </svg>
+  );
+}
+
+Object.assign(window, { KakiniitPattern, KakiniitBg });
+
+</script>
+
+<script type="text/babel">
+
+// tweaks-panel.jsx
+// Reusable Tweaks shell + form-control helpers.
+//
+// Owns the host protocol (listens for __activate_edit_mode / __deactivate_edit_mode,
+// posts __edit_mode_available / __edit_mode_set_keys / __edit_mode_dismissed) so
+// individual prototypes don't re-roll it. Ships a consistent set of controls so you
+// don't hand-draw <input type="range">, segmented radios, steppers, etc.
+//
+// Usage (in an HTML file that loads React + Babel):
+//
+//   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+//     "primaryColor": "#D97757",
+//     "fontSize": 16,
+//     "density": "regular",
+//     "dark": false
+//   }/*EDITMODE-END*/;
+//
+//   function App() {
+//     const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+//     return (
+//       <div style={{ fontSize: t.fontSize, color: t.primaryColor }}>
+//         Hello
+//         <TweaksPanel>
+//           <TweakSection label="Typography" />
+//           <TweakSlider label="Font size" value={t.fontSize} min={10} max={32} unit="px"
+//                        onChange={(v) => setTweak('fontSize', v)} />
+//           <TweakRadio  label="Density" value={t.density}
+//                        options={['compact', 'regular', 'comfy']}
+//                        onChange={(v) => setTweak('density', v)} />
+//           <TweakSection label="Theme" />
+//           <TweakColor  label="Primary" value={t.primaryColor}
+//                        onChange={(v) => setTweak('primaryColor', v)} />
+//           <TweakToggle label="Dark mode" value={t.dark}
+//                        onChange={(v) => setTweak('dark', v)} />
+//         </TweaksPanel>
+//       </div>
+//     );
+//   }
+//
+// ─────────────────────────────────────────────────────────────────────────────
+
+const __TWEAKS_STYLE = `
+  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;
+    max-height:calc(100vh - 32px);display:flex;flex-direction:column;
+    background:rgba(250,249,247,.78);color:#29261b;
+    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
+    border:.5px solid rgba(255,255,255,.6);border-radius:14px;
+    box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);
+    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;
+    padding:10px 8px 10px 14px;cursor:move;user-select:none}
+  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}
+  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);
+    width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px;line-height:1}
+  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}
+  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;
+    overflow-y:auto;overflow-x:hidden;min-height:0;
+    scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.15) transparent}
+  .twk-body::-webkit-scrollbar{width:8px}
+  .twk-body::-webkit-scrollbar-track{background:transparent;margin:2px}
+  .twk-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;
+    border:2px solid transparent;background-clip:content-box}
+  .twk-body::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.25);
+    border:2px solid transparent;background-clip:content-box}
+  .twk-row{display:flex;flex-direction:column;gap:5px}
+  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;
+    color:rgba(41,38,27,.72)}
+  .twk-lbl>span:first-child{font-weight:500}
+  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}
+
+  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:rgba(41,38,27,.45);padding:10px 0 0}
+  .twk-sect:first-child{padding-top:0}
+
+  .twk-field{appearance:none;width:100%;height:26px;padding:0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;
+    background:rgba(255,255,255,.6);color:inherit;font:inherit;outline:none}
+  .twk-field:focus{border-color:rgba(0,0,0,.25);background:rgba(255,255,255,.85)}
+  select.twk-field{padding-right:22px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='rgba(0,0,0,.5)' d='M0 0h10L5 6z'/></svg>");
+    background-repeat:no-repeat;background-position:right 8px center}
+
+  .twk-slider{appearance:none;-webkit-appearance:none;width:100%;height:4px;margin:6px 0;
+    border-radius:999px;background:rgba(0,0,0,.12);outline:none}
+  .twk-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
+    width:14px;height:14px;border-radius:50%;background:#fff;
+    border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+  .twk-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;
+    background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+
+  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;
+    background:rgba(0,0,0,.06);user-select:none}
+  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;
+    background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);
+    transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}
+  .twk-seg.dragging .twk-seg-thumb{transition:none}
+  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;
+    background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;
+    border-radius:6px;cursor:default;padding:4px 6px;line-height:1.2;
+    overflow-wrap:anywhere}
+
+  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;
+    background:rgba(0,0,0,.15);transition:background .15s;cursor:default;padding:0}
+  .twk-toggle[data-on="1"]{background:#34c759}
+  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+    background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+  .twk-toggle[data-on="1"] i{transform:translateX(14px)}
+
+  .twk-num{display:flex;align-items:center;height:26px;padding:0 0 0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;background:rgba(255,255,255,.6)}
+  .twk-num-lbl{font-weight:500;color:rgba(41,38,27,.6);cursor:ew-resize;
+    user-select:none;padding-right:8px}
+  .twk-num input{flex:1;min-width:0;height:100%;border:0;background:transparent;
+    font:inherit;font-variant-numeric:tabular-nums;text-align:right;padding:0 8px 0 0;
+    outline:none;color:inherit;-moz-appearance:textfield}
+  .twk-num input::-webkit-inner-spin-button,.twk-num input::-webkit-outer-spin-button{
+    -webkit-appearance:none;margin:0}
+  .twk-num-unit{padding-right:8px;color:rgba(41,38,27,.45)}
+
+  .twk-btn{appearance:none;height:26px;padding:0 12px;border:0;border-radius:7px;
+    background:rgba(0,0,0,.78);color:#fff;font:inherit;font-weight:500;cursor:default}
+  .twk-btn:hover{background:rgba(0,0,0,.88)}
+  .twk-btn.secondary{background:rgba(0,0,0,.06);color:inherit}
+  .twk-btn.secondary:hover{background:rgba(0,0,0,.1)}
+
+  .twk-swatch{appearance:none;-webkit-appearance:none;width:56px;height:22px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:6px;padding:0;cursor:default;
+    background:transparent;flex-shrink:0}
+  .twk-swatch::-webkit-color-swatch-wrapper{padding:0}
+  .twk-swatch::-webkit-color-swatch{border:0;border-radius:5.5px}
+  .twk-swatch::-moz-color-swatch{border:0;border-radius:5.5px}
+`;
+
+// ── useTweaks ───────────────────────────────────────────────────────────────
+// Single source of truth for tweak values. setTweak persists via the host
+// (__edit_mode_set_keys → host rewrites the EDITMODE block on disk).
+function useTweaks(defaults) {
+  const [values, setValues] = React.useState(defaults);
+  // Accepts either setTweak('key', value) or setTweak({ key: value, ... }) so a
+  // useState-style call doesn't write a "[object Object]" key into the persisted
+  // JSON block.
+  const setTweak = React.useCallback((keyOrEdits, val) => {
+    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null
+      ? keyOrEdits : { [keyOrEdits]: val };
+    setValues((prev) => ({ ...prev, ...edits }));
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+  }, []);
+  return [values, setTweak];
+}
+
+// ── TweaksPanel ─────────────────────────────────────────────────────────────
+// Floating shell. Registers the protocol listener BEFORE announcing
+// availability — if the announce ran first, the host's activate could land
+// before our handler exists and the toolbar toggle would silently no-op.
+// The close button posts __edit_mode_dismissed so the host's toolbar toggle
+// flips off in lockstep; the host echoes __deactivate_edit_mode back which
+// is what actually hides the panel.
+function TweaksPanel({ title = 'Tweaks', children }) {
+  const [open, setOpen] = React.useState(false);
+  const dragRef = React.useRef(null);
+  const offsetRef = React.useRef({ x: 16, y: 16 });
+  const PAD = 16;
+
+  const clampToViewport = React.useCallback(() => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const w = panel.offsetWidth, h = panel.offsetHeight;
+    const maxRight = Math.max(PAD, window.innerWidth - w - PAD);
+    const maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
+    offsetRef.current = {
+      x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
+      y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y)),
+    };
+    panel.style.right = offsetRef.current.x + 'px';
+    panel.style.bottom = offsetRef.current.y + 'px';
+  }, []);
+
+  React.useEffect(() => {
+    if (!open) return;
+    clampToViewport();
+    if (typeof ResizeObserver === 'undefined') {
+      window.addEventListener('resize', clampToViewport);
+      return () => window.removeEventListener('resize', clampToViewport);
+    }
+    const ro = new ResizeObserver(clampToViewport);
+    ro.observe(document.documentElement);
+    return () => ro.disconnect();
+  }, [open, clampToViewport]);
+
+  React.useEffect(() => {
+    const onMsg = (e) => {
+      const t = e?.data?.type;
+      if (t === '__activate_edit_mode') setOpen(true);
+      else if (t === '__deactivate_edit_mode') setOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  const dismiss = () => {
+    setOpen(false);
+    window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+  };
+
+  const onDragStart = (e) => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const r = panel.getBoundingClientRect();
+    const sx = e.clientX, sy = e.clientY;
+    const startRight = window.innerWidth - r.right;
+    const startBottom = window.innerHeight - r.bottom;
+    const move = (ev) => {
+      offsetRef.current = {
+        x: startRight - (ev.clientX - sx),
+        y: startBottom - (ev.clientY - sy),
+      };
+      clampToViewport();
+    };
+    const up = () => {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseup', up);
+    };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+  };
+
+  if (!open) return null;
+  return (
+    <>
+      <style>{__TWEAKS_STYLE}</style>
+      <div ref={dragRef} className="twk-panel" data-noncommentable=""
+           style={{ right: offsetRef.current.x, bottom: offsetRef.current.y }}>
+        <div className="twk-hd" onMouseDown={onDragStart}>
+          <b>{title}</b>
+          <button className="twk-x" aria-label="Close tweaks"
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onClick={dismiss}>✕</button>
+        </div>
+        <div className="twk-body">{children}</div>
+      </div>
+    </>
+  );
+}
+
+// ── Layout helpers ──────────────────────────────────────────────────────────
+
+function TweakSection({ label, children }) {
+  return (
+    <>
+      <div className="twk-sect">{label}</div>
+      {children}
+    </>
+  );
+}
+
+function TweakRow({ label, value, children, inline = false }) {
+  return (
+    <div className={inline ? 'twk-row twk-row-h' : 'twk-row'}>
+      <div className="twk-lbl">
+        <span>{label}</span>
+        {value != null && <span className="twk-val">{value}</span>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+// ── Controls ────────────────────────────────────────────────────────────────
+
+function TweakSlider({ label, value, min = 0, max = 100, step = 1, unit = '', onChange }) {
+  return (
+    <TweakRow label={label} value={`${value}${unit}`}>
+      <input type="range" className="twk-slider" min={min} max={max} step={step}
+             value={value} onChange={(e) => onChange(Number(e.target.value))} />
+    </TweakRow>
+  );
+}
+
+function TweakToggle({ label, value, onChange }) {
+  return (
+    <div className="twk-row twk-row-h">
+      <div className="twk-lbl"><span>{label}</span></div>
+      <button type="button" className="twk-toggle" data-on={value ? '1' : '0'}
+              role="switch" aria-checked={!!value}
+              onClick={() => onChange(!value)}><i /></button>
+    </div>
+  );
+}
+
+function TweakRadio({ label, value, options, onChange }) {
+  const trackRef = React.useRef(null);
+  const [dragging, setDragging] = React.useState(false);
+  const opts = options.map((o) => (typeof o === 'object' ? o : { value: o, label: o }));
+  const idx = Math.max(0, opts.findIndex((o) => o.value === value));
+  const n = opts.length;
+
+  // The active value is read by pointer-move handlers attached for the lifetime
+  // of a drag — ref it so a stale closure doesn't fire onChange for every move.
+  const valueRef = React.useRef(value);
+  valueRef.current = value;
+
+  const segAt = (clientX) => {
+    const r = trackRef.current.getBoundingClientRect();
+    const inner = r.width - 4;
+    const i = Math.floor(((clientX - r.left - 2) / inner) * n);
+    return opts[Math.max(0, Math.min(n - 1, i))].value;
+  };
+
+  const onPointerDown = (e) => {
+    setDragging(true);
+    const v0 = segAt(e.clientX);
+    if (v0 !== valueRef.current) onChange(v0);
+    const move = (ev) => {
+      if (!trackRef.current) return;
+      const v = segAt(ev.clientX);
+      if (v !== valueRef.current) onChange(v);
+    };
+    const up = () => {
+      setDragging(false);
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+
+  return (
+    <TweakRow label={label}>
+      <div ref={trackRef} role="radiogroup" onPointerDown={onPointerDown}
+           className={dragging ? 'twk-seg dragging' : 'twk-seg'}>
+        <div className="twk-seg-thumb"
+             style={{ left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
+                      width: `calc((100% - 4px) / ${n})` }} />
+        {opts.map((o) => (
+          <button key={o.value} type="button" role="radio" aria-checked={o.value === value}>
+            {o.label}
+          </button>
+        ))}
+      </div>
+    </TweakRow>
+  );
+}
+
+function TweakSelect({ label, value, options, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <select className="twk-field" value={value} onChange={(e) => onChange(e.target.value)}>
+        {options.map((o) => {
+          const v = typeof o === 'object' ? o.value : o;
+          const l = typeof o === 'object' ? o.label : o;
+          return <option key={v} value={v}>{l}</option>;
+        })}
+      </select>
+    </TweakRow>
+  );
+}
+
+function TweakText({ label, value, placeholder, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <input className="twk-field" type="text" value={value} placeholder={placeholder}
+             onChange={(e) => onChange(e.target.value)} />
+    </TweakRow>
+  );
+}
+
+function TweakNumber({ label, value, min, max, step = 1, unit = '', onChange }) {
+  const clamp = (n) => {
+    if (min != null && n < min) return min;
+    if (max != null && n > max) return max;
+    return n;
+  };
+  const startRef = React.useRef({ x: 0, val: 0 });
+  const onScrubStart = (e) => {
+    e.preventDefault();
+    startRef.current = { x: e.clientX, val: value };
+    const decimals = (String(step).split('.')[1] || '').length;
+    const move = (ev) => {
+      const dx = ev.clientX - startRef.current.x;
+      const raw = startRef.current.val + dx * step;
+      const snapped = Math.round(raw / step) * step;
+      onChange(clamp(Number(snapped.toFixed(decimals))));
+    };
+    const up = () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+  return (
+    <div className="twk-num">
+      <span className="twk-num-lbl" onPointerDown={onScrubStart}>{label}</span>
+      <input type="number" value={value} min={min} max={max} step={step}
+             onChange={(e) => onChange(clamp(Number(e.target.value)))} />
+      {unit && <span className="twk-num-unit">{unit}</span>}
+    </div>
+  );
+}
+
+function TweakColor({ label, value, onChange }) {
+  return (
+    <div className="twk-row twk-row-h">
+      <div className="twk-lbl"><span>{label}</span></div>
+      <input type="color" className="twk-swatch" value={value}
+             onChange={(e) => onChange(e.target.value)} />
+    </div>
+  );
+}
+
+function TweakButton({ label, onClick, secondary = false }) {
+  return (
+    <button type="button" className={secondary ? 'twk-btn secondary' : 'twk-btn'}
+            onClick={onClick}>{label}</button>
+  );
+}
+
+Object.assign(window, {
+  useTweaks, TweaksPanel, TweakSection, TweakRow,
+  TweakSlider, TweakToggle, TweakRadio, TweakSelect,
+  TweakText, TweakNumber, TweakColor, TweakButton,
+});
+
+</script>
+
+<script type="text/babel">
+// Landing page — composed of TopBar, Hero, Ticker, Promise, Issues, Stand, Footer.
+// Uses Kakiniit (Inuit tattoo) pattern as the dynamic background motif, with
+// Tweaks controls so the campaign team can dial it in live.
+
+const ISSUES = window.OKALIK_ISSUES;
+
+// ─── Default tweak values ────────────────────────────────────────────
+// Kept inside the EDITMODE markers so the host can rewrite them.
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "patternMotif": "mixed",
+  "patternScale": 1,
+  "patternOpacity": 0.22,
+  "patternStroke": 1,
+  "patternRotate": 0,
+  "applyHero": true,
+  "applyIssues": true,
+  "applyStand": false,
+  "applyFooter": true,
+  "issuesBgTone": "ivory"
+}/*EDITMODE-END*/;
+
+// ─── Icon assignment per issue ───────────────────────────────────────
+const ICON_MAP = {
+  iglu:               { C: UluWideIcon,    scale: 110, rot: 0,   y: 0 },
+  niqi:               { C: UluKnobIcon,    scale: 100, rot: -8,  y: 0 },
+  aanniaqarnirmut:    { C: UluFanIcon,     scale: 100, rot: 0,   y: 0 },
+  surusiit:           { C: UluBridgeIcon,  scale: 110, rot: 0,   y: 0 },
+  pinasuarniq:        { C: UluTHandleIcon, scale: 95,  rot: 0,   y: 0 },
+  ilinniarniq:        { C: UluKnobIcon,    scale: 100, rot: 6,   y: 0 },
+  infrastructure:     { C: UluTHandleIcon, scale: 90,  rot: -4,  y: 0 },
+  sila:               { C: UluFanIcon,     scale: 105, rot: -10, y: 0 },
+  nunatta:            { C: HarpoonIcon,    scale: 38,  rot: 0,   y: 0 },
+  saimaqatigiingniq:  { C: UluBridgeIcon,  scale: 105, rot: 0,   y: 0 },
+  business:           { C: UluTHandleIcon, scale: 100, rot: 4,   y: 0 },
+};
+
+function IssueIcon({ id }) {
+  const cfg = ICON_MAP[id];
+  if (!cfg) return null;
+  const { C, scale, rot, y } = cfg;
+  return (
+    <div className="issue-icon-wrap">
+      <div style={{ transform: `translateY(${y}px) rotate(${rot}deg)`, transformOrigin: "center bottom" }}>
+        <C size={scale} />
+      </div>
+    </div>
+  );
+}
+
+// ─── TopBar ──────────────────────────────────────────────────────────
+function TopBar() {
+  return (
+    <header className="topbar">
+      <div className="wrap topbar-inner">
+        <a href="#" className="brand-mark">
+          OKALIK<span className="dot">.</span>
+          <span className="role">for NTI President</span>
+        </a>
+        <nav className="topnav">
+          <a href="#promise">About</a>
+          <a href="#bio">Bio</a>
+          <a href="#issues">Priorities</a>
+          <a href="#stand">Volunteer</a>
+          <a href="https://kirt-ngai.github.io/Okalik-for-NTI-President-Donation-Page/">Donate</a>
+        </nav>
+        <a href="#stand" className="cta">Stand with Okalik →</a>
+      </div>
+    </header>
+  );
+}
+
+// ─── Hero ────────────────────────────────────────────────────────────
+function Hero({ t }) {
+  return (
+    <section className="hero">
+      {t.applyHero && (
+        <KakiniitBg
+          color="#F4EFE6"
+          opacity={t.patternOpacity * 0.55}   // softer on dark navy
+          scale={t.patternScale}
+          motif={t.patternMotif}
+          strokeWeight={t.patternStroke}
+          rotate={t.patternRotate}
+        />
+      )}
+      <div className="wrap hero-grid">
+        <div>
+          <div className="hero-eyebrow">NTI Presidential Election · 2026</div>
+          <h1>
+            Building homes,<br/>
+            <span className="accent">building hope.</span>
+          </h1>
+          <p className="hero-sub">
+            Okalik Eegeesiak is running for President of Nunavut Tunngavik Inc. — bringing decades of Inuit leadership home to Nunavut. Eleven priorities. One promise: a Nunavut where every Inuk thrives.
+          </p>
+          <div className="hero-ctas">
+            <a href="#issues" className="btn btn-primary">
+              See the priorities <span className="arrow">→</span>
+            </a>
+            <a href="#stand" className="btn btn-ghost">Volunteer</a>
+          </div>
+
+          <div className="keydates" aria-label="Key dates">
+            <div className="kd">
+              <div className="kd-label">Advance Poll</div>
+              <div className="kd-day">April 20</div>
+              <div className="kd-meta">Monday · 2026</div>
+            </div>
+            <div className="kd">
+              <div className="kd-label">Election Day</div>
+              <div className="kd-day">April 27</div>
+              <div className="kd-meta">Monday · 2026</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div className="hero-portrait">
+            <img src={"assets/okalik-portrait.jpg" + location.search} alt="Okalik Eegeesiak" />
+            <div className="caption">OKALIK EEGEESIAK · FOR NTI PRESIDENT</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Ticker ──────────────────────────────────────────────────────────
+function Ticker() {
+  const words = ISSUES.map(i => i.iu);
+  const doubled = [...words, ...words];
+  return (
+    <div className="ticker" aria-hidden="true">
+      <div className="ticker-track">
+        {doubled.map((w, i) => (
+          <span key={i}>
+            <span>{w}</span>
+            <span className="sep">✦</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─── Promise ─────────────────────────────────────────────────────────
+function PromiseSection() {
+  return (
+    <section className="promise" id="promise">
+      <div className="wrap promise-inner">
+        <div>
+          <div className="section-label">Our Promise</div>
+          <h2>A Nunavut where every Inuk can thrive.</h2>
+        </div>
+        <div className="promise-body">
+          <p>
+            I have spent my life advocating for Inuit — at the United Nations, with the Inuit Circumpolar Council, and at home in Nunavut. Now I'm running for President of NTI because the work that matters most happens close to home.
+          </p>
+          <p>
+            We need leaders who will fight for housing, food security, and healthcare without compromise. Leaders who understand that policy made in Iqaluit must serve every elder, every parent, every young person across our communities.
+          </p>
+          <p>
+            These are the eleven priorities I'm bringing to NTI. Each one is rooted in what Nunavummiut have told me matters. Each one comes with a plan. None of them can wait.
+          </p>
+          <div className="signature">
+            <div>
+              <div className="name">Okalik Eegeesiak</div>
+              <div className="role">Candidate for President, Nunavut Tunngavik Inc. · 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── About / Bio ─────────────────────────────────────────────────────
+function About() {
+  return (
+    <section className="about" id="bio">
+      <div className="wrap about-inner">
+        <div className="about-head">
+          <div className="section-label">About Okalik</div>
+          <h2>Decades of Inuit leadership — coming home to Nunavut.</h2>
+          <div className="about-meta">
+            <div className="row">
+              <div className="label">Born</div>
+              <div className="val">Iqaluit, Nunavut</div>
+            </div>
+            <div className="row">
+              <div className="label">Languages</div>
+              <div className="val">Inuktitut · English</div>
+            </div>
+            <div className="row">
+              <div className="label">ICC Chair</div>
+              <div className="val">2014 – 2018</div>
+            </div>
+            <div className="row">
+              <div className="label">QIA President</div>
+              <div className="val">2008 – 2014</div>
+            </div>
+            <div className="row">
+              <div className="label">Experience</div>
+              <div className="val">35+ years advancing Inuit priorities</div>
+            </div>
+          </div>
+          <a href="assets/Okalik_Eegeesiak_Campaign_Bio.docx" className="about-cta" download>
+            <span className="download-icon" aria-hidden="true"></span>
+            Download full bio
+          </a>
+        </div>
+        <div className="about-body">
+          <p>
+            (Josie) Okalik Eegeesiak is a bilingual Inuk leader based in Iqaluit, Nunavut. From <strong>2014 to 2018</strong>, she served as <strong>Chair of the Inuit Circumpolar Council</strong>, representing the international interests of Inuit in Canada, Greenland, Chukotka (Russia), and Alaska — leading ICC delegations at the United Nations and at COP 21 in Paris.
+          </p>
+          <p>
+            She previously served two terms as <strong>President of the Qikiqtani Inuit Association</strong> (2008–2014), representing approximately <strong>14,000 Inuit across the 13 communities</strong> of the Qikiqtani Region. During her tenure, QIA advanced major files including marine conservation in Lancaster Sound, Inuit education and training, and the implementation of the Nunavut Agreement.
+          </p>
+          <p>
+            Over more than <strong>35 years</strong>, Okalik has chaired and represented Inuit on international, national, territorial, and community boards, and has held senior management roles in both federal and territorial governments. Her work focuses on education and training, language and culture, human resources, community development, and the socio-economic well-being of Inuit and the Arctic.
+          </p>
+          <p>
+            She is widely respected for her steady, consensus-based leadership style and her lifelong commitment to Inuit self-determination.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Issues ──────────────────────────────────────────────────────────
+function IssueCard({ issue, idx }) {
+  return (
+    <a className="issue-card" href={`#${issue.id}`}>
+      <div className="issue-num">{String(idx + 1).padStart(2, "0")} / 11</div>
+      <IssueIcon id={issue.id} />
+      <div className="issue-iu">{issue.iu}</div>
+      <div className="issue-en">{issue.en}</div>
+      <p className="issue-promise">{issue.promise}</p>
+      <div className="issue-stat-row">
+        <div className="issue-stat">{issue.stat}</div>
+        <div className="issue-stat-label">{issue.statLabel}</div>
+      </div>
+      <div className="issue-cta">Read more <span>→</span></div>
+    </a>
+  );
+}
+
+function Issues({ t }) {
+  // For the issues section, the pattern color depends on the bg tone.
+  // On ivory bg, we want a navy pattern (subtle dark on light).
+  const isNavyBg = t.issuesBgTone === "navy";
+  const sectionStyle = isNavyBg
+    ? { background: "var(--navy)", color: "var(--ivory)" }
+    : {};
+  return (
+    <section className="issues" id="issues" style={sectionStyle}>
+      {t.applyIssues && (
+        <KakiniitBg
+          color={isNavyBg ? "#F4EFE6" : "#082845"}
+          opacity={t.patternOpacity * (isNavyBg ? 0.55 : 0.5)}
+          scale={t.patternScale}
+          motif={t.patternMotif}
+          strokeWeight={t.patternStroke}
+          rotate={t.patternRotate}
+        />
+      )}
+      <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
+        <div className="issues-head">
+          <div>
+            <div className="section-label">The Priorities</div>
+            <h2>Eleven things we will fight for, from day one.</h2>
+          </div>
+          <div className="count">11 areas · for Nunavummiut</div>
+        </div>
+        <div className="issues-grid">
+          {ISSUES.map((issue, idx) => (
+            <IssueCard key={issue.id} issue={issue} idx={idx} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Stand ───────────────────────────────────────────────────────────
+function Stand({ t }) {
+  function handleSignup(e) {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const body = [
+      "Please add me to the Okalik Eegeesiak campaign update list.",
+      "",
+      `Name: ${data.get("name") || ""}`,
+      `Email: ${data.get("email") || ""}`,
+      `Community: ${data.get("community") || ""}`,
+    ].join("\n");
+    window.location.href = `mailto:hello@okalik.ca?subject=${encodeURIComponent("Campaign updates signup")}&body=${encodeURIComponent(body)}`;
+  }
+
+  return (
+    <section className="stand" id="stand">
+      {t.applyStand && (
+        <KakiniitBg
+          color="#FFFFFF"
+          opacity={t.patternOpacity * 0.45}
+          scale={t.patternScale}
+          motif={t.patternMotif}
+          strokeWeight={t.patternStroke}
+          rotate={t.patternRotate}
+        />
+      )}
+      <div className="wrap stand-inner">
+        <div>
+          <h2>Stand with Okalik.</h2>
+          <p>Volunteer your time, donate to the campaign, or just stay informed. Every voice across Nunavut matters — and the work begins now.</p>
+          <div className="hero-ctas">
+            <a href="https://kirt-ngai.github.io/Okalik-for-NTI-President-Donation-Page/" className="btn btn-primary">Donate <span className="arrow">→</span></a>
+            <a href="#stand" className="btn btn-ghost">Volunteer</a>
+          </div>
+        </div>
+        <form className="stand-form" onSubmit={handleSignup}>
+          <h3>Stay in the loop.</h3>
+          <p className="small">Updates from the campaign — community events, town halls, issue briefings.</p>
+          <div className="field"><label>Name</label><input name="name" type="text" placeholder="Your name" /></div>
+          <div className="field"><label>Email</label><input name="email" type="email" placeholder="you@example.com" /></div>
+          <div className="field"><label>Community</label><input name="community" type="text" placeholder="Iqaluit, Apex, …" /></div>
+          <button type="submit" className="btn btn-primary">Sign me up <span className="arrow">→</span></button>
+          <p className="disclaimer">By signing up you agree to receive campaign updates. We never share your information. Authorized by the Official Agent for Okalik Eegeesiak.</p>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+// ─── Footer ──────────────────────────────────────────────────────────
+function Foot({ t }) {
+  return (
+    <footer className="foot">
+      {t.applyFooter && (
+        <KakiniitBg
+          color="#F4EFE6"
+          opacity={t.patternOpacity * 0.4}
+          scale={t.patternScale}
+          motif={t.patternMotif}
+          strokeWeight={t.patternStroke}
+          rotate={t.patternRotate}
+        />
+      )}
+      <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
+        <div className="foot-grid">
+          <div>
+            <div className="foot-brand">OKALIK<span className="dot">.</span></div>
+            <p className="foot-tag">Building homes, building hope. Okalik Eegeesiak for President of Nunavut Tunngavik Inc.</p>
+          </div>
+          <div>
+            <h4>Campaign</h4>
+            <ul>
+              <li><a href="#bio">About Okalik</a></li>
+              <li><a href="#issues">Priorities</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Get Involved</h4>
+            <ul>
+              <li><a href="#stand">Volunteer</a></li>
+              <li><a href="https://kirt-ngai.github.io/Okalik-for-NTI-President-Donation-Page/">Donate</a></li>
+              <li><a href="#stand">Sign up</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <ul>
+              <li><a href="mailto:hello@okalik.ca">hello@okalik.ca</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="foot-bottom">
+          <div>© 2026 Okalik Eegeesiak Campaign · Authorized by the Official Agent</div>
+          <div className="meta">ᓄᓇᕗᑦ ᑐᙵᕕᒃ · NUNAVUT TUNNGAVIK INC.</div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+// ─── Tweaks panel ────────────────────────────────────────────────────
+function OkalikTweaks({ t, setTweak }) {
+  return (
+    <TweaksPanel title="Tweaks · Pattern">
+      <TweakSection label="Kakiniit pattern" />
+      <TweakRadio  label="Motif"
+                   value={t.patternMotif}
+                   options={["mixed", "chevron", "bands"]}
+                   onChange={(v) => setTweak("patternMotif", v)} />
+      <TweakSlider label="Scale" value={t.patternScale} min={0.5} max={2.5} step={0.1}
+                   onChange={(v) => setTweak("patternScale", v)} />
+      <TweakSlider label="Opacity" value={t.patternOpacity} min={0.05} max={0.6} step={0.01}
+                   onChange={(v) => setTweak("patternOpacity", v)} />
+      <TweakSlider label="Stroke weight" value={t.patternStroke} min={0.5} max={2} step={0.1}
+                   onChange={(v) => setTweak("patternStroke", v)} />
+      <TweakSlider label="Rotation" value={t.patternRotate} min={-15} max={15} step={1} unit="°"
+                   onChange={(v) => setTweak("patternRotate", v)} />
+
+      <TweakSection label="Apply to sections" />
+      <TweakToggle label="Hero"     value={t.applyHero}     onChange={(v) => setTweak("applyHero", v)} />
+      <TweakToggle label="Issues"   value={t.applyIssues}   onChange={(v) => setTweak("applyIssues", v)} />
+      <TweakToggle label="Stand"    value={t.applyStand}    onChange={(v) => setTweak("applyStand", v)} />
+      <TweakToggle label="Footer"   value={t.applyFooter}   onChange={(v) => setTweak("applyFooter", v)} />
+
+      <TweakSection label="Issues background" />
+      <TweakRadio  label="Tone" value={t.issuesBgTone}
+                   options={["ivory", "navy"]}
+                   onChange={(v) => setTweak("issuesBgTone", v)} />
+    </TweaksPanel>
+  );
+}
+
+// ─── App ─────────────────────────────────────────────────────────────
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  return (
+    <>
+      <TopBar />
+      <Hero t={t} />
+      <Ticker />
+      <PromiseSection />
+      <About />
+      <Issues t={t} />
+      <Stand t={t} />
+      <Foot t={t} />
+      <OkalikTweaks t={t} setTweak={setTweak} />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+</script>
+</body>
+</html>
