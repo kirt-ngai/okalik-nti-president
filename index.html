@@ -1568,6 +1568,7 @@ Object.assign(window, {
 // Tweaks controls so the campaign team can dial it in live.
 
 const ISSUES = window.OKALIK_ISSUES;
+const VOLUNTEER_EMAIL_LINK = "mailto:buscemi.franco@gmail.com?subject=I%20want%20to%20Volunteer%20for%20Okalik";
 
 // ─── Default tweak values ────────────────────────────────────────────
 // Kept inside the EDITMODE markers so the host can rewrite them.
@@ -1625,10 +1626,10 @@ function TopBar() {
           <a href="#promise">About</a>
           <a href="#bio">Bio</a>
           <a href="#issues">Priorities</a>
-          <a href="#stand">Volunteer</a>
+          <a href={VOLUNTEER_EMAIL_LINK}>Volunteer</a>
           <a href="https://kirt-ngai.github.io/Okalik-for-NTI-President-Donation-Page/">Donate</a>
         </nav>
-        <a href="#stand" className="cta">Stand with Okalik →</a>
+        <a href={VOLUNTEER_EMAIL_LINK} className="cta">Stand with Okalik →</a>
       </div>
     </header>
   );
@@ -1662,7 +1663,7 @@ function Hero({ t }) {
             <a href="#issues" className="btn btn-primary">
               See the priorities <span className="arrow">→</span>
             </a>
-            <a href="#stand" className="btn btn-ghost">Volunteer</a>
+            <a href={VOLUNTEER_EMAIL_LINK} className="btn btn-ghost">Volunteer</a>
           </div>
 
           <div className="keydates" aria-label="Key dates">
@@ -1853,13 +1854,13 @@ function Stand({ t }) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const body = [
-      "Please add me to the Okalik Eegeesiak campaign update list.",
+      "I want to volunteer for Okalik Eegeesiak.",
       "",
       `Name: ${data.get("name") || ""}`,
       `Email: ${data.get("email") || ""}`,
       `Community: ${data.get("community") || ""}`,
     ].join("\n");
-    window.location.href = `mailto:hello@okalik.ca?subject=${encodeURIComponent("Campaign updates signup")}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:buscemi.franco@gmail.com?subject=${encodeURIComponent("I want to Volunteer for Okalik")}&body=${encodeURIComponent(body)}`;
   }
 
   return (
@@ -1880,7 +1881,7 @@ function Stand({ t }) {
           <p>Volunteer your time, donate to the campaign, or just stay informed. Every voice across Nunavut matters — and the work begins now.</p>
           <div className="hero-ctas">
             <a href="https://kirt-ngai.github.io/Okalik-for-NTI-President-Donation-Page/" className="btn btn-primary">Donate <span className="arrow">→</span></a>
-            <a href="#stand" className="btn btn-ghost">Volunteer</a>
+            <a href={VOLUNTEER_EMAIL_LINK} className="btn btn-ghost">Volunteer</a>
           </div>
         </div>
         <form className="stand-form" onSubmit={handleSignup}>
@@ -1927,7 +1928,7 @@ function Foot({ t }) {
           <div>
             <h4>Get Involved</h4>
             <ul>
-              <li><a href="#stand">Volunteer</a></li>
+              <li><a href={VOLUNTEER_EMAIL_LINK}>Volunteer</a></li>
               <li><a href="https://kirt-ngai.github.io/Okalik-for-NTI-President-Donation-Page/">Donate</a></li>
               <li><a href="#stand">Sign up</a></li>
             </ul>
