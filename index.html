@@ -35,6 +35,7 @@ body {
   font-family: var(--sans);
   background: var(--paper);
   color: var(--navy);
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-feature-settings: "ss01", "cv11";
@@ -400,6 +401,131 @@ a { color: inherit; }
   font-family: var(--mono); font-size: 13px; font-weight: 600;
   color: var(--muted); white-space: nowrap;
 }
+.priority-motion {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+  min-width: 0;
+  min-height: 420px;
+  margin: -18px 0 48px;
+  border-top: 1px solid var(--navy);
+  border-left: 1px solid var(--navy);
+  background: rgba(251,248,241,0.92);
+  position: relative;
+  overflow: hidden;
+}
+.priority-stage,
+.priority-story {
+  border-right: 1px solid var(--navy);
+  border-bottom: 1px solid var(--navy);
+  min-width: 0;
+}
+.priority-stage {
+  background: var(--navy);
+  color: var(--ivory);
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 34px;
+  position: relative;
+  overflow: hidden;
+}
+.priority-stage::before {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  border: 1px solid rgba(244,239,230,0.18);
+  pointer-events: none;
+}
+.priority-visual {
+  width: min(100%, 520px);
+  min-width: 0;
+  max-width: 100%;
+  aspect-ratio: 3 / 2;
+  color: currentColor;
+  transform-origin: center;
+}
+.priority-visual svg,
+.issue-visual svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.priority-story {
+  padding: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+.priority-kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 14px;
+}
+.priority-story h3 {
+  font-family: var(--serif);
+  font-size: clamp(34px, 4vw, 54px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+  color: var(--navy);
+}
+.priority-syllabics {
+  font-family: var(--serif);
+  font-size: 24px;
+  line-height: 1.1;
+  color: var(--orange);
+  margin-bottom: 18px;
+}
+.priority-copy {
+  font-size: 17px;
+  line-height: 1.58;
+  color: rgba(8,40,69,0.82);
+  margin: 0 0 24px;
+  max-width: 680px;
+  overflow-wrap: break-word;
+}
+.priority-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+}
+.priority-stat b {
+  font-family: var(--serif);
+  font-size: 42px;
+  line-height: 1;
+  color: var(--orange);
+}
+.priority-stat span {
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+.priority-progress {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  gap: 5px;
+  margin-top: 30px;
+}
+.priority-progress span {
+  height: 5px;
+  background: rgba(8,40,69,0.16);
+  overflow: hidden;
+}
+.priority-progress i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--orange);
+}
 .issues-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -416,14 +542,17 @@ a { color: inherit; }
   position: relative;
   overflow: hidden;
   transition: background 0.4s ease, color 0.4s ease;
-  min-height: 380px;
+  min-height: 560px;
   cursor: pointer;
+  text-decoration: none;
 }
 .issue-card:hover { background: var(--navy); color: var(--ivory); }
 .issue-card:hover .issue-num,
 .issue-card:hover .issue-iu,
-.issue-card:hover .issue-promise { color: var(--ivory); }
-.issue-card:hover .issue-icon-wrap { color: var(--orange); }
+.issue-card:hover .issue-promise,
+.issue-card:hover .issue-detail { color: var(--ivory); }
+.issue-card:hover .issue-icon-wrap,
+.issue-card:hover .issue-visual { color: var(--ivory); }
 .issue-card:hover .issue-stat { color: var(--orange); }
 .issue-card:hover .issue-cta { border-color: var(--orange); color: var(--orange); }
 
@@ -439,6 +568,17 @@ a { color: inherit; }
   color: var(--ink);
   transition: color 0.4s ease;
 }
+.issue-visual {
+  height: 148px;
+  min-width: 0;
+  max-width: 100%;
+  margin: 16px 0 20px;
+  color: var(--navy);
+  transition: color 0.4s ease, transform 0.4s ease;
+}
+.issue-card:hover .issue-visual {
+  transform: translateY(-3px);
+}
 .issue-iu {
   font-family: var(--serif); font-size: 28px;
   font-weight: 700; line-height: 1.05; letter-spacing: -0.015em;
@@ -452,7 +592,15 @@ a { color: inherit; }
 }
 .issue-promise {
   font-size: 15px; line-height: 1.45;
-  color: var(--navy); margin: 0 0 auto;
+  color: var(--navy); margin: 0 0 12px;
+  transition: color 0.4s ease;
+}
+.issue-detail {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: rgba(8,40,69,0.72);
+  margin: 0 0 auto;
+  overflow-wrap: break-word;
   transition: color 0.4s ease;
 }
 .issue-stat-row {
@@ -583,12 +731,21 @@ a { color: inherit; }
   .hero-grid { grid-template-columns: 1fr; gap: 48px; }
   .hero-portrait { max-width: 480px; }
   .promise-inner { grid-template-columns: 1fr; gap: 24px; }
+  .priority-motion { grid-template-columns: 1fr; }
+  .priority-stage { min-height: 340px; }
   .issues-grid { grid-template-columns: repeat(2, 1fr); }
   .stand-inner { grid-template-columns: 1fr; }
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
 @media (max-width: 640px) {
+  .wrap, .wrap-narrow { width: min(1280px, calc(100% - 32px)); }
   .topnav { display: none; }
+  .priority-motion { margin-top: -24px; }
+  .priority-stage { min-height: 260px; padding: 16px; }
+  .priority-story { padding: 28px 24px; }
+  .issues-head h2 { font-size: clamp(34px, 9vw, 38px); }
+  .priority-stat { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .issue-card { min-height: auto; }
   .issues-grid { grid-template-columns: 1fr; }
   .issues-head { flex-direction: column; align-items: flex-start; gap: 16px; }
   .foot-grid { grid-template-columns: 1fr; }
@@ -614,6 +771,7 @@ window.OKALIK_ISSUES = [
     statLabel: "homes Nunavut needs to close the gap",
     statSource: "Nunavut Housing Corporation, public estimates",
     keyword: "Housing",
+    copy: "Housing is the foundation for safety, health and opportunity. NTI must push every level of government to build faster, repair existing units, expand Inuit-led housing projects and cut wait-lists. Overcrowding should never define childhood, elder care or family life in Nunavut. Homes must be built with communities, not for them.",
   },
   {
     id: "niqi",
@@ -625,6 +783,7 @@ window.OKALIK_ISSUES = [
     statLabel: "of Nunavut households face food insecurity",
     statSource: "Statistics Canada, recent survey data",
     keyword: "Food",
+    copy: "Food security is about dignity, health and control. Families need affordable market food, stronger country-food systems and real accountability for subsidy dollars. NTI can champion Inuit-specific food policy, community freezers, harvest support and freight reform so children, elders and working parents are not forced to choose between nutrition and rent.",
   },
   {
     id: "aanniaqarnirmut",
@@ -636,6 +795,7 @@ window.OKALIK_ISSUES = [
     statLabel: "Nunavummiut travel south for routine care",
     statSource: "Government of Nunavut Health, public data",
     keyword: "Health",
+    copy: "Health care must meet Inuit where they live, in their language and culture. Too many families travel far from home for basic care, mental-health support or tuberculosis screening. NTI should fight for community-based services, culturally safe providers and prevention programs that reduce delayed diagnoses, isolation and southern medical travel overall.",
   },
   {
     id: "surusiit",
@@ -647,6 +807,7 @@ window.OKALIK_ISSUES = [
     statLabel: "of Nunavut's population is under 15",
     statSource: "Statistics Canada census",
     keyword: "Children",
+    copy: "Children and families need protection rooted in Inuit values, not crisis management. Chronic underfunding, staff turnover and weak accountability leave too many children at risk. NTI should demand measurable reform, stable community workers, family supports and culturally appropriate care that addresses poverty, overcrowding, trauma and food insecurity before harm grows.",
   },
   {
     id: "pinasuarniq",
@@ -658,6 +819,7 @@ window.OKALIK_ISSUES = [
     statLabel: "Nunavut unemployment — nearly 3× the national rate",
     statSource: "Statistics Canada labour force",
     keyword: "Jobs",
+    copy: "Good jobs keep talent, income and decision-making in Nunavut. NTI can press for training tied to real work, support Inuit entrepreneurs and grow small-scale sectors such as fisheries, arts, construction and qiviut. Economic development should reduce dependence on outside firms while helping Inuit workers build careers close to home now.",
   },
   {
     id: "ilinniarniq",
@@ -669,6 +831,7 @@ window.OKALIK_ISSUES = [
     statLabel: "high-school completion in Nunavut",
     statSource: "Nunavut Bureau of Statistics",
     keyword: "Education",
+    copy: "Education should strengthen language, culture and opportunity together. Better attendance, Inuktut learning, local educators and pathways to higher education can help youth succeed without leaving identity behind. NTI should back Inuit-led curriculum, apprenticeships and the new university vision so students can learn closer to family, land and community at home.",
   },
   {
     id: "infrastructure",
@@ -680,6 +843,7 @@ window.OKALIK_ISSUES = [
     statLabel: "communities connected by all-weather road",
     statSource: "Government of Nunavut Transportation",
     keyword: "Infrastructure",
+    copy: "Reliable power, water and internet are basic conditions for modern life. Nunavut communities need safer water systems, less diesel dependence, stronger backup power and affordable high-speed connections. NTI should push infrastructure decisions that respect remote realities, lower household costs and give every community the tools to work, learn and communicate.",
   },
   {
     id: "sila",
@@ -691,6 +855,7 @@ window.OKALIK_ISSUES = [
     statLabel: "the Arctic is warming faster than the global average",
     statSource: "AMAP Arctic Climate report",
     keyword: "Climate",
+    copy: "Climate change is already reshaping travel, food, housing and safety. Thawing permafrost, coastal erosion and thinner ice threaten infrastructure and harvesting. NTI should lead adaptation that protects communities, supports renewable energy, funds resilient buildings and keeps Inuit knowledge at the centre of decisions about land, water and future generations together.",
   },
   {
     id: "nunatta",
@@ -702,6 +867,7 @@ window.OKALIK_ISSUES = [
     statLabel: "of Inuit-owned and co-managed land in Nunavut",
     statSource: "Nunavut Land Claims Agreement",
     keyword: "Land",
+    copy: "Land decisions must reflect Inuit rights, knowledge and long-term stewardship. Devolution, royalties and land-use planning will shape Nunavut for generations. NTI should secure benefits from development while protecting calving grounds, freshwater crossings, cultural sites and community priorities through transparent planning that puts Inuit self-determination ahead of outside pressure from now.",
   },
   {
     id: "saimaqatigiingniq",
@@ -713,6 +879,7 @@ window.OKALIK_ISSUES = [
     statLabel: "the national rate of violence against Indigenous women",
     statSource: "Statistics Canada, RCMP figures",
     keyword: "Safety",
+    copy: "Safe communities require housing, shelters, justice and prevention working together. Inuit women, girls and 2SLGBTQ+ people face unacceptable violence, often worsened by overcrowding and poverty. NTI should fight for shelters, transitional housing, trauma-informed supports and accountability so every person can live with safety, respect and belonging in every Nunavut community.",
   },
   {
     id: "business",
@@ -724,6 +891,7 @@ window.OKALIK_ISSUES = [
     statLabel: "Inuit-owned businesses we will protect and grow",
     statSource: "NTI Inuit Firm Registry",
     keyword: "Business",
+    copy: "Inuit business policy should build ownership, capacity and confidence. NTI can strengthen the Inuit firm registry, protect 100% Inuit-owned enterprises and help new businesses access contracts, financing and training. Economic power should circulate in communities, supporting entrepreneurs who create jobs, deliver services and keep benefits in Inuit hands for generations.",
   },
 ];
 
@@ -1794,14 +1962,276 @@ function About() {
 }
 
 // ─── Issues ──────────────────────────────────────────────────────────
+const MOTION_FPS = 30;
+const PRIORITY_SCENE_FRAMES = 150;
+
+function clamp01(n) {
+  return Math.max(0, Math.min(1, n));
+}
+
+function easeOut(t) {
+  return 1 - Math.pow(1 - t, 3);
+}
+
+function easeIn(t) {
+  return t * t * t;
+}
+
+function interpolateFrame(frame, input, output, easing = (t) => t) {
+  const [inMin, inMax] = input;
+  const [outMin, outMax] = output;
+  const t = clamp01((frame - inMin) / (inMax - inMin));
+  return outMin + (outMax - outMin) * easing(t);
+}
+
+function useTimelineFrame() {
+  const initialFrame = MOTION_FPS;
+  const [frame, setFrame] = React.useState(initialFrame);
+  React.useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf = 0;
+    let lastFrame = initialFrame;
+    const startedAt = performance.now() - (initialFrame / MOTION_FPS) * 1000;
+    const tick = (now) => {
+      const nextFrame = Math.floor(((now - startedAt) / 1000) * MOTION_FPS);
+      if (nextFrame !== lastFrame) {
+        lastFrame = nextFrame;
+        setFrame(nextFrame);
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+  return frame;
+}
+
+function IssueIllustration({ issue, compact = false, progress = 1, frame = 0 }) {
+  const lift = compact ? 0 : interpolateFrame(progress, [0, 1], [14, 0], easeOut);
+  const drift = compact ? 0 : Math.sin(frame / 18) * 3;
+  const accent = "#E65A2C";
+  const bg = compact ? "transparent" : "rgba(244,239,230,0.08)";
+  const soft = compact ? 0.1 : 0.2;
+  const shellStyle = compact
+    ? undefined
+    : {
+        opacity: interpolateFrame(progress, [0, 1], [0.42, 1], easeOut),
+        transform: `translateY(${lift}px) scale(${0.96 + progress * 0.04})`,
+      };
+  const common = {
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: compact ? 5 : 6,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+  };
+  const className = compact ? "issue-visual" : "priority-visual";
+
+  let scene;
+  switch (issue.id) {
+    case "iglu":
+      scene = (
+        <>
+          <path {...common} d="M42 183 H318" opacity="0.45" />
+          {[0, 1, 2].map((n) => {
+            const x = 58 + n * 82;
+            const y = n === 1 ? 74 : 92;
+            return (
+              <g key={n} transform={`translate(${x} ${y + drift * (n - 1)})`}>
+                <path {...common} d="M0 42 L42 8 L84 42 V102 H0 Z" />
+                <path {...common} d="M32 102 V66 H52 V102" />
+                <rect x="14" y="48" width="18" height="18" fill={accent} opacity="0.9" />
+                <rect x="52" y="48" width="18" height="18" fill="currentColor" opacity={soft} />
+              </g>
+            );
+          })}
+          <path {...common} d="M76 204 C116 190, 148 212, 184 196 C220 180, 262 202, 300 188" opacity="0.25" />
+        </>
+      );
+      break;
+    case "niqi":
+      scene = (
+        <>
+          <path {...common} d="M54 166 H286 L266 205 H74 Z" />
+          <path {...common} d="M82 166 L102 112 H236 L258 166" />
+          <circle cx="130" cy={136 + drift} r="18" fill={accent} />
+          <circle cx="176" cy={130 - drift} r="16" fill="currentColor" opacity={soft + 0.12} />
+          <path {...common} d="M210 138 C238 116, 274 122, 296 144 C274 166, 238 172, 210 150 Z" />
+          <path {...common} d="M296 144 L326 128 V160 Z" />
+          <path {...common} d="M82 76 H154 L176 98 L154 120 H82 Z" />
+          <path {...common} d="M112 94 H144" />
+        </>
+      );
+      break;
+    case "aanniaqarnirmut":
+      scene = (
+        <>
+          <path {...common} d="M62 196 V92 L180 42 L298 92 V196 Z" />
+          <path {...common} d="M152 124 H208 M180 96 V152" stroke={accent} />
+          <path {...common} d="M44 210 C92 176, 126 176, 170 138 C204 108, 250 96, 318 112" opacity="0.38" />
+          <circle cx={72 + drift * 2} cy="198" r="7" fill={accent} />
+          <circle cx="170" cy="138" r="7" fill="currentColor" opacity="0.55" />
+          <circle cx="318" cy="112" r="7" fill="currentColor" opacity="0.55" />
+        </>
+      );
+      break;
+    case "surusiit":
+      scene = (
+        <>
+          <path {...common} d="M70 178 C88 112, 128 78, 180 78 C232 78, 272 112, 290 178" />
+          <path {...common} d="M88 178 H272" />
+          <circle cx="142" cy={132 + drift} r="20" fill={accent} />
+          <circle cx="218" cy={132 - drift} r="20" fill="currentColor" opacity="0.32" />
+          <path {...common} d="M132 170 C146 154, 166 154, 180 170 C194 154, 214 154, 228 170" />
+          <path {...common} d="M104 92 C134 46, 226 46, 256 92" opacity="0.34" />
+        </>
+      );
+      break;
+    case "pinasuarniq":
+      scene = (
+        <>
+          <path {...common} d="M52 180 H308" opacity="0.48" />
+          <path {...common} d="M84 180 V92 H270 V180" />
+          <path {...common} d="M108 118 H246 M108 148 H246" />
+          <path {...common} d="M136 92 V70 H218 V92" />
+          <circle cx={126 + drift} cy="148" r="13" fill={accent} />
+          <path {...common} d="M258 72 L306 120 M300 72 L252 120" />
+          <path {...common} d="M84 204 C116 190, 146 204, 176 190 C206 176, 240 198, 276 184" opacity="0.25" />
+        </>
+      );
+      break;
+    case "ilinniarniq":
+      scene = (
+        <>
+          <path {...common} d="M56 82 C100 64, 134 70, 180 96 C226 70, 260 64, 304 82 V192 C260 174, 226 180, 180 206 C134 180, 100 174, 56 192 Z" />
+          <path {...common} d="M180 96 V206" />
+          <path {...common} d="M88 116 H142 M88 142 H138 M218 116 H272 M222 142 H268" opacity="0.45" />
+          <circle cx="112" cy={64 + drift} r="18" fill={accent} />
+          <path {...common} d="M102 64 H122 M112 54 V74" stroke="#F4EFE6" />
+          <path {...common} d="M236 54 L284 26 L300 42 L252 70 Z" />
+        </>
+      );
+      break;
+    case "infrastructure":
+      scene = (
+        <>
+          <path {...common} d="M70 198 H306" opacity="0.42" />
+          <path {...common} d="M90 190 V58 M58 94 H122 M72 124 H108" />
+          <path {...common} d="M90 58 C138 92, 186 92, 234 58 C258 76, 282 82, 314 80" opacity="0.38" />
+          <path {...common} d="M168 184 C168 144, 218 144, 218 104 C218 74, 252 64, 276 84" />
+          <path {...common} d="M266 122 C282 140, 296 160, 296 176 C296 196, 280 210, 260 210 C240 210, 224 196, 224 176 C224 160, 238 140, 254 122 Z" fill={accent} stroke="none" opacity="0.95" />
+          <path {...common} d="M226 68 C246 48, 278 48, 298 68 M242 88 C254 76, 270 76, 282 88" stroke={accent} />
+        </>
+      );
+      break;
+    case "sila":
+      scene = (
+        <>
+          <path {...common} d="M48 172 C96 152, 130 190, 178 168 C228 144, 262 184, 316 158" />
+          <path {...common} d="M72 198 L126 158 L172 198 L224 156 L288 198" opacity="0.42" />
+          <path {...common} d="M108 92 H250 L276 134 H82 Z" />
+          <path {...common} d="M130 92 V62 H228 V92" />
+          <path {...common} d="M88 134 L66 156 M142 134 L122 168 M204 134 L186 164 M260 134 L236 170" opacity="0.52" />
+          <circle cx={276 + drift} cy="62" r="24" fill={accent} />
+        </>
+      );
+      break;
+    case "nunatta":
+      scene = (
+        <>
+          <path {...common} d="M82 64 L158 42 L236 64 L304 48 V184 L236 204 L158 182 L82 202 Z" />
+          <path {...common} d="M158 42 V182 M236 64 V204" opacity="0.42" />
+          <path {...common} d="M104 144 C140 118, 158 162, 190 134 C218 110, 246 132, 282 102" stroke={accent} />
+          <rect x="108" y={78 + drift} width="40" height="28" fill="currentColor" opacity={soft + 0.08} />
+          <rect x="210" y="92" width="46" height="34" fill={accent} opacity="0.9" />
+          <path {...common} d="M66 212 H318" opacity="0.24" />
+        </>
+      );
+      break;
+    case "saimaqatigiingniq":
+      scene = (
+        <>
+          <path {...common} d="M72 188 V94 L180 44 L288 94 V188 Z" />
+          <path {...common} d="M138 188 V126 H222 V188" />
+          <path {...common} d="M114 116 C124 90, 154 86, 180 110 C206 86, 236 90, 246 116 C252 144, 218 166, 180 190 C142 166, 108 144, 114 116 Z" fill={accent} stroke="none" opacity="0.96" />
+          <path {...common} d="M50 138 C84 154, 110 172, 132 204 M310 138 C276 154, 250 172, 228 204" opacity="0.42" />
+        </>
+      );
+      break;
+    case "business":
+    default:
+      scene = (
+        <>
+          <path {...common} d="M64 104 H296 V204 H64 Z" />
+          <path {...common} d="M82 104 L102 62 H258 L278 104" />
+          <path {...common} d="M96 132 H150 V204 H96 Z M184 132 H262 V164 H184 Z" />
+          <path {...common} d="M198 188 L216 204 L252 166" stroke={accent} />
+          <rect x="118" y={74 + drift} width="124" height="18" fill={accent} opacity="0.95" />
+          <path {...common} d="M52 220 H308" opacity="0.34" />
+        </>
+      );
+      break;
+  }
+
+  return (
+    <div className={className} style={shellStyle} aria-hidden="true">
+      <svg viewBox="0 0 360 240" role="img">
+        <rect x="24" y="24" width="312" height="192" rx="0" fill={bg} />
+        <g>{scene}</g>
+      </svg>
+    </div>
+  );
+}
+
+function MotionPriorityFeature({ issues }) {
+  const frame = useTimelineFrame();
+  const activeIdx = Math.floor(frame / PRIORITY_SCENE_FRAMES) % issues.length;
+  const sceneFrame = frame % PRIORITY_SCENE_FRAMES;
+  const issue = issues[activeIdx];
+  const enter = interpolateFrame(sceneFrame, [0, 28], [0, 1], easeOut);
+  const exit = interpolateFrame(sceneFrame, [PRIORITY_SCENE_FRAMES - 24, PRIORITY_SCENE_FRAMES - 1], [1, 0], easeIn);
+  const presence = Math.min(enter, exit);
+  const progress = sceneFrame / (PRIORITY_SCENE_FRAMES - 1);
+  const storyStyle = {
+    opacity: interpolateFrame(presence, [0, 1], [0.42, 1], easeOut),
+    transform: `translateY(${interpolateFrame(presence, [0, 1], [18, 0], easeOut)}px)`,
+  };
+
+  return (
+    <div className="priority-motion" aria-label="Animated priority spotlight">
+      <div className="priority-stage">
+        <IssueIllustration issue={issue} progress={presence} frame={sceneFrame} />
+      </div>
+      <div className="priority-story" style={storyStyle}>
+        <div className="priority-kicker">{String(activeIdx + 1).padStart(2, "0")} / 11 · {issue.keyword}</div>
+        <h3>{issue.en}</h3>
+        <div className="priority-syllabics">{issue.syllabics}</div>
+        <p className="priority-copy">{issue.copy}</p>
+        <div className="priority-stat">
+          <b>{issue.stat}</b>
+          <span>{issue.statLabel}</span>
+        </div>
+        <div className="priority-progress" aria-hidden="true">
+          {issues.map((item, idx) => (
+            <span key={item.id}>
+              <i style={{ width: `${idx === activeIdx ? progress * 100 : idx < activeIdx ? 100 : 0}%` }} />
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function IssueCard({ issue, idx }) {
   return (
-    <a className="issue-card" href={`#${issue.id}`}>
+    <a id={issue.id} className="issue-card" href={`#${issue.id}`}>
       <div className="issue-num">{String(idx + 1).padStart(2, "0")} / 11</div>
-      <IssueIcon id={issue.id} />
+      <IssueIllustration issue={issue} compact />
       <div className="issue-iu">{issue.iu}</div>
       <div className="issue-en">{issue.en}</div>
       <p className="issue-promise">{issue.promise}</p>
+      <p className="issue-detail">{issue.copy}</p>
       <div className="issue-stat-row">
         <div className="issue-stat">{issue.stat}</div>
         <div className="issue-stat-label">{issue.statLabel}</div>
@@ -1838,6 +2268,7 @@ function Issues({ t }) {
           </div>
           <div className="count">11 areas · for Nunavummiut</div>
         </div>
+        <MotionPriorityFeature issues={ISSUES} />
         <div className="issues-grid">
           {ISSUES.map((issue, idx) => (
             <IssueCard key={issue.id} issue={issue} idx={idx} />
