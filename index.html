@@ -13,6 +13,22 @@
    Palette:  --okalik-orange #E65A2C   --okalik-navy #082845   --okalik-ivory #F4EFE6
 */
 
+@font-face {
+  font-family: "Pigiarniq";
+  src: url("assets/fonts/Pigiarniq-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Pigiarniq";
+  src: url("assets/fonts/Pigiarniq-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Pigiarniq";
+  src: url("assets/fonts/Pigiarniq-Heavy.ttf") format("truetype");
+  font-weight: 800;
+}
+
 :root {
   --orange: #E65A2C;
   --orange-deep: #C44818;
@@ -27,7 +43,7 @@
   --serif: "Bricolage Grotesque", "DM Serif Display", Georgia, serif;
   --sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --syllabics: "Noto Sans Canadian Aboriginal", "Manrope", system-ui, sans-serif;
+  --syllabics: "Pigiarniq", "Noto Sans Canadian Aboriginal", "Manrope", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -77,6 +93,33 @@ a { color: inherit; }
   transition: opacity 0.15s ease;
 }
 .topnav a:hover { opacity: 1; }
+.language-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid rgba(244,239,230,0.22);
+  border-radius: 999px;
+}
+.language-toggle button {
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(244,239,230,0.74);
+  padding: 6px 10px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.language-toggle button.is-active {
+  background: var(--ivory);
+  color: var(--navy);
+}
+.language-toggle .iu-option {
+  font-family: var(--syllabics);
+  font-size: 13px;
+}
 .topbar .cta {
   background: var(--orange); color: white;
   padding: 9px 18px; border-radius: 999px;
@@ -132,6 +175,52 @@ a { color: inherit; }
   color: rgba(244,239,230,0.82);
   max-width: 540px;
   margin: 0 0 36px;
+}
+.inuktut-copy,
+.inuktut-copy h1,
+.inuktut-copy h2,
+.inuktut-copy h3,
+.inuktut-copy p,
+.inuktut-copy a,
+.inuktut-copy button,
+.inuktut-copy input,
+.inuktut-copy label,
+.inuktut-copy .section-label,
+.inuktut-copy .hero-eyebrow,
+.inuktut-copy .hero-sub,
+.inuktut-copy .btn,
+.inuktut-copy .caption,
+.inuktut-copy .slogan-en,
+.inuktut-copy .slogan-iu,
+.inuktut-copy .slogan-roman,
+.inuktut-copy .priority-kicker,
+.inuktut-copy .priority-story,
+.inuktut-copy .issue-card,
+.inuktut-copy .poster-card,
+.inuktut-copy .stand-form,
+.inuktut-copy .foot {
+  font-family: var(--syllabics);
+}
+.inuktut-copy .section-label,
+.inuktut-copy .hero-eyebrow,
+.inuktut-copy .priority-kicker,
+.inuktut-copy .issue-en,
+.inuktut-copy .poster-meta,
+.inuktut-copy .ballot-label,
+.inuktut-copy .kd-label {
+  letter-spacing: 0;
+  text-transform: none;
+}
+.inuktut-copy h1,
+.inuktut-copy h2,
+.inuktut-copy h3,
+.inuktut-copy .issue-iu,
+.inuktut-copy .issue-stat,
+.inuktut-copy .priority-stat b,
+.inuktut-copy .ballot-title,
+.inuktut-copy .poster-title,
+.inuktut-copy .foot-brand {
+  letter-spacing: 0;
 }
 .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
 
@@ -247,6 +336,9 @@ a { color: inherit; }
 }
 .slogan-lockup.on-dark .slogan-roman {
   color: rgba(244,239,230,0.72);
+}
+.stand .slogan-lockup.on-dark .slogan-iu {
+  color: var(--ink);
 }
 .slogan-en span,
 .slogan-iu span,
@@ -930,6 +1022,9 @@ a { color: inherit; }
 .stand .slogan-lockup {
   margin: 30px 0 28px;
 }
+.stand .slogan-lockup.on-dark {
+  background: rgba(244,239,230,0.12);
+}
 
 .stand-form {
   background: var(--paper); color: var(--navy);
@@ -1030,6 +1125,10 @@ a { color: inherit; }
 @media (max-width: 640px) {
   .wrap, .wrap-narrow { width: min(1280px, calc(100% - 32px)); }
   .topnav { display: none; }
+  .topbar-inner { gap: 10px; }
+  .brand-mark .role { display: none; }
+  .topbar .cta { display: none; }
+  .language-toggle button { padding: 5px 9px; }
   .hero-media,
   .hero-portrait,
   .hero-ballot { max-width: calc(100vw - 32px); }
@@ -1071,6 +1170,89 @@ a { color: inherit; }
   .poster-body { align-items: flex-start; flex-direction: column; }
   .foot-grid { grid-template-columns: 1fr; }
   .ticker-track { font-size: 22px; gap: 32px; }
+}
+
+.inuktut-copy .hero h1 {
+  font-size: clamp(44px, 5.4vw, 76px);
+  line-height: 0.98;
+  overflow-wrap: anywhere;
+}
+.inuktut-copy .hero h1 .accent {
+  font-style: normal;
+}
+.inuktut-copy :is(
+  .hero-eyebrow,
+  .hero h1,
+  .hero-sub,
+  .btn,
+  .caption,
+  .keydates,
+  .ballot-label,
+  .ballot-title,
+  .ballot-date,
+  .promise-title,
+  .promise-body p,
+  .signature,
+  .about h2,
+  .about-meta,
+  .about-cta,
+  .issues h2,
+  .count,
+  .priority-kicker,
+  .priority-story h3,
+  .priority-syllabics,
+  .priority-copy,
+  .priority-stat,
+  .issue-num,
+  .issue-iu,
+  .issue-en,
+  .issue-promise,
+  .issue-detail,
+  .issue-stat,
+  .issue-stat-label,
+  .issue-cta,
+  .posters h2,
+  .posters-note,
+  .poster-title,
+  .poster-meta,
+  .stand h2,
+  .stand h3,
+  .stand p,
+  .field,
+  .field input,
+  .disclaimer,
+  .foot h4,
+  .foot-tag,
+  .foot-bottom,
+  .ticker-track
+) {
+  font-family: var(--syllabics);
+  letter-spacing: 0;
+}
+.inuktut-copy .hero-sub,
+.inuktut-copy .promise-body p,
+.inuktut-copy .about-body p,
+.inuktut-copy .priority-copy,
+.inuktut-copy .stand p {
+  line-height: 1.7;
+}
+@media (max-width: 640px) {
+  .inuktut-copy .hero h1 {
+    font-size: clamp(34px, 10vw, 42px);
+    line-height: 1.04;
+  }
+  .inuktut-copy .promise-title,
+  .inuktut-copy .about h2,
+  .inuktut-copy .issues h2,
+  .inuktut-copy .posters h2,
+  .inuktut-copy .stand h2 {
+    font-size: clamp(34px, 10vw, 42px);
+    line-height: 1.04;
+    overflow-wrap: anywhere;
+  }
+  .inuktut-copy .hero-sub {
+    font-size: 16px;
+  }
 }
 
 </style>
@@ -2065,17 +2247,258 @@ const INQUIRIES_EMAIL_LINK = `mailto:${INQUIRIES_EMAIL}?subject=${encodeURICompo
 const POSTERS = [
   {
     title: "Campaign Poster",
+    titleIu: "ᓂᕈᐊᕐᓂᕐᒧᑦ ᐊᔾᔨᙳᐊᖅ",
     meta: "Poster 1",
+    metaIu: "ᐊᔾᔨᙳᐊᖅ 1",
     file: "assets/okalik-poster.jpg",
     download: "okalik-poster.jpg",
   },
   {
     title: "Fist Poster",
+    titleIu: "ᑎᒍᒥᐊᖅ ᐊᔾᔨᙳᐊᖅ",
     meta: "Window poster",
+    metaIu: "ᐃᒐᓛᕐᒧᑦ ᐊᔾᔨᙳᐊᖅ",
     file: "assets/okalik-for-president-fist-v1.jpeg",
     download: "Okalik for President Fist V1.jpeg",
   },
 ];
+const SITE_COPY = {
+  en: {
+    langName: "English",
+    brandRole: "for NTI President",
+    nav: {
+      about: "About",
+      bio: "Bio",
+      priorities: "Priorities",
+      posters: "Download Poster",
+      volunteer: "Volunteer",
+      donate: "Donate",
+    },
+    ctaStand: "Stand with Okalik",
+    heroEyebrow: "NTI Presidential Election · 2026",
+    heroTitle: ["Building homes,", "building hope."],
+    heroSub: "Okalik Eegeesiak is running for President of Nunavut Tunngavik Inc. — bringing decades of Inuit leadership home to Nunavut. Eleven priorities. One promise: For Inuit, By Inuit and with Inuit.",
+    seePriorities: "See the priorities",
+    keyDatesLabel: "Key dates",
+    advancePoll: "Advance Poll",
+    electionDay: "Election Day",
+    may20: "May 20",
+    may27: "May 27",
+    weekday2026: "Wednesday · 2026",
+    ballotLabel: "Voter's Ballot",
+    ballotTitle: ["Vote For Okalik", "Eegeesiak-", "NTI President"],
+    ballotAria: "Vote For Okalik Eegeesiak- NTI President",
+    ballotDate: "May 27, 2026",
+    portraitCaption: "OKALIK EEGEESIAK · FOR NTI PRESIDENT",
+    promiseLabel: "Our Promise",
+    promiseTitle: "A Nunavut where every Inuk can thrive.",
+    promiseParagraphs: [
+      "I have spent my life advocating for Inuit — at the United Nations, with the Inuit Circumpolar Council, and at home in Nunavut. Now I'm running for President of NTI because the work that matters most happens close to home.",
+      "We need leaders who will fight for housing, food security, and healthcare without compromise. Leaders who understand that policy made in Iqaluit must serve every elder, every parent, every young person across our communities.",
+      "These are the eleven priorities I'm bringing to NTI. Each one is rooted in what Nunavummiut have told me matters. Each one comes with a plan. None of them can wait.",
+    ],
+    signatureRole: "Candidate for President, Nunavut Tunngavik Inc. · 2026",
+    aboutLabel: "About Okalik",
+    aboutTitle: "Decades of Inuit leadership — coming home to Nunavut.",
+    aboutMeta: [
+      ["Born", "Iqaluit, Nunavut"],
+      ["Languages", "Inuktitut · English"],
+      ["ICC Chair", "2014 – 2018"],
+      ["QIA President", "2008 – 2014"],
+      ["Experience", "35+ years advancing Inuit priorities"],
+    ],
+    downloadBio: "Download full bio",
+    aboutParagraphs: [
+      "(Josie) Okalik Eegeesiak is a bilingual Inuk leader based in Iqaluit, Nunavut. From 2014 to 2018, she served as Chair of the Inuit Circumpolar Council, representing the international interests of Inuit in Canada, Greenland, Chukotka (Russia), and Alaska — leading ICC delegations at the United Nations and at COP 21 in Paris.",
+      "She previously served two terms as President of the Qikiqtani Inuit Association (2008–2014), representing approximately 14,000 Inuit across the 13 communities of the Qikiqtani Region. During her tenure, QIA advanced major files including marine conservation in Lancaster Sound, Inuit education and training, and the implementation of the Nunavut Agreement.",
+      "Over more than 35 years, Okalik has chaired and represented Inuit on international, national, territorial, and community boards, and has held senior management roles in both federal and territorial governments. Her work focuses on education and training, language and culture, human resources, community development, and the socio-economic well-being of Inuit and the Arctic.",
+      "She is widely respected for her steady, consensus-based leadership style and her lifelong commitment to Inuit self-determination.",
+    ],
+    issuesLabel: "The Priorities",
+    issuesTitle: "Eleven things we will fight for, from day one.",
+    issuesCount: "11 areas · for Nunavummiut",
+    readMore: "Read more",
+    postersLabel: "Download Poster",
+    postersTitle: "Put Okalik in your window.",
+    postersNote: "Support Okalik by adding this to your window.",
+    posterDownload: "Download",
+    standTitle: "Stand with Okalik.",
+    standText: "Volunteer your time, donate to the campaign, or just stay informed. Every voice across Nunavut matters — and the work begins now: For Inuit, By Inuit and with Inuit.",
+    formTitle: "Stay in the loop.",
+    formSmall: "Updates from the campaign — community events, town halls, issue briefings.",
+    formName: "Name",
+    formEmail: "Email",
+    formCommunity: "Community",
+    formNamePlaceholder: "Your name",
+    formEmailPlaceholder: "you@example.com",
+    formCommunityPlaceholder: "Iqaluit, Apex, …",
+    formSubmit: "Sign me up",
+    disclaimer: "By signing up you agree to receive campaign updates. We never share your information. Authorized by the Official Agent for Okalik Eegeesiak.",
+    footerTag: "Building homes, building hope. For Inuit, By Inuit and with Inuit.",
+    footerCampaign: "Campaign",
+    footerGetInvolved: "Get Involved",
+    footerConnect: "Connect",
+    footerCopyright: "© 2026 Okalik Eegeesiak Campaign · Authorized by the Official Agent",
+    footerMeta: "Authorized by the Agent of Okalik Eegeesiak",
+  },
+  iu: {
+    langName: "ᐃᓄᒃᑎᑐᑦ",
+    brandRole: "NTI ᐊᖓᔪᖅᑳᖓᓄᑦ",
+    nav: {
+      about: "ᒥᔅᓵᓄᑦ",
+      bio: "ᐅᓂᒃᑳᖅ",
+      priorities: "ᐱᓇᓱᐊᕈᑎᑦ",
+      posters: "ᐊᔾᔨᙳᐊᖅ",
+      volunteer: "ᐃᑲᔪᖅᑐᐃ",
+      donate: "ᑐᓂᓯ",
+    },
+    ctaStand: "ᐅᑲᓕᒃ ᐃᑲᔪᖅᑐᕐᓗᒍ",
+    heroEyebrow: "NTI ᐊᖓᔪᖅᑳᖓᓄᑦ ᓂᕈᐊᕐᓂᖅ · 2026",
+    heroTitle: ["ᐃᒡᓗᓂᒃ ᓴᓇᓂᖅ,", "ᓂᕆᐅᓐᓂᕐᒥᒃ ᓴᓇᓂᖅ."],
+    heroSub: "ᐅᑲᓕᒃ ᐃᒋᓯᐊᒃ ᓄᓇᕗᑦ ᑐᙵᕕᒃ ᐊᖓᔪᖅᑳᖓᓄᑦ ᓂᕈᐊᕈᒪᕗᖅ. ᐃᓄᐃᑦ ᓯᕗᓕᖅᑎᐅᓂᖓᓂᒃ ᐊᕐᕌᒍᒐᓴᓐᓂᒃ ᓄᓇᕗᒧᑦ ᐅᑎᖅᑎᑦᑎᓗᓂ. ᖁᓕᑦ ᐊᑕᐅᓯᕐᓗ ᐱᓇᓱᐊᕈᑎᑦ. ᐊᑕᐅᓯᖅ ᓂᕆᐅᒋᔭᖅ: ᐃᓄᓐᓄᑦ, ᐃᓄᓐᓂᑦ, ᐃᓄᐃᑦ ᐱᖃᑎᒋᓪᓗᒋᑦ.",
+    seePriorities: "ᐱᓇᓱᐊᕈᑎᑦ ᑕᑯᓗᒋᑦ",
+    keyDatesLabel: "ᐅᓪᓗᖏᑦ",
+    advancePoll: "ᓯᕗᕐᖓᒍᑦ ᓂᕈᐊᕐᓂᖅ",
+    electionDay: "ᓂᕈᐊᕐᓂᐅᑉ ᐅᓪᓗᖓ",
+    may20: "ᒪᐃ 20",
+    may27: "ᒪᐃ 27",
+    weekday2026: "ᐱᖓᔪᐊᑦ · 2026",
+    ballotLabel: "ᓂᕈᐊᕈᑎ",
+    ballotTitle: ["ᐅᑲᓕᒃ ᐃᒋᓯᐊᒃ", "ᓂᕈᐊᕐᓗᒍ", "NTI ᐊᖓᔪᖅᑳᖓᓄᑦ"],
+    ballotAria: "ᐅᑲᓕᒃ ᐃᒋᓯᐊᒃ ᓂᕈᐊᕐᓗᒍ NTI ᐊᖓᔪᖅᑳᖓᓄᑦ",
+    ballotDate: "ᒪᐃ 27, 2026",
+    portraitCaption: "ᐅᑲᓕᒃ ᐃᒋᓯᐊᒃ · NTI ᐊᖓᔪᖅᑳᖓᓄᑦ",
+    promiseLabel: "ᓂᕆᐅᒋᔭᕗᑦ",
+    promiseTitle: "ᓄᓇᕗᑦ ᐃᓄᒃ ᑕᒪᕐᒥᒃ ᐱᕙᓪᓕᐊᕕᐅᔪᖅ.",
+    promiseParagraphs: [
+      "ᐃᓅᓯᓐᓂ ᐃᓄᓐᓂᒃ ᐃᑲᔪᖅᑐᐃᓯᒪᕗᖓ — ᓄᓇᕐᔪᐊᕐᒥ, ᐃᓄᐃᑦ ᓯᕗᓕᖅᑎᖏᑦᑎᒍᑦ, ᓄᓇᕗᒥᓗ. NTI ᐊᖓᔪᖅᑳᖓᓄᑦ ᓂᕈᐊᕈᒪᕗᖓ ᐱᓇᓱᐊᒐᖅ ᐱᒻᒪᕆᐅᓂᖅᐹᖅ ᓄᓇᑦᑎᓐᓂ ᐱᔭᐅᔭᕆᐊᖃᕐᒪᑦ.",
+      "ᓯᕗᓕᖅᑎᓂᒃ ᐱᔪᒪᕗᒍᑦ ᐃᒡᓗᓂᒃ, ᓂᕿᓂᒃ, ᐋᓐᓂᐊᖃᕐᓂᕐᒧᓪᓗ ᐊᒃᓱᕈᖅᑐᓂᒃ. ᐃᖃᓗᓐᓂ ᐱᖁᔭᓕᐅᕐᓂᖅ ᐊᖓᔪᖅᑳᓄᑦ, ᐊᖓᔪᖅᑳᒃᑯᓐᓄᑦ, ᒪᒃᑯᒃᑐᓄᓪᓗ ᐃᑲᔪᕆᐊᖃᕐᒪᑦ.",
+      "ᑖᒃᑯᐊ ᖁᓕᑦ ᐊᑕᐅᓯᕐᓗ ᐱᓇᓱᐊᕈᑎᑦ NTI-ᒧᑦ ᓇᒃᓴᕐᓂᐊᖅᑕᒃᑲ. ᓄᓇᕗᒥᐅᑦ ᐅᖃᐅᓯᖏᓐᓂᒃ ᑐᙵᕕᖃᖅᐳᑦ. ᐊᑐᓂ ᐸᕐᓇᐅᑎᖃᖅᐳᑦ. ᐅᑕᖅᑭᔪᓐᓇᙱᓚᑦ.",
+    ],
+    signatureRole: "ᓂᕈᐊᕐᑕᐅᔪᒪᔪᖅ, ᓄᓇᕗᑦ ᑐᙵᕕᒃ · 2026",
+    aboutLabel: "ᐅᑲᓕᒃ ᒥᔅᓵᓄᑦ",
+    aboutTitle: "ᐃᓄᐃᑦ ᓯᕗᓕᖅᑎᐅᓂᖓ ᐊᕐᕌᒍᒐᓴᓐᓂᒃ — ᓄᓇᕗᒧᑦ ᐅᑎᖅᑐᖅ.",
+    aboutMeta: [
+      ["ᐃᓅᕕᒃ", "ᐃᖃᓗᐃᑦ, ᓄᓇᕗᑦ"],
+      ["ᐅᖃᐅᓰᑦ", "ᐃᓄᒃᑎᑐᑦ · ᖃᓪᓗᓈᑎᑐᑦ"],
+      ["ICC ᐃᒃᓯᕙᐅᑕᖅ", "2014 – 2018"],
+      ["QIA ᐊᖓᔪᖅᑳᖅ", "2008 – 2014"],
+      ["ᐊᑐᖅᓯᒪᓂᖅ", "35+ ᐊᕐᕌᒍᑦ ᐃᓄᐃᑦ ᐱᓇᓱᐊᕈᑎᖏᓐᓂᒃ ᓯᕗᒧᐊᑦᑎᓪᓗᓂ"],
+    ],
+    downloadBio: "ᐅᓂᒃᑳᖅ ᐊᐃᔭᕐᓗᒍ",
+    aboutParagraphs: [
+      "ᐅᑲᓕᒃ ᐃᒋᓯᐊᒃ ᐃᓄᒃ ᓯᕗᓕᖅᑎ ᐃᖃᓗᓐᓂ ᓄᓇᖃᖅᑐᖅ, ᐃᓄᒃᑎᑐᑦ ᖃᓪᓗᓈᑎᑐᓪᓗ ᐅᖃᓲᖅ. 2014-ᒥᑦ 2018-ᒧᑦ ᐃᓄᐃᑦ ᓯᕗᓕᖅᑎᖏᑦᑕ ᐃᒃᓯᕙᐅᑕᖓᓂᒃ ᐱᓇᓱᐊᖅᓯᒪᕗᖅ, ᑲᓇᑕᒥ, ᑲᓛᖡᑦ ᓄᓇᓐᓂ, ᓱᒃᑯᑦᑲᒥ, ᐊᓛᔅᑲᒥᓗ ᐃᓄᓐᓂᒃ ᑭᒡᒐᖅᑐᖅᓯᒪᓪᓗᓂ.",
+      "ᑭᖅᑭᖅᑖᓂ ᐃᓄᐃᑦ ᑲᑐᔾᔨᖃᑎᒌᖏᑦᑕ ᐊᖓᔪᖅᑳᖓᓂᒃ ᒪᕐᕉᓐᓂᒃ ᐃᓂᖃᖅᓯᒪᕗᖅ (2008–2014), 14,000-ᓂᒃ ᐃᓄᓐᓂᒃ 13-ᓂ ᓄᓇᓕᓐᓂ ᑭᒡᒐᖅᑐᖅᓯᒪᓪᓗᓂ. ᐃᓂᖃᖅᑎᓪᓗᒍ QIA ᐃᒪᕕᒃ ᓴᐳᔾᔨᓂᖅ, ᐃᓄᐃᑦ ᐃᓕᓐᓂᐊᕐᓂᖓ, ᓄᓇᕗᑦ ᐊᖏᕈᑎᖓᓂᒃ ᐊᑐᓕᖅᑎᑦᑎᓂᖅ ᓯᕗᒧᐊᑦᑎᓯᒪᕗᖅ.",
+      "35 ᐊᕐᕌᒍᐃᑦ ᐅᖓᑖᓂ, ᐅᑲᓕᒃ ᐃᓄᓐᓂᒃ ᑭᒡᒐᖅᑐᖅᓯᒪᕗᖅ ᓄᓇᕐᔪᐊᕐᒥ, ᑲᓇᑕᒥ, ᓄᓇᕗᒥ, ᓄᓇᓕᓐᓂᓗ. ᐱᓇᓱᐊᒐᖓ ᐃᓕᓐᓂᐊᕐᓂᖅ, ᐅᖃᐅᓯᖅ, ᐃᓕᖅᑯᓯᖅ, ᐱᓇᓱᐊᖅᑎᑦ, ᓄᓇᓕᓐᓂ ᐱᕙᓪᓕᐊᓂᖅ, ᐃᓄᐃᓪᓗ ᐱᐅᓯᖏᓐᓂᒃ ᓴᙱᒃᑎᑦᑎᓂᖅ.",
+      "ᓯᕗᓕᖅᑎᐅᓂᖓ ᓇᓗᓇᐃᖅᓯᒪᕗᖅ: ᑐᓴᖅᑎᑦᑎᓂᖅ, ᐊᖏᖃᑎᒌᓐᓂᖅ, ᐃᓄᐃᓪᓗ ᓇᖕᒥᓂᖅ ᐊᑐᖅᑕᖏᓐᓂᒃ ᓴᐳᔾᔨᓂᖅ.",
+    ],
+    issuesLabel: "ᐱᓇᓱᐊᕈᑎᑦ",
+    issuesTitle: "ᐅᓪᓗᖅ ᓯᕗᓪᓕᕐᒥᑦ ᐊᒃᓱᕈᕐᓂᐊᖅᑕᕗᑦ ᖁᓕᑦ ᐊᑕᐅᓯᕐᓗ.",
+    issuesCount: "11 ᐱᓇᓱᐊᕈᑎᑦ · ᓄᓇᕗᒥᐅᓄᑦ",
+    readMore: "ᐅᖃᓕᒫᕐᓂᐊᕐᓗᒍ",
+    postersLabel: "ᐊᔾᔨᙳᐊᖅ",
+    postersTitle: "ᐅᑲᓕᒃ ᐃᒐᓛᕐᓄᑦ ᐃᓕᓗᒍ.",
+    postersNote: "ᐅᑲᓕᒃ ᐃᑲᔪᖅᑐᕐᓗᒍ ᑖᓐᓇ ᐃᒐᓛᕐᓄᑦ ᐃᓕᓗᒍ.",
+    posterDownload: "ᐊᐃᔭᕐᓗᒍ",
+    standTitle: "ᐅᑲᓕᒃ ᐃᑲᔪᖅᑐᕐᓗᒍ.",
+    standText: "ᐃᑲᔪᖅᑐᐃᓗᑎᑦ, ᑐᓂᓯᓗᑎᑦ, ᓂᐱᑦᑎᓐᓂᒡᓘᓐᓃᑦ ᑐᓴᕐᕕᐅᓗᑎᑦ. ᓄᓇᕗᒥ ᓂᐱᓕᒫᑦ ᐱᒻᒪᕆᐅᕗᑦ — ᐱᓇᓱᐊᕐᓂᖅ ᒫᓐᓇ ᐱᒋᐊᖅᐳᖅ: ᐃᓄᓐᓄᑦ, ᐃᓄᓐᓂᑦ, ᐃᓄᐃᑦ ᐱᖃᑎᒋᓪᓗᒋᑦ.",
+    formTitle: "ᑐᓴᕐᕕᐅᓗᑎᑦ.",
+    formSmall: "ᓂᕈᐊᕐᓂᕐᒧᑦ ᑐᓴᒐᒃᓴᑦ — ᓄᓇᓕᓐᓂ ᑲᑎᒪᓂᑦ, ᐱᓇᓱᐊᕈᑎᓄᑦ ᑐᓴᒐᒃᓴᑦ.",
+    formName: "ᐊᑎᖅ",
+    formEmail: "ᖃᕆᑕᐅᔭᒃᑯᑦ",
+    formCommunity: "ᓄᓇᓕᒃ",
+    formNamePlaceholder: "ᐊᑏᑦ",
+    formEmailPlaceholder: "you@example.com",
+    formCommunityPlaceholder: "ᐃᖃᓗᐃᑦ, ᐋᐸᒃᔅ, …",
+    formSubmit: "ᐊᑎᓕᐅᕐᓗᖓ",
+    disclaimer: "ᐊᑎᓕᐅᕐᓗᑎᑦ ᓂᕈᐊᕐᓂᕐᒧᑦ ᑐᓴᒐᒃᓴᓂᒃ ᑐᓂᔭᐅᒍᒪᕗᑎᑦ. ᑐᓴᒐᒃᓴᑎᑦ ᐊᓯᓄᑦ ᑐᓂᔾᔮᙱᓚᕗᑦ. ᐅᑲᓕᒃ ᐃᒋᓯᐊᒃ ᑭᒡᒐᖅᑐᖅᑎᖓᓄᑦ ᐊᖏᖅᑕᖅ.",
+    footerTag: "ᐃᒡᓗᓂᒃ ᓴᓇᓂᖅ, ᓂᕆᐅᓐᓂᕐᒥᒃ ᓴᓇᓂᖅ. ᐃᓄᓐᓄᑦ, ᐃᓄᓐᓂᑦ, ᐃᓄᐃᑦ ᐱᖃᑎᒋᓪᓗᒋᑦ.",
+    footerCampaign: "ᓂᕈᐊᕐᓂᖅ",
+    footerGetInvolved: "ᐃᑲᔪᖅᑐᐃᓂᖅ",
+    footerConnect: "ᑐᓴᕐᕕᒃ",
+    footerCopyright: "© 2026 ᐅᑲᓕᒃ ᐃᒋᓯᐊᒃ ᓂᕈᐊᕐᓂᖓ · ᑭᒡᒐᖅᑐᖅᑎᖓᓄᑦ ᐊᖏᖅᑕᖅ",
+    footerMeta: "ᐅᑲᓕᒃ ᐃᒋᓯᐊᒃ ᑭᒡᒐᖅᑐᖅᑎᖓᓄᑦ ᐊᖏᖅᑕᖅ",
+  },
+};
+const ISSUE_IU_COPY = {
+  iglu: {
+    title: "ᐃᒡᓗᓕᒫᓄᑦ",
+    promise: "ᐃᒡᓗᓂᒃ ᓴᓇᓂᖅ, ᓂᕆᐅᓐᓂᕐᒥᒃ ᓴᓇᓂᖅ.",
+    keyword: "ᐃᒡᓗᑦ",
+    statLabel: "ᐃᒡᓗᑦ ᓄᓇᕗᒥ ᐊᒥᒐᖅᑐᑦ",
+    copy: "ᐃᒡᓗ ᓴᐳᔾᔨᓂᕐᒧᑦ, ᐋᓐᓂᐊᖃᙱᓐᓂᕐᒧᑦ, ᐱᕕᒃᓴᓄᓪᓗ ᑐᙵᕕᐅᕗᖅ. NTI ᒐᕙᒪᓕᒫᓂᒃ ᐊᒃᓱᕈᖅᑎᑦᑎᔭᕆᐊᖃᖅᐳᖅ ᐃᒡᓗᓂᒃ ᓴᓇᓂᖅ ᓱᒃᑲᓕᑎᓪᓗᒍ, ᐱᐅᓯᒋᐊᖅᑎᑦᑎᓗᓂ, ᐃᓄᐃᑦ ᓯᕗᓕᖅᑕᖏᓐᓂᒃ ᐃᒡᓗᓕᐅᕐᓂᖅ ᓴᙱᒃᑎᑦᑎᓗᓂ.",
+  },
+  niqi: {
+    title: "ᓂᕿᒧᑦ ᓇᖕᒥᓂᖅ ᐊᐅᓚᑦᑎᓂᖅ",
+    promise: "ᐊᑭᑭᑦᑐᖅ ᓂᕿ, ᐃᓄᐃᓪᓗ ᓯᕗᓕᖅᑕᖓ ᓂᕿᓄᑦ ᓴᐳᔾᔨᓂᖅ.",
+    keyword: "ᓂᕿ",
+    statLabel: "ᓄᓇᕗᒥ ᐃᓚᒌᑦ ᓂᕿᒧᑦ ᐊᒥᒐᖅᑐᑦ",
+    copy: "ᓂᕿᒧᑦ ᓴᐳᔾᔨᓂᖅ ᐊᑦᑕᓇᙱᓐᓂᖅ, ᐋᓐᓂᐊᖃᙱᓐᓂᖅ, ᓇᖕᒥᓂᕐᓗ ᐊᐅᓚᑦᑎᓂᖅ ᐱᒻᒪᕆᐅᕗᑦ. ᐃᓚᒌᑦ ᐊᑭᑭᑦᑐᒥᒃ ᓂᕿᒥᒃ, ᓄᓇᒥᓂᒃ ᓂᕿᓂᒃ, ᑐᑭᓯᓇᖅᑐᒥᒃ ᐊᑭᒧᑦ ᐃᑲᔫᑎᓂᒃ ᐱᔪᒪᕗᑦ.",
+  },
+  aanniaqarnirmut: {
+    title: "ᐋᓐᓂᐊᖃᙱᑦᑐᖅ ᓯᕗᓂᒃᓴᖅ",
+    promise: "ᐃᓕᖅᑯᓯᒥᒃ ᐊᑦᑕᓇᙱᑦᑐᖅ ᑲᒪᒋᔭᐅᓂᖅ ᓄᓇᓕᓐᓂ.",
+    keyword: "ᐋᓐᓂᐊᖃᕐᓂᖅ",
+    statLabel: "ᓄᓇᕗᒥᐅᑦ ᓂᒋᐊᓄᑦ ᐊᐅᓪᓚᖃᑦᑕᖅᑐᑦ ᑲᒪᒋᔭᐅᔭᖅᑐᖅᑐᑎᒃ",
+    copy: "ᐋᓐᓂᐊᖃᕐᓂᕐᒧᑦ ᐱᔨᑦᑎᕋᕐᓂᖅ ᐃᓄᐃᑦ ᓄᓇᖃᕐᕕᖏᓐᓂ, ᐅᖃᐅᓯᖏᓐᓂ, ᐃᓕᖅᑯᓯᖏᓐᓂᓗ ᐱᔭᐅᔭᕆᐊᖃᖅᐳᖅ. NTI ᓄᓇᓕᓐᓂ ᐱᔨᑦᑎᕋᕐᓂᖅ, ᐃᓕᖅᑯᓯᒧᑦ ᐊᑦᑕᓇᙱᑦᑐᑦ ᐱᓇᓱᐊᖅᑎᑦ, ᐱᒋᐊᕐᕕᒃᓴᓂᓪᓗ ᓴᙱᒃᑎᑦᑎᔭᕆᐊᖃᖅᐳᖅ.",
+  },
+  surusiit: {
+    title: "ᓱᕈᓯᕗᑦ ᓴᐳᔾᔨᓗᒋᑦ",
+    promise: "ᓱᕈᓯᓕᒫᑦ ᐊᑦᑕᓇᙱᓐᓂᕐᒥᒃ ᐃᑲᔫᑎᓂᓪᓗ ᐱᔪᒪᕗᑦ.",
+    keyword: "ᓱᕈᓰᑦ",
+    statLabel: "ᓄᓇᕗᑦ ᐃᓄᖏᑦ 15 ᐊᕐᕌᒍᑦ ᑐᖔᓂ",
+    copy: "ᓱᕈᓰᑦ ᐃᓚᒌᓪᓗ ᐃᓄᐃᑦ ᐱᐅᓯᖏᓐᓂᒃ ᑐᙵᕕᖃᖅᑐᒥᒃ ᓴᐳᔾᔨᔭᐅᓂᕐᒥᒃ ᐱᔪᒪᕗᑦ. ᐊᑭᓕᖅᓱᐃᓂᖅ ᐊᒥᒐᖅᑐᖅ, ᐱᓇᓱᐊᖅᑎᑦ ᐊᓯᔾᔨᖃᑦᑕᖅᑐᑦ, ᑲᒪᒋᔭᐅᓂᕐᓗ ᓴᙱᒃᑎᑦᑎᔭᐅᔭᕆᐊᖃᖅᐳᖅ.",
+  },
+  pinasuarniq: {
+    title: "ᓄᓇᕗᒥᐅᓄᑦ ᐱᓇᓱᐊᒐᑦ",
+    promise: "ᐱᓇᓱᐊᒐᓂᒃ ᐃᓄᐃᓪᓗ ᓇᖕᒥᓂᖅ ᐱᓇᓱᐊᕐᓂᖏᓐᓂᒃ ᓴᙱᒃᑎᑦᑎᓂᖅ.",
+    keyword: "ᐱᓇᓱᐊᒐᑦ",
+    statLabel: "ᓄᓇᕗᒥ ᐱᓇᓱᐊᙱᑦᑐᑦ — ᑲᓇᑕᒥᑦ ᖁᑦᑎᓂᖅᓴᖅ",
+    copy: "ᐱᐅᔪᑦ ᐱᓇᓱᐊᒐᑦ ᐃᓄᐃᑦ ᐱᕕᒃᓴᖏᓐᓂᒃ, ᑮᓇᐅᔭᖏᓐᓂᒃ, ᓂᕈᐊᖅᓯᒪᓂᖏᓐᓂᓪᓗ ᓄᓇᕗᒥ ᐱᑎᑦᑎᕗᑦ. NTI ᐱᓕᕆᐊᒧᑦ ᐊᑕᔪᒥᒃ ᐱᓕᒻᒪᒃᓴᐃᓂᖅ, ᐃᓄᐃᑦ ᓇᖕᒥᓂᖅ ᐱᓇᓱᐊᕐᓂᖏᑦ, ᐃᖃᓗᓐᓂᒃ, ᓴᓇᐅᒐᓂᒃ, ᓴᓇᓂᕐᓂᒃ ᓴᙱᒃᑎᑦᑎᔪᓐᓇᖅᐳᖅ.",
+  },
+  ilinniarniq: {
+    title: "ᐃᓕᓐᓂᐊᕐᓂᖅ ᐃᓕᖅᑯᓯᕐᓗ",
+    promise: "ᒪᒃᑯᒃᑐᑦ ᓴᙱᒃᑎᑦᑎᓗᒋᑦ, ᐃᓕᖅᑯᓯᕗᓪᓗ ᐅᐱᒋᓗᒍ.",
+    keyword: "ᐃᓕᓐᓂᐊᕐᓂᖅ",
+    statLabel: "ᓄᓇᕗᒥ ᐊᖏᔪᖅᑳᕐᓂᒃ ᐃᓕᓐᓂᐊᕇᖅᑐᑦ",
+    copy: "ᐃᓕᓐᓂᐊᕐᓂᖅ ᐅᖃᐅᓯᕐᒥᒃ, ᐃᓕᖅᑯᓯᕐᒥᒃ, ᐱᕕᒃᓴᓂᓪᓗ ᓴᙱᒃᑎᑦᑎᔭᕆᐊᖃᖅᐳᖅ. ᐃᓄᒃᑐᑦ ᐃᓕᓐᓂᐊᕐᓂᖅ, ᓄᓇᓕᓐᓂ ᐃᓕᓐᓂᐊᖅᑎᑦᑎᔩᑦ, ᖁᑦᑎᓂᖅᓴᒧᑦ ᐊᖅᑯᑎᑦ ᒪᒃᑯᒃᑐᓂᒃ ᓄᓇᖏᓐᓂ ᐃᓕᓐᓂᐊᖅᑎᑦᑎᔪᓐᓇᖅᐳᑦ.",
+  },
+  infrastructure: {
+    title: "ᐅᓪᓗᒥᒧᑦ ᐱᖁᑎᑦ",
+    promise: "ᖃᒻᒪᖅᑎᑦᑎᓂᖅ, ᐃᒪᖅ ᓴᓗᒪᔪᖅ, ᖃᕆᑕᐅᔭᒃᑯᓪᓗ ᓱᒃᑲᔪᖅ.",
+    keyword: "ᐱᖁᑎᑦ",
+    statLabel: "ᓄᓇᓖᑦ ᐊᕐᕌᒍᓕᒫᒧᑦ ᐊᖅᑯᑎᖃᖅᑐᑦ",
+    copy: "ᖃᒻᒪᖅᑎᑦᑎᓂᖅ, ᐃᒪᖅ, ᖃᕆᑕᐅᔭᒃᑯᑦ ᐱᔨᑦᑎᕋᕐᓂᖅ ᐅᓪᓗᒥ ᐃᓅᓯᕐᒧᑦ ᑐᙵᕕᐅᕗᑦ. ᓄᓇᓖᑦ ᓴᐳᔾᔨᔭᐅᔪᒥᒃ ᐃᒪᖃᕐᓂᖅ, ᑎᐊᓯᓕᒥᒃ ᐊᑐᕐᓂᖅ ᐊᒥᓲᙱᓂᖅᓴᖅ, ᓱᒃᑲᔪᒥᒃ ᐊᑭᑭᑦᑐᒥᒡᓗ ᖃᕆᑕᐅᔭᒃᑯᑦ ᐱᔪᒪᕗᑦ.",
+  },
+  sila: {
+    title: "ᓯᓚᒧᑦ ᐊᑐᕆᐊᖃᕐᓂᖅ",
+    promise: "ᓄᓇᕗᑦ ᓴᐳᔾᔨᓗᒍ ᓄᓇᐅᑉ ᖃᐅᔨᒪᓂᖓᓂᒃ ᓯᑯᒧᓪᓗ.",
+    keyword: "ᓯᓚ",
+    statLabel: "ᐅᐊᖕᓇᖅ ᓯᓚᖓ ᓱᒃᑲᓂᖅᓴᒥᒃ ᐅᖅᑰᓯᕙᓪᓕᐊᕗᖅ",
+    copy: "ᓯᓚᐅᑉ ᐊᓯᔾᔨᕐᓂᖓ ᐊᐅᓪᓚᕐᓂᕐᒥᒃ, ᓂᕿᒥᒃ, ᐃᒡᓗᒥᒃ, ᐊᑦᑕᓇᙱᓐᓂᕐᒥᓪᓗ ᐊᓯᔾᔨᖅᑎᑦᑎᕙᓪᓕᐊᕗᖅ. NTI ᓄᓇᓕᓐᓂᒃ ᓴᐳᔾᔨᓂᖅ, ᓄᑖᓂᒃ ᐃᑯᒪᓂᒃ, ᓴᙱᔪᓂᒃ ᐃᒡᓗᓂᒃ, ᐃᓄᐃᓪᓗ ᖃᐅᔨᒪᔭᖏᓐᓂᒃ ᑐᙵᕕᖃᖅᑐᒥᒃ ᓯᕗᓕᖅᑎᐅᔭᕆᐊᖃᖅᐳᖅ.",
+  },
+  nunatta: {
+    title: "ᓄᓇᕗᑦ, ᓄᓇᑦᑕ",
+    promise: "ᓄᓇᒧᑦ ᐱᖁᑎᓄᓪᓗ ᓇᖕᒥᓂᖅ ᐊᐅᓚᑦᑎᓂᖅ.",
+    keyword: "ᓄᓇ",
+    statLabel: "ᐃᓄᐃᑦ ᓄᓇᖁᑎᖏᑦ ᐊᐅᓚᖃᑎᒌᒃᑕᖏᓪᓗ",
+    copy: "ᓄᓇᒧᑦ ᓂᕈᐊᕐᓂᑦ ᐃᓄᐃᑦ ᐱᔪᓐᓇᕐᓂᖏᓐᓂᒃ, ᖃᐅᔨᒪᔭᖏᓐᓂᒃ, ᓯᕗᓂᒃᓴᒧᓪᓗ ᓴᐳᔾᔨᓂᖏᓐᓂᒃ ᑕᑯᔭᕆᐊᖃᖅᐳᑦ. ᓄᓇᒥᒃ ᐊᐅᓚᑦᑎᓂᖅ, ᑮᓇᐅᔭᑦ, ᓄᓇᓂᒃ ᐸᕐᓇᐃᓂᖅ ᓄᓇᕗᑦ ᓯᕗᓂᒃᓴᖓᓂᒃ ᐊᔪᕈᓐᓃᖅᑎᑦᑎᓂᐊᖅᐳᑦ.",
+  },
+  saimaqatigiingniq: {
+    title: "ᐊᑦᑕᓇᙱᑦᑐᑦ ᓄᓇᓖᑦ",
+    promise: "ᓂᖓᖅᑐᖃᙱᓐᓂᖅ, ᐊᕐᓇᓂᒃ, ᓂᕕᐊᖅᓵᓂᒃ, 2SLGBTQ+ ᐃᓄᓐᓂᓪᓗ ᓴᐳᔾᔨᓂᖅ.",
+    keyword: "ᐊᑦᑕᓇᙱᓐᓂᖅ",
+    statLabel: "ᐃᓄᐃᑦ ᐊᕐᓇᖏᓐᓄᑦ ᓂᖓᖅᑐᖃᕐᓂᖅ ᖁᑦᑎᓂᖅᓴᖅ",
+    copy: "ᐊᑦᑕᓇᙱᑦᑐᑦ ᓄᓇᓖᑦ ᐃᒡᓗᓂᒃ, ᓴᐳᔾᔨᕕᓂᒃ, ᐱᖁᔭᓂᒃ, ᐱᒋᐊᕐᕕᒃᓴᓂᓪᓗ ᐱᔪᒪᕗᑦ. ᐃᓄᐃᑦ ᐊᕐᓇᖏᑦ, ᓂᕕᐊᖅᓵᑦ, 2SLGBTQ+ ᐃᓄᐃᓪᓗ ᓂᖓᖅᑐᖃᕐᓂᒧᑦ ᓴᐳᔾᔨᔭᐅᔭᕆᐊᖃᖅᐳᑦ.",
+  },
+  business: {
+    title: "ᐃᓄᐃᑦ ᓇᖕᒥᓂᖅ ᐱᓇᓱᐊᕐᓂᖏᑦ",
+    promise: "ᐊᑎᖃᕐᕕᒃ ᓄᑖᙳᖅᑎᓪᓗᒍ — 100% ᐃᓄᐃᑦ ᓇᖕᒥᓂᖏᑦ ᓴᙱᒃᑎᑦᑎᓗᒋᑦ.",
+    keyword: "ᐱᓇᓱᐊᕐᓂᖅ",
+    statLabel: "ᐃᓄᐃᑦ ᓇᖕᒥᓂᖏᑦ ᓴᐳᔾᔨᔭᐅᓗᑎᒃ ᐱᕈᖅᑎᑕᐅᓗᑎᒃ",
+    copy: "ᐃᓄᐃᑦ ᐱᓇᓱᐊᕐᓂᖏᑦ ᓇᖕᒥᓂᖃᕐᓂᖅ, ᐱᔪᓐᓇᕐᓂᖅ, ᐅᒃᐱᕆᓂᕐᓗ ᓴᓇᔭᕆᐊᖃᖅᐳᑦ. NTI ᐃᓄᐃᑦ ᐱᓇᓱᐊᕐᕕᖏᑦᑕ ᐊᑎᖃᕐᕕᖓᓂᒃ ᓴᙱᒃᑎᑦᑎᔪᓐᓇᖅᐳᖅ, 100% ᐃᓄᐃᑦ ᓇᖕᒥᓂᖏᓐᓂᒃ ᓴᐳᔾᔨᓗᓂ, ᓄᑖᓂᓪᓗ ᐱᓇᓱᐊᕐᕕᓂᒃ ᐃᑲᔪᕐᓗᓂ.",
+  },
+};
 const CAMPAIGN_SLOGAN = {
   en: "For Inuit, By Inuit and with Inuit",
   enLines: ["For Inuit, By Inuit", "and with Inuit"],
@@ -2084,6 +2507,48 @@ const CAMPAIGN_SLOGAN = {
   roman: "Inuinnut, Inunnit, Inuit piqatigillugit",
   romanLines: ["Inuinnut, Inunnit,", "Inuit piqatigillugit"],
 };
+
+function langFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("lang") === "iu" ? "iu" : "en";
+}
+
+function useLanguage() {
+  const [lang, setLang] = React.useState(langFromUrl);
+  React.useEffect(() => {
+    document.documentElement.lang = lang === "iu" ? "iu" : "en";
+    document.body.classList.toggle("inuktut-copy", lang === "iu");
+    const url = new URL(window.location.href);
+    if (lang === "iu") url.searchParams.set("lang", "iu");
+    else url.searchParams.delete("lang");
+    window.history.replaceState({}, "", url);
+  }, [lang]);
+  return [lang, setLang];
+}
+
+function issueCopy(issue, lang) {
+  if (lang !== "iu") {
+    return {
+      title: issue.en,
+      label: issue.iu,
+      sublabel: issue.en,
+      promise: issue.promise,
+      copy: issue.copy,
+      keyword: issue.keyword,
+      statLabel: issue.statLabel,
+    };
+  }
+  const tx = ISSUE_IU_COPY[issue.id] || {};
+  return {
+    title: tx.title || issue.syllabics,
+    label: issue.syllabics,
+    sublabel: issue.iu,
+    promise: tx.promise || issue.promise,
+    copy: tx.copy || issue.copy,
+    keyword: tx.keyword || issue.syllabics,
+    statLabel: tx.statLabel || issue.statLabel,
+  };
+}
 
 // ─── Default tweak values ────────────────────────────────────────────
 // Kept inside the EDITMODE markers so the host can rewrite them.
@@ -2115,30 +2580,36 @@ const ICON_MAP = {
   business:           { C: UluTHandleIcon, scale: 100, rot: 4,   y: 0 },
 };
 
-function SloganLockup({ tone = "light", className = "" }) {
+function SloganLockup({ tone = "light", className = "", lang = "en" }) {
+  const primary = lang === "iu" ? CAMPAIGN_SLOGAN.syllabicsLines : CAMPAIGN_SLOGAN.enLines;
+  const primaryLabel = lang === "iu" ? CAMPAIGN_SLOGAN.syllabics : CAMPAIGN_SLOGAN.en;
+  const secondary = lang === "iu" ? CAMPAIGN_SLOGAN.romanLines : CAMPAIGN_SLOGAN.syllabicsLines;
+  const secondaryLabel = lang === "iu" ? CAMPAIGN_SLOGAN.roman : CAMPAIGN_SLOGAN.syllabics;
+  const tertiary = lang === "iu" ? CAMPAIGN_SLOGAN.enLines : CAMPAIGN_SLOGAN.romanLines;
+  const tertiaryLabel = lang === "iu" ? CAMPAIGN_SLOGAN.en : CAMPAIGN_SLOGAN.roman;
   return (
     <div className={`slogan-lockup ${tone === "dark" ? "on-dark" : "on-light"} ${className}`.trim()}>
       <div className="slogan-art">
         <img src={"assets/tattooed-fist-inverted.png" + location.search} alt="Tattooed fist illustration" />
       </div>
       <div className="slogan-text">
-        <div className="slogan-en" aria-label={CAMPAIGN_SLOGAN.en}>
-          {CAMPAIGN_SLOGAN.enLines.map((line) => <span key={line} aria-hidden="true">{line}</span>)}
+        <div className="slogan-en" aria-label={primaryLabel}>
+          {primary.map((line) => <span key={line} aria-hidden="true">{line}</span>)}
         </div>
-        <div className="slogan-iu" aria-label={CAMPAIGN_SLOGAN.syllabics}>
-          {CAMPAIGN_SLOGAN.syllabicsLines.map((line) => <span key={line} aria-hidden="true">{line}</span>)}
+        <div className="slogan-iu" aria-label={secondaryLabel}>
+          {secondary.map((line) => <span key={line} aria-hidden="true">{line}</span>)}
         </div>
-        <div className="slogan-roman" aria-label={CAMPAIGN_SLOGAN.roman}>
-          {CAMPAIGN_SLOGAN.romanLines.map((line) => <span key={line} aria-hidden="true">{line}</span>)}
+        <div className="slogan-roman" aria-label={tertiaryLabel}>
+          {tertiary.map((line) => <span key={line} aria-hidden="true">{line}</span>)}
         </div>
       </div>
     </div>
   );
 }
 
-function VoterBallot() {
+function VoterBallot({ c }) {
   return (
-    <div className="hero-ballot" aria-label="Election day ballot">
+    <div className="hero-ballot" aria-label={c.keyDatesLabel}>
       <div className="ballot-card">
         <div className="ballot-mark" aria-hidden="true">
           <svg className="ballot-x" viewBox="0 0 80 80">
@@ -2146,13 +2617,11 @@ function VoterBallot() {
           </svg>
         </div>
         <div className="ballot-copy">
-          <div className="ballot-label">Voter's Ballot</div>
-          <div className="ballot-title" aria-label="Vote For Okalik Eegeesiak- NTI President">
-            <span aria-hidden="true">Vote For Okalik</span>
-            <span aria-hidden="true">Eegeesiak-</span>
-            <span aria-hidden="true">NTI President</span>
+          <div className="ballot-label">{c.ballotLabel}</div>
+          <div className="ballot-title" aria-label={c.ballotAria}>
+            {c.ballotTitle.map((line) => <span key={line} aria-hidden="true">{line}</span>)}
           </div>
-          <div className="ballot-date">May 27, 2026</div>
+          <div className="ballot-date">{c.ballotDate}</div>
         </div>
       </div>
     </div>
@@ -2173,30 +2642,34 @@ function IssueIcon({ id }) {
 }
 
 // ─── TopBar ──────────────────────────────────────────────────────────
-function TopBar() {
+function TopBar({ lang, setLang, c }) {
   return (
     <header className="topbar">
       <div className="wrap topbar-inner">
         <a href="#" className="brand-mark">
           OKALIK<span className="dot">.</span>
-          <span className="role">for NTI President</span>
+          <span className="role">{c.brandRole}</span>
         </a>
         <nav className="topnav">
-          <a href="#promise">About</a>
-          <a href="#bio">Bio</a>
-          <a href="#issues">Priorities</a>
-          <a href="#posters">Download Poster</a>
-          <a href={VOLUNTEER_EMAIL_LINK}>Volunteer</a>
-          <a href={DONATION_EMAIL_LINK}>Donate</a>
+          <a href="#promise">{c.nav.about}</a>
+          <a href="#bio">{c.nav.bio}</a>
+          <a href="#issues">{c.nav.priorities}</a>
+          <a href="#posters">{c.nav.posters}</a>
+          <a href={VOLUNTEER_EMAIL_LINK}>{c.nav.volunteer}</a>
+          <a href={DONATION_EMAIL_LINK}>{c.nav.donate}</a>
         </nav>
-        <a href={VOLUNTEER_EMAIL_LINK} className="cta">Stand with Okalik →</a>
+        <div className="language-toggle" aria-label="Language">
+          <button type="button" className={lang === "en" ? "is-active" : ""} onClick={() => setLang("en")}>EN</button>
+          <button type="button" className={`iu-option ${lang === "iu" ? "is-active" : ""}`} onClick={() => setLang("iu")}>ᐃᓄ</button>
+        </div>
+        <a href={VOLUNTEER_EMAIL_LINK} className="cta">{c.ctaStand} →</a>
       </div>
     </header>
   );
 }
 
 // ─── Hero ────────────────────────────────────────────────────────────
-function Hero({ t }) {
+function Hero({ t, lang, c }) {
   return (
     <section className="hero">
       {t.applyHero && (
@@ -2211,41 +2684,39 @@ function Hero({ t }) {
       )}
       <div className="wrap hero-grid">
         <div>
-          <div className="hero-eyebrow">NTI Presidential Election · 2026</div>
+          <div className="hero-eyebrow">{c.heroEyebrow}</div>
           <h1>
-            Building homes,<br/>
-            <span className="accent">building hope.</span>
+            {c.heroTitle[0]}<br/>
+            <span className="accent">{c.heroTitle[1]}</span>
           </h1>
-          <p className="hero-sub">
-            Okalik Eegeesiak is running for President of Nunavut Tunngavik Inc. — bringing decades of Inuit leadership home to Nunavut. Eleven priorities. One promise: For Inuit, By Inuit and with Inuit.
-          </p>
-          <SloganLockup tone="dark" />
+          <p className="hero-sub">{c.heroSub}</p>
+          <SloganLockup tone="dark" lang={lang} />
           <div className="hero-ctas">
             <a href="#issues" className="btn btn-primary">
-              See the priorities <span className="arrow">→</span>
+              {c.seePriorities} <span className="arrow">→</span>
             </a>
-            <a href={VOLUNTEER_EMAIL_LINK} className="btn btn-ghost">Volunteer</a>
+            <a href={VOLUNTEER_EMAIL_LINK} className="btn btn-ghost">{c.nav.volunteer}</a>
           </div>
 
-          <div className="keydates" aria-label="Key dates">
+          <div className="keydates" aria-label={c.keyDatesLabel}>
             <div className="kd">
-              <div className="kd-label">Advance Poll</div>
-              <div className="kd-day">May 20</div>
-              <div className="kd-meta">Wednesday · 2026</div>
+              <div className="kd-label">{c.advancePoll}</div>
+              <div className="kd-day">{c.may20}</div>
+              <div className="kd-meta">{c.weekday2026}</div>
             </div>
             <div className="kd">
-              <div className="kd-label">Election Day</div>
-              <div className="kd-day">May 27</div>
-              <div className="kd-meta">Wednesday · 2026</div>
+              <div className="kd-label">{c.electionDay}</div>
+              <div className="kd-day">{c.may27}</div>
+              <div className="kd-meta">{c.weekday2026}</div>
             </div>
           </div>
         </div>
         <div className="hero-media">
           <div className="hero-portrait">
             <img src={"assets/okalik-portrait.jpg" + location.search} alt="Okalik Eegeesiak" />
-            <div className="caption">OKALIK EEGEESIAK · FOR NTI PRESIDENT</div>
+            <div className="caption">{c.portraitCaption}</div>
           </div>
-          <VoterBallot />
+          <VoterBallot c={c} />
         </div>
       </div>
     </section>
@@ -2253,8 +2724,8 @@ function Hero({ t }) {
 }
 
 // ─── Ticker ──────────────────────────────────────────────────────────
-function Ticker() {
-  const words = ISSUES.map(i => i.iu);
+function Ticker({ lang }) {
+  const words = ISSUES.map(i => lang === "iu" ? i.syllabics : i.iu);
   const doubled = [...words, ...words];
   return (
     <div className="ticker" aria-hidden="true">
@@ -2271,28 +2742,20 @@ function Ticker() {
 }
 
 // ─── Promise ─────────────────────────────────────────────────────────
-function PromiseSection() {
+function PromiseSection({ c }) {
   return (
     <section className="promise" id="promise">
       <div className="wrap promise-inner">
         <div>
-          <div className="section-label">Our Promise</div>
-          <h2>A Nunavut where every Inuk can thrive.</h2>
+          <div className="section-label">{c.promiseLabel}</div>
+          <h2>{c.promiseTitle}</h2>
         </div>
         <div className="promise-body">
-          <p>
-            I have spent my life advocating for Inuit — at the United Nations, with the Inuit Circumpolar Council, and at home in Nunavut. Now I'm running for President of NTI because the work that matters most happens close to home.
-          </p>
-          <p>
-            We need leaders who will fight for housing, food security, and healthcare without compromise. Leaders who understand that policy made in Iqaluit must serve every elder, every parent, every young person across our communities.
-          </p>
-          <p>
-            These are the eleven priorities I'm bringing to NTI. Each one is rooted in what Nunavummiut have told me matters. Each one comes with a plan. None of them can wait.
-          </p>
+          {c.promiseParagraphs.map((p) => <p key={p}>{p}</p>)}
           <div className="signature">
             <div>
               <div className="name">Okalik Eegeesiak</div>
-              <div className="role">Candidate for President, Nunavut Tunngavik Inc. · 2026</div>
+              <div className="role">{c.signatureRole}</div>
             </div>
           </div>
         </div>
@@ -2302,53 +2765,28 @@ function PromiseSection() {
 }
 
 // ─── About / Bio ─────────────────────────────────────────────────────
-function About() {
+function About({ c }) {
   return (
     <section className="about" id="bio">
       <div className="wrap about-inner">
         <div className="about-head">
-          <div className="section-label">About Okalik</div>
-          <h2>Decades of Inuit leadership — coming home to Nunavut.</h2>
+          <div className="section-label">{c.aboutLabel}</div>
+          <h2>{c.aboutTitle}</h2>
           <div className="about-meta">
-            <div className="row">
-              <div className="label">Born</div>
-              <div className="val">Iqaluit, Nunavut</div>
-            </div>
-            <div className="row">
-              <div className="label">Languages</div>
-              <div className="val">Inuktitut · English</div>
-            </div>
-            <div className="row">
-              <div className="label">ICC Chair</div>
-              <div className="val">2014 – 2018</div>
-            </div>
-            <div className="row">
-              <div className="label">QIA President</div>
-              <div className="val">2008 – 2014</div>
-            </div>
-            <div className="row">
-              <div className="label">Experience</div>
-              <div className="val">35+ years advancing Inuit priorities</div>
-            </div>
+            {c.aboutMeta.map(([label, value]) => (
+              <div className="row" key={label}>
+                <div className="label">{label}</div>
+                <div className="val">{value}</div>
+              </div>
+            ))}
           </div>
           <a href="assets/Okalik_Eegeesiak_Campaign_Bio.docx" className="about-cta" download>
             <span className="download-icon" aria-hidden="true"></span>
-            Download full bio
+            {c.downloadBio}
           </a>
         </div>
         <div className="about-body">
-          <p>
-            (Josie) Okalik Eegeesiak is a bilingual Inuk leader based in Iqaluit, Nunavut. From <strong>2014 to 2018</strong>, she served as <strong>Chair of the Inuit Circumpolar Council</strong>, representing the international interests of Inuit in Canada, Greenland, Chukotka (Russia), and Alaska — leading ICC delegations at the United Nations and at COP 21 in Paris.
-          </p>
-          <p>
-            She previously served two terms as <strong>President of the Qikiqtani Inuit Association</strong> (2008–2014), representing approximately <strong>14,000 Inuit across the 13 communities</strong> of the Qikiqtani Region. During her tenure, QIA advanced major files including marine conservation in Lancaster Sound, Inuit education and training, and the implementation of the Nunavut Agreement.
-          </p>
-          <p>
-            Over more than <strong>35 years</strong>, Okalik has chaired and represented Inuit on international, national, territorial, and community boards, and has held senior management roles in both federal and territorial governments. Her work focuses on education and training, language and culture, human resources, community development, and the socio-economic well-being of Inuit and the Arctic.
-          </p>
-          <p>
-            She is widely respected for her steady, consensus-based leadership style and her lifelong commitment to Inuit self-determination.
-          </p>
+          {c.aboutParagraphs.map((p) => <p key={p}>{p}</p>)}
         </div>
       </div>
     </section>
@@ -2577,11 +3015,12 @@ function IssueIllustration({ issue, compact = false, progress = 1, frame = 0 }) 
   );
 }
 
-function MotionPriorityFeature({ issues }) {
+function MotionPriorityFeature({ issues, lang, c }) {
   const frame = useTimelineFrame();
   const activeIdx = Math.floor(frame / PRIORITY_SCENE_FRAMES) % issues.length;
   const sceneFrame = frame % PRIORITY_SCENE_FRAMES;
   const issue = issues[activeIdx];
+  const tx = issueCopy(issue, lang);
   const enter = interpolateFrame(sceneFrame, [0, 28], [0, 1], easeOut);
   const exit = interpolateFrame(sceneFrame, [PRIORITY_SCENE_FRAMES - 24, PRIORITY_SCENE_FRAMES - 1], [1, 0], easeIn);
   const presence = Math.min(enter, exit);
@@ -2597,13 +3036,13 @@ function MotionPriorityFeature({ issues }) {
         <IssueIllustration issue={issue} progress={presence} frame={sceneFrame} />
       </div>
       <div className="priority-story" style={storyStyle}>
-        <div className="priority-kicker">{String(activeIdx + 1).padStart(2, "0")} / 11 · {issue.keyword}</div>
-        <h3>{issue.en}</h3>
-        <div className="priority-syllabics">{issue.syllabics}</div>
-        <p className="priority-copy">{issue.copy}</p>
+        <div className="priority-kicker">{String(activeIdx + 1).padStart(2, "0")} / 11 · {tx.keyword}</div>
+        <h3>{tx.title}</h3>
+        <div className="priority-syllabics">{lang === "iu" ? issue.iu : issue.syllabics}</div>
+        <p className="priority-copy">{tx.copy}</p>
         <div className="priority-stat">
           <b>{issue.stat}</b>
-          <span>{issue.statLabel}</span>
+          <span>{tx.statLabel}</span>
         </div>
         <div className="priority-progress" aria-hidden="true">
           {issues.map((item, idx) => (
@@ -2617,25 +3056,26 @@ function MotionPriorityFeature({ issues }) {
   );
 }
 
-function IssueCard({ issue, idx }) {
+function IssueCard({ issue, idx, lang, c }) {
+  const tx = issueCopy(issue, lang);
   return (
     <a id={issue.id} className="issue-card" href={`#${issue.id}`}>
       <div className="issue-num">{String(idx + 1).padStart(2, "0")} / 11</div>
       <IssueIllustration issue={issue} compact />
-      <div className="issue-iu">{issue.iu}</div>
-      <div className="issue-en">{issue.en}</div>
-      <p className="issue-promise">{issue.promise}</p>
-      <p className="issue-detail">{issue.copy}</p>
+      <div className="issue-iu">{tx.label}</div>
+      <div className="issue-en">{tx.sublabel}</div>
+      <p className="issue-promise">{tx.promise}</p>
+      <p className="issue-detail">{tx.copy}</p>
       <div className="issue-stat-row">
         <div className="issue-stat">{issue.stat}</div>
-        <div className="issue-stat-label">{issue.statLabel}</div>
+        <div className="issue-stat-label">{tx.statLabel}</div>
       </div>
-      <div className="issue-cta">Read more <span>→</span></div>
+      <div className="issue-cta">{c.readMore} <span>→</span></div>
     </a>
   );
 }
 
-function Issues({ t }) {
+function Issues({ t, lang, c }) {
   // For the issues section, the pattern color depends on the bg tone.
   // On ivory bg, we want a navy pattern (subtle dark on light).
   const isNavyBg = t.issuesBgTone === "navy";
@@ -2657,16 +3097,16 @@ function Issues({ t }) {
       <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
         <div className="issues-head">
           <div>
-            <div className="section-label">The Priorities</div>
-            <h2>Eleven things we will fight for, from day one.</h2>
+            <div className="section-label">{c.issuesLabel}</div>
+            <h2>{c.issuesTitle}</h2>
           </div>
-          <div className="count">11 areas · for Nunavummiut</div>
+          <div className="count">{c.issuesCount}</div>
         </div>
-        <SloganLockup className="slogan-band" />
-        <MotionPriorityFeature issues={ISSUES} />
+        <SloganLockup className="slogan-band" lang={lang} />
+        <MotionPriorityFeature issues={ISSUES} lang={lang} c={c} />
         <div className="issues-grid">
           {ISSUES.map((issue, idx) => (
-            <IssueCard key={issue.id} issue={issue} idx={idx} />
+            <IssueCard key={issue.id} issue={issue} idx={idx} lang={lang} c={c} />
           ))}
         </div>
       </div>
@@ -2674,16 +3114,16 @@ function Issues({ t }) {
   );
 }
 
-function Posters() {
+function Posters({ c, lang }) {
   return (
     <section className="posters" id="posters">
       <div className="wrap">
         <div className="posters-head">
           <div>
-            <div className="section-label">Download Poster</div>
-            <h2>Put Okalik in your window.</h2>
+            <div className="section-label">{c.postersLabel}</div>
+            <h2>{c.postersTitle}</h2>
           </div>
-          <p className="posters-note">Support Okalik by adding this to your window.</p>
+          <p className="posters-note">{c.postersNote}</p>
         </div>
         <div className="poster-grid">
           {POSTERS.map((poster) => (
@@ -2693,10 +3133,10 @@ function Posters() {
               </div>
               <div className="poster-body">
                 <div>
-                  <div className="poster-title">{poster.title}</div>
-                  <div className="poster-meta">{poster.meta}</div>
+                  <div className="poster-title">{lang === "iu" ? poster.titleIu : poster.title}</div>
+                  <div className="poster-meta">{lang === "iu" ? poster.metaIu : poster.meta}</div>
                 </div>
-                <a href={poster.file} download={poster.download} className="btn btn-primary">Download <span className="arrow">→</span></a>
+                <a href={poster.file} download={poster.download} className="btn btn-primary">{c.posterDownload} <span className="arrow">→</span></a>
               </div>
             </article>
           ))}
@@ -2707,18 +3147,25 @@ function Posters() {
 }
 
 // ─── Stand ───────────────────────────────────────────────────────────
-function Stand({ t }) {
+function Stand({ t, lang, c }) {
   function handleSignup(e) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const body = [
+    const body = lang === "iu" ? [
+      "ᐅᑲᓕᒃ ᐃᒋᓯᐊᒃ ᓂᕈᐊᕐᓂᖓᓂ ᐃᑲᔪᖅᑐᐃᔪᒪᕗᖓ.",
+      "",
+      `${c.formName}: ${data.get("name") || ""}`,
+      `${c.formEmail}: ${data.get("email") || ""}`,
+      `${c.formCommunity}: ${data.get("community") || ""}`,
+    ] : [
       "I want to volunteer for Okalik Eegeesiak.",
       "",
       `Name: ${data.get("name") || ""}`,
       `Email: ${data.get("email") || ""}`,
       `Community: ${data.get("community") || ""}`,
-    ].join("\n");
-    window.location.href = `mailto:${FRANCO_EMAIL}?subject=${encodeURIComponent("I want to Volunteer for Okalik")}&body=${encodeURIComponent(body)}`;
+    ];
+    const bodyText = body.join("\n");
+    window.location.href = `mailto:${FRANCO_EMAIL}?subject=${encodeURIComponent("I want to Volunteer for Okalik")}&body=${encodeURIComponent(bodyText)}`;
   }
 
   return (
@@ -2735,22 +3182,22 @@ function Stand({ t }) {
       )}
       <div className="wrap stand-inner">
         <div>
-          <h2>Stand with Okalik.</h2>
-          <p>Volunteer your time, donate to the campaign, or just stay informed. Every voice across Nunavut matters — and the work begins now: For Inuit, By Inuit and with Inuit.</p>
-          <SloganLockup tone="dark" />
+          <h2>{c.standTitle}</h2>
+          <p>{c.standText}</p>
+          <SloganLockup tone="dark" lang={lang} />
           <div className="hero-ctas">
-            <a href={DONATION_EMAIL_LINK} className="btn btn-primary">Donate <span className="arrow">→</span></a>
-            <a href={VOLUNTEER_EMAIL_LINK} className="btn btn-ghost">Volunteer</a>
+            <a href={DONATION_EMAIL_LINK} className="btn btn-primary">{c.nav.donate} <span className="arrow">→</span></a>
+            <a href={VOLUNTEER_EMAIL_LINK} className="btn btn-ghost">{c.nav.volunteer}</a>
           </div>
         </div>
         <form className="stand-form" onSubmit={handleSignup}>
-          <h3>Stay in the loop.</h3>
-          <p className="small">Updates from the campaign — community events, town halls, issue briefings.</p>
-          <div className="field"><label>Name</label><input name="name" type="text" placeholder="Your name" /></div>
-          <div className="field"><label>Email</label><input name="email" type="email" placeholder="you@example.com" /></div>
-          <div className="field"><label>Community</label><input name="community" type="text" placeholder="Iqaluit, Apex, …" /></div>
-          <button type="submit" className="btn btn-primary">Sign me up <span className="arrow">→</span></button>
-          <p className="disclaimer">By signing up you agree to receive campaign updates. We never share your information. Authorized by the Official Agent for Okalik Eegeesiak.</p>
+          <h3>{c.formTitle}</h3>
+          <p className="small">{c.formSmall}</p>
+          <div className="field"><label>{c.formName}</label><input name="name" type="text" placeholder={c.formNamePlaceholder} /></div>
+          <div className="field"><label>{c.formEmail}</label><input name="email" type="email" placeholder={c.formEmailPlaceholder} /></div>
+          <div className="field"><label>{c.formCommunity}</label><input name="community" type="text" placeholder={c.formCommunityPlaceholder} /></div>
+          <button type="submit" className="btn btn-primary">{c.formSubmit} <span className="arrow">→</span></button>
+          <p className="disclaimer">{c.disclaimer}</p>
         </form>
       </div>
     </section>
@@ -2758,7 +3205,7 @@ function Stand({ t }) {
 }
 
 // ─── Footer ──────────────────────────────────────────────────────────
-function Foot({ t }) {
+function Foot({ t, lang, c }) {
   return (
     <footer className="foot">
       {t.applyFooter && (
@@ -2775,35 +3222,35 @@ function Foot({ t }) {
         <div className="foot-grid">
           <div>
             <div className="foot-brand">OKALIK<span className="dot">.</span></div>
-            <p className="foot-tag">Building homes, building hope. For Inuit, By Inuit and with Inuit.</p>
-            <SloganLockup tone="dark" />
+            <p className="foot-tag">{c.footerTag}</p>
+            <SloganLockup tone="dark" lang={lang} />
           </div>
           <div>
-            <h4>Campaign</h4>
+            <h4>{c.footerCampaign}</h4>
             <ul>
-              <li><a href="#bio">About Okalik</a></li>
-              <li><a href="#issues">Priorities</a></li>
-              <li><a href="#posters">Download Poster</a></li>
+              <li><a href="#bio">{c.nav.bio}</a></li>
+              <li><a href="#issues">{c.nav.priorities}</a></li>
+              <li><a href="#posters">{c.nav.posters}</a></li>
             </ul>
           </div>
           <div>
-            <h4>Get Involved</h4>
+            <h4>{c.footerGetInvolved}</h4>
             <ul>
-              <li><a href={VOLUNTEER_EMAIL_LINK}>Volunteer</a></li>
-              <li><a href={DONATION_EMAIL_LINK}>Donate</a></li>
-              <li><a href="#stand">Sign up</a></li>
+              <li><a href={VOLUNTEER_EMAIL_LINK}>{c.nav.volunteer}</a></li>
+              <li><a href={DONATION_EMAIL_LINK}>{c.nav.donate}</a></li>
+              <li><a href="#stand">{c.formSubmit}</a></li>
             </ul>
           </div>
           <div>
-            <h4>Connect</h4>
+            <h4>{c.footerConnect}</h4>
             <ul>
               <li><a href={INQUIRIES_EMAIL_LINK}>{INQUIRIES_EMAIL}</a></li>
             </ul>
           </div>
         </div>
         <div className="foot-bottom">
-          <div>© 2026 Okalik Eegeesiak Campaign · Authorized by the Official Agent</div>
-          <div className="meta">Authorized by the Agent of Okalik Eegeesiak</div>
+          <div>{c.footerCopyright}</div>
+          <div className="meta">{c.footerMeta}</div>
         </div>
       </div>
     </footer>
@@ -2845,18 +3292,20 @@ function OkalikTweaks({ t, setTweak }) {
 // ─── App ─────────────────────────────────────────────────────────────
 function App() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const [lang, setLang] = useLanguage();
+  const c = SITE_COPY[lang];
   return (
-    <>
-      <TopBar />
-      <Hero t={t} />
-      <Ticker />
-      <PromiseSection />
-      <About />
-      <Issues t={t} />
-      <Posters />
-      <Stand t={t} />
-      <Foot t={t} />
-    </>
+    <div className={lang === "iu" ? "inuktut-copy" : ""}>
+      <TopBar lang={lang} setLang={setLang} c={c} />
+      <Hero t={t} lang={lang} c={c} />
+      <Ticker lang={lang} />
+      <PromiseSection c={c} />
+      <About c={c} />
+      <Issues t={t} lang={lang} c={c} />
+      <Posters c={c} lang={lang} />
+      <Stand t={t} lang={lang} c={c} />
+      <Foot t={t} lang={lang} c={c} />
+    </div>
   );
 }
 
