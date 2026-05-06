@@ -70,9 +70,9 @@ a { color: inherit; }
   font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
   color: rgba(244,239,230,0.7);
 }
-.topnav { display: flex; gap: 28px; }
+.topnav { display: flex; gap: 18px; }
 .topnav a {
-  font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
   text-decoration: none; opacity: 0.85;
   transition: opacity 0.15s ease;
 }
@@ -817,6 +817,83 @@ a { color: inherit; }
   transition: all 0.3s ease;
 }
 
+/* ─── Poster downloads ────────────────────────────────────────────── */
+.posters {
+  background: var(--ivory);
+  padding: 88px 0 96px;
+  border-bottom: 1px solid var(--rule);
+}
+.posters-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.posters h2 {
+  font-family: var(--serif);
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0;
+  margin: 14px 0 0;
+}
+.posters-note {
+  max-width: 440px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: rgba(8,40,69,0.74);
+  margin: 0;
+}
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.poster-card {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.poster-preview {
+  min-height: 380px;
+  padding: 20px;
+  background: #fff;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.poster-preview img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+}
+.poster-body {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+.poster-title {
+  font-weight: 800;
+  font-size: 19px;
+  line-height: 1.2;
+}
+.poster-meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
 /* ─── Stand With section ──────────────────────────────────────────── */
 .stand {
   background: var(--orange);
@@ -986,6 +1063,12 @@ a { color: inherit; }
   .issue-card { min-height: auto; }
   .issues-grid { grid-template-columns: 1fr; }
   .issues-head { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .posters { padding: 64px 0 72px; }
+  .posters-head { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .posters h2 { font-size: 38px; }
+  .poster-grid { grid-template-columns: 1fr; }
+  .poster-preview { min-height: 280px; padding: 14px; }
+  .poster-body { align-items: flex-start; flex-direction: column; }
   .foot-grid { grid-template-columns: 1fr; }
   .ticker-track { font-size: 22px; gap: 32px; }
 }
@@ -1974,7 +2057,25 @@ Object.assign(window, {
 // Tweaks controls so the campaign team can dial it in live.
 
 const ISSUES = window.OKALIK_ISSUES;
-const VOLUNTEER_EMAIL_LINK = "mailto:buscemi.franco@gmail.com?subject=I%20want%20to%20Volunteer%20for%20Okalik";
+const FRANCO_EMAIL = "buscemi.franco@gmail.com";
+const INQUIRIES_EMAIL = "voteeegeesiak@gmail.com";
+const VOLUNTEER_EMAIL_LINK = `mailto:${FRANCO_EMAIL}?subject=${encodeURIComponent("I want to Volunteer for Okalik")}`;
+const DONATION_EMAIL_LINK = `mailto:${FRANCO_EMAIL}?subject=${encodeURIComponent("I want to Donate to Okalik")}`;
+const INQUIRIES_EMAIL_LINK = `mailto:${INQUIRIES_EMAIL}?subject=${encodeURIComponent("Inquiry for Okalik Eegeesiak Campaign")}`;
+const POSTERS = [
+  {
+    title: "Campaign Poster",
+    meta: "Poster 1",
+    file: "assets/okalik-poster.jpg",
+    download: "okalik-poster.jpg",
+  },
+  {
+    title: "Fist Poster",
+    meta: "Window poster",
+    file: "assets/okalik-for-president-fist-v1.jpeg",
+    download: "Okalik for President Fist V1.jpeg",
+  },
+];
 const CAMPAIGN_SLOGAN = {
   en: "For Inuit, By Inuit and with Inuit",
   enLines: ["For Inuit, By Inuit", "and with Inuit"],
@@ -2084,8 +2185,9 @@ function TopBar() {
           <a href="#promise">About</a>
           <a href="#bio">Bio</a>
           <a href="#issues">Priorities</a>
+          <a href="#posters">Download Poster</a>
           <a href={VOLUNTEER_EMAIL_LINK}>Volunteer</a>
-          <a href="https://kirt-ngai.github.io/Okalik-for-NTI-President-Donation-Page/">Donate</a>
+          <a href={DONATION_EMAIL_LINK}>Donate</a>
         </nav>
         <a href={VOLUNTEER_EMAIL_LINK} className="cta">Stand with Okalik →</a>
       </div>
@@ -2572,6 +2674,38 @@ function Issues({ t }) {
   );
 }
 
+function Posters() {
+  return (
+    <section className="posters" id="posters">
+      <div className="wrap">
+        <div className="posters-head">
+          <div>
+            <div className="section-label">Download Poster</div>
+            <h2>Put Okalik in your window.</h2>
+          </div>
+          <p className="posters-note">Support Okalik by adding this to your window.</p>
+        </div>
+        <div className="poster-grid">
+          {POSTERS.map((poster) => (
+            <article className="poster-card" key={poster.file}>
+              <div className="poster-preview">
+                <img src={poster.file + location.search} alt={`${poster.title} preview`} loading="lazy" decoding="async" />
+              </div>
+              <div className="poster-body">
+                <div>
+                  <div className="poster-title">{poster.title}</div>
+                  <div className="poster-meta">{poster.meta}</div>
+                </div>
+                <a href={poster.file} download={poster.download} className="btn btn-primary">Download <span className="arrow">→</span></a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Stand ───────────────────────────────────────────────────────────
 function Stand({ t }) {
   function handleSignup(e) {
@@ -2584,7 +2718,7 @@ function Stand({ t }) {
       `Email: ${data.get("email") || ""}`,
       `Community: ${data.get("community") || ""}`,
     ].join("\n");
-    window.location.href = `mailto:buscemi.franco@gmail.com?subject=${encodeURIComponent("I want to Volunteer for Okalik")}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:${FRANCO_EMAIL}?subject=${encodeURIComponent("I want to Volunteer for Okalik")}&body=${encodeURIComponent(body)}`;
   }
 
   return (
@@ -2605,7 +2739,7 @@ function Stand({ t }) {
           <p>Volunteer your time, donate to the campaign, or just stay informed. Every voice across Nunavut matters — and the work begins now: For Inuit, By Inuit and with Inuit.</p>
           <SloganLockup tone="dark" />
           <div className="hero-ctas">
-            <a href="https://kirt-ngai.github.io/Okalik-for-NTI-President-Donation-Page/" className="btn btn-primary">Donate <span className="arrow">→</span></a>
+            <a href={DONATION_EMAIL_LINK} className="btn btn-primary">Donate <span className="arrow">→</span></a>
             <a href={VOLUNTEER_EMAIL_LINK} className="btn btn-ghost">Volunteer</a>
           </div>
         </div>
@@ -2649,20 +2783,21 @@ function Foot({ t }) {
             <ul>
               <li><a href="#bio">About Okalik</a></li>
               <li><a href="#issues">Priorities</a></li>
+              <li><a href="#posters">Download Poster</a></li>
             </ul>
           </div>
           <div>
             <h4>Get Involved</h4>
             <ul>
               <li><a href={VOLUNTEER_EMAIL_LINK}>Volunteer</a></li>
-              <li><a href="https://kirt-ngai.github.io/Okalik-for-NTI-President-Donation-Page/">Donate</a></li>
+              <li><a href={DONATION_EMAIL_LINK}>Donate</a></li>
               <li><a href="#stand">Sign up</a></li>
             </ul>
           </div>
           <div>
             <h4>Connect</h4>
             <ul>
-              <li><a href="mailto:hello@okalik.ca">hello@okalik.ca</a></li>
+              <li><a href={INQUIRIES_EMAIL_LINK}>{INQUIRIES_EMAIL}</a></li>
             </ul>
           </div>
         </div>
@@ -2718,6 +2853,7 @@ function App() {
       <PromiseSection />
       <About />
       <Issues t={t} />
+      <Posters />
       <Stand t={t} />
       <Foot t={t} />
     </>
