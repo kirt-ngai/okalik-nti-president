@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ — for NTI President</title>
+<title>Okalik Eegeesiak — for NTI President</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Canadian+Aboriginal:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1260,7 +1260,7 @@ a { color: inherit; }
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 <script>
-// ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ — 11 priority areas
+// Okalik Eegeesiak — 11 priority areas
 // Each entry has: inuktitut name (Latin transliteration), english title, one-liner,
 // a Nunavut-specific stat to anchor the ad, and stat source label.
 window.OKALIK_ISSUES = [
@@ -2243,7 +2243,15 @@ const FRANCO_EMAIL = "buscemi.franco@gmail.com";
 const INQUIRIES_EMAIL = "voteeegeesiak@gmail.com";
 const VOLUNTEER_EMAIL_LINK = `mailto:${FRANCO_EMAIL}?subject=${encodeURIComponent("I want to Volunteer for Okalik")}`;
 const DONATION_EMAIL_LINK = `mailto:${FRANCO_EMAIL}?subject=${encodeURIComponent("I want to Donate to Okalik")}`;
-const INQUIRIES_EMAIL_LINK = `mailto:${INQUIRIES_EMAIL}?subject=${encodeURIComponent("Inquiry for ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ Campaign")}`;
+const INQUIRIES_EMAIL_LINK = `mailto:${INQUIRIES_EMAIL}?subject=${encodeURIComponent("Inquiry for Okalik Eegeesiak Campaign")}`;
+const BIO_FILES = {
+  en: "assets/Okalik_Eegeesiak_Campaign_Bio.docx",
+  iu: "assets/Okalik_Eegeesiak_Campaign_Bio_Inuktitut.docx",
+};
+const CANDIDATE_NAMES = {
+  en: "Okalik Eegeesiak",
+  iu: "ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ",
+};
 const POSTERS = [
   {
     title: "Campaign Poster",
@@ -2258,13 +2266,15 @@ const POSTERS = [
     titleIu: "ᑎᒍᒥᐊᖅ ᐊᔾᔨᙳᐊᖅ",
     meta: "Window poster",
     metaIu: "ᐃᒐᓛᕐᒧᑦ ᐊᔾᔨᙳᐊᖅ",
-    file: "assets/okalik-for-president-fist-v1.jpeg",
-    download: "Okalik for President Fist V1.jpeg",
+    file: "assets/okalik-for-president-fist-red.jpeg",
+    download: "Okalik for President Fist Poster.jpeg",
   },
 ];
 const SITE_COPY = {
   en: {
     langName: "English",
+    pageTitle: "Okalik Eegeesiak — for NTI President",
+    candidateName: CANDIDATE_NAMES.en,
     brandRole: "for NTI President",
     nav: {
       about: "About",
@@ -2277,7 +2287,7 @@ const SITE_COPY = {
     ctaStand: "Stand with Okalik",
     heroEyebrow: "NTI Presidential Election · 2026",
     heroTitle: ["Building homes,", "building hope."],
-    heroSub: "ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ is running for President of Nunavut Tunngavik Inc. — bringing decades of Inuit leadership home to Nunavut. Eleven priorities. One promise: For Inuit, By Inuit and with Inuit.",
+    heroSub: "Okalik Eegeesiak is running for President of Nunavut Tunngavik Inc. — bringing decades of Inuit leadership home to Nunavut. Eleven priorities. One promise: For Inuit, By Inuit and with Inuit.",
     seePriorities: "See the priorities",
     keyDatesLabel: "Key dates",
     advancePoll: "Advance Poll",
@@ -2287,13 +2297,13 @@ const SITE_COPY = {
     weekday2026: "Wednesday · 2026",
     ballotLabel: "Voter's Ballot",
     ballotTitle: ["Vote For Okalik", "Eegeesiak-", "NTI President"],
-    ballotAria: "Vote For ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ- NTI President",
+    ballotAria: "Vote For Okalik Eegeesiak- NTI President",
     ballotDate: "May 27, 2026",
     portraitCaption: "OKALIK EEGEESIAK · FOR NTI PRESIDENT",
     promiseLabel: "Our Promise",
     promiseTitle: "A Nunavut where every Inuk can thrive.",
     promiseParagraphs: [
-      "I have spent my life advocating for Inuit — at the United Nations, with the Inuit Circumpolar Council, and at home in Nunavut. Now I'm running for President of NTI because the work that matters most happens close to home.",
+      "I have spent my life advocating for Inuit — at the United Nations, with ᐃᓄᐃᑦ ᐅᑭᐅᖅᑕᖅᑐᒥᐅᖃᑎᒌᑦ ᑲᑎᒪᔨᖏᑦ, and at home in Nunavut. Now I'm running for President of NTI because the work that matters most happens close to home.",
       "We need leaders who will fight for housing, food security, and healthcare without compromise. Leaders who understand that policy made in Iqaluit must serve every elder, every parent, every young person across our communities.",
       "These are the eleven priorities I'm bringing to NTI. Each one is rooted in what Nunavummiut have told me matters. Each one comes with a plan. None of them can wait.",
     ],
@@ -2308,9 +2318,11 @@ const SITE_COPY = {
       ["Experience", "35+ years advancing Inuit priorities"],
     ],
     downloadBio: "Download full bio",
+    bioFile: BIO_FILES.en,
+    bioDownloadName: "Okalik_Eegeesiak_Campaign_Bio.docx",
     aboutParagraphs: [
-      "(Josie) ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ is a bilingual Inuk leader based in Iqaluit, Nunavut. From 2014 to 2018, she served as Chair of the Inuit Circumpolar Council, representing the international interests of Inuit in Canada, Greenland, Chukotka (Russia), and Alaska — leading ICC delegations at the United Nations and at COP 21 in Paris.",
-      "She previously served two terms as President of the Qikiqtani Inuit Association (2008–2014), representing approximately 14,000 Inuit across the 13 communities of the Qikiqtani Region. During her tenure, QIA advanced major files including marine conservation in Lancaster Sound, Inuit education and training, and the implementation of the Nunavut Agreement.",
+      "(Josie) Okalik Eegeesiak is a bilingual Inuk leader based in Iqaluit, Nunavut. From 2014 to 2018, she served as Chair of ᐃᓄᐃᑦ ᐅᑭᐅᖅᑕᖅᑐᒥᐅᖃᑎᒌᑦ ᑲᑎᒪᔨᖏᑦ, representing the international interests of Inuit in Canada, Greenland, Chukotka (Russia), and Alaska — leading ICC delegations at the United Nations and at COP 21 in Paris.",
+      "She previously served two terms as President of ᕿᑭᖅᑖᓗᓕᒫᖅ ᓴᐳᔾᔨᕕᓕᕆᓂᕐᒧᑦ ᑐᕌᒐᖓ (2008–2014), representing approximately 14,000 Inuit across the 13 communities of the Qikiqtani Region. During her tenure, QIA advanced major files including marine conservation in Lancaster Sound, Inuit education and training, and the implementation of the Nunavut Agreement.",
       "Over more than 35 years, Okalik has chaired and represented Inuit on international, national, territorial, and community boards, and has held senior management roles in both federal and territorial governments. Her work focuses on education and training, language and culture, human resources, community development, and the socio-economic well-being of Inuit and the Arctic.",
       "She is widely respected for her steady, consensus-based leadership style and her lifelong commitment to Inuit self-determination.",
     ],
@@ -2333,16 +2345,18 @@ const SITE_COPY = {
     formEmailPlaceholder: "you@example.com",
     formCommunityPlaceholder: "Iqaluit, Apex, …",
     formSubmit: "Sign me up",
-    disclaimer: "By signing up you agree to receive campaign updates. We never share your information. Authorized by the Official Agent for ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ.",
+    disclaimer: "By signing up you agree to receive campaign updates. We never share your information. Authorized by the Official Agent for Okalik Eegeesiak.",
     footerTag: "Building homes, building hope. For Inuit, By Inuit and with Inuit.",
     footerCampaign: "Campaign",
     footerGetInvolved: "Get Involved",
     footerConnect: "Connect",
-    footerCopyright: "© 2026 ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ Campaign · Authorized by the Official Agent",
-    footerMeta: "Authorized by the Agent of ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ",
+    footerCopyright: "© 2026 Okalik Eegeesiak Campaign · Authorized by the Official Agent",
+    footerMeta: `Authorized by the Agent of ${CANDIDATE_NAMES.en}`,
   },
   iu: {
     langName: "ᐃᓄᒃᑎᑐᑦ",
+    pageTitle: "ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ — NTI ᐊᖓᔪᖅᑳᖓᓄᑦ",
+    candidateName: CANDIDATE_NAMES.iu,
     brandRole: "NTI ᐊᖓᔪᖅᑳᖓᓄᑦ",
     nav: {
       about: "ᒥᔅᓵᓄᑦ",
@@ -2381,14 +2395,16 @@ const SITE_COPY = {
     aboutMeta: [
       ["ᐃᓅᕕᒃ", "ᐃᖃᓗᐃᑦ, ᓄᓇᕗᑦ"],
       ["ᐅᖃᐅᓰᑦ", "ᐃᓄᒃᑎᑐᑦ · ᖃᓪᓗᓈᑎᑐᑦ"],
-      ["ICC ᐃᒃᓯᕙᐅᑕᖅ", "2014 – 2018"],
-      ["QIA ᐊᖓᔪᖅᑳᖅ", "2008 – 2014"],
+      ["ᐃᓄᐃᑦ ᐅᑭᐅᖅᑕᖅᑐᒥᐅᖃᑎᒌᑦ", "2014 – 2018"],
+      ["ᕿᑭᖅᑖᓗᓕᒫᖅ ᓴᐳᔾᔨᕕᓕᕆᓂᕐᒧᑦ", "2008 – 2014"],
       ["ᐊᑐᖅᓯᒪᓂᖅ", "35+ ᐊᕐᕌᒍᑦ ᐃᓄᐃᑦ ᐱᓇᓱᐊᕈᑎᖏᓐᓂᒃ ᓯᕗᒧᐊᑦᑎᓪᓗᓂ"],
     ],
     downloadBio: "ᐅᓂᒃᑳᖅ ᐊᐃᔭᕐᓗᒍ",
+    bioFile: BIO_FILES.iu,
+    bioDownloadName: "Okalik_Eegeesiak_Campaign_Bio_Inuktitut.docx",
     aboutParagraphs: [
-      "ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ ᐃᓄᒃ ᓯᕗᓕᖅᑎ ᐃᖃᓗᓐᓂ ᓄᓇᖃᖅᑐᖅ, ᐃᓄᒃᑎᑐᑦ ᖃᓪᓗᓈᑎᑐᓪᓗ ᐅᖃᓲᖅ. 2014-ᒥᑦ 2018-ᒧᑦ ᐃᓄᐃᑦ ᓯᕗᓕᖅᑎᖏᑦᑕ ᐃᒃᓯᕙᐅᑕᖓᓂᒃ ᐱᓇᓱᐊᖅᓯᒪᕗᖅ, ᑲᓇᑕᒥ, ᑲᓛᖡᑦ ᓄᓇᓐᓂ, ᓱᒃᑯᑦᑲᒥ, ᐊᓛᔅᑲᒥᓗ ᐃᓄᓐᓂᒃ ᑭᒡᒐᖅᑐᖅᓯᒪᓪᓗᓂ.",
-      "ᑭᖅᑭᖅᑖᓂ ᐃᓄᐃᑦ ᑲᑐᔾᔨᖃᑎᒌᖏᑦᑕ ᐊᖓᔪᖅᑳᖓᓂᒃ ᒪᕐᕉᓐᓂᒃ ᐃᓂᖃᖅᓯᒪᕗᖅ (2008–2014), 14,000-ᓂᒃ ᐃᓄᓐᓂᒃ 13-ᓂ ᓄᓇᓕᓐᓂ ᑭᒡᒐᖅᑐᖅᓯᒪᓪᓗᓂ. ᐃᓂᖃᖅᑎᓪᓗᒍ QIA ᐃᒪᕕᒃ ᓴᐳᔾᔨᓂᖅ, ᐃᓄᐃᑦ ᐃᓕᓐᓂᐊᕐᓂᖓ, ᓄᓇᕗᑦ ᐊᖏᕈᑎᖓᓂᒃ ᐊᑐᓕᖅᑎᑦᑎᓂᖅ ᓯᕗᒧᐊᑦᑎᓯᒪᕗᖅ.",
+      "ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ ᐃᓄᒃ ᓯᕗᓕᖅᑎ ᐃᖃᓗᓐᓂ ᓄᓇᖃᖅᑐᖅ, ᐃᓄᒃᑎᑐᑦ ᖃᓪᓗᓈᑎᑐᓪᓗ ᐅᖃᓲᖅ. 2014-ᒥᑦ 2018-ᒧᑦ ᐃᓄᐃᑦ ᐅᑭᐅᖅᑕᖅᑐᒥᐅᖃᑎᒌᑦ ᑲᑎᒪᔨᖏᑦ ᐃᒃᓯᕙᐅᑕᖓᓂᒃ ᐱᓇᓱᐊᖅᓯᒪᕗᖅ, ᑲᓇᑕᒥ, ᑲᓛᖡᑦ ᓄᓇᓐᓂ, ᓱᒃᑯᑦᑲᒥ, ᐊᓛᔅᑲᒥᓗ ᐃᓄᓐᓂᒃ ᑭᒡᒐᖅᑐᖅᓯᒪᓪᓗᓂ.",
+      "ᕿᑭᖅᑖᓗᓕᒫᖅ ᓴᐳᔾᔨᕕᓕᕆᓂᕐᒧᑦ ᑐᕌᒐᖓ ᐊᖓᔪᖅᑳᖓᓂᒃ ᒪᕐᕉᓐᓂᒃ ᐃᓂᖃᖅᓯᒪᕗᖅ (2008–2014), 14,000-ᓂᒃ ᐃᓄᓐᓂᒃ 13-ᓂ ᓄᓇᓕᓐᓂ ᑭᒡᒐᖅᑐᖅᓯᒪᓪᓗᓂ. ᐃᓂᖃᖅᑎᓪᓗᒍ QIA ᐃᒪᕕᒃ ᓴᐳᔾᔨᓂᖅ, ᐃᓄᐃᑦ ᐃᓕᓐᓂᐊᕐᓂᖓ, ᓄᓇᕗᑦ ᐊᖏᕈᑎᖓᓂᒃ ᐊᑐᓕᖅᑎᑦᑎᓂᖅ ᓯᕗᒧᐊᑦᑎᓯᒪᕗᖅ.",
       "35 ᐊᕐᕌᒍᐃᑦ ᐅᖓᑖᓂ, ᐅᑲᓕᒃ ᐃᓄᓐᓂᒃ ᑭᒡᒐᖅᑐᖅᓯᒪᕗᖅ ᓄᓇᕐᔪᐊᕐᒥ, ᑲᓇᑕᒥ, ᓄᓇᕗᒥ, ᓄᓇᓕᓐᓂᓗ. ᐱᓇᓱᐊᒐᖓ ᐃᓕᓐᓂᐊᕐᓂᖅ, ᐅᖃᐅᓯᖅ, ᐃᓕᖅᑯᓯᖅ, ᐱᓇᓱᐊᖅᑎᑦ, ᓄᓇᓕᓐᓂ ᐱᕙᓪᓕᐊᓂᖅ, ᐃᓄᐃᓪᓗ ᐱᐅᓯᖏᓐᓂᒃ ᓴᙱᒃᑎᑦᑎᓂᖅ.",
       "ᓯᕗᓕᖅᑎᐅᓂᖓ ᓇᓗᓇᐃᖅᓯᒪᕗᖅ: ᑐᓴᖅᑎᑦᑎᓂᖅ, ᐊᖏᖃᑎᒌᓐᓂᖅ, ᐃᓄᐃᓪᓗ ᓇᖕᒥᓂᖅ ᐊᑐᖅᑕᖏᓐᓂᒃ ᓴᐳᔾᔨᓂᖅ.",
     ],
@@ -2409,7 +2425,7 @@ const SITE_COPY = {
     formCommunity: "ᓄᓇᓕᒃ",
     formNamePlaceholder: "ᐊᑏᑦ",
     formEmailPlaceholder: "you@example.com",
-    formCommunityPlaceholder: "ᐃᖃᓗᐃᑦ, ᐋᐸᒃᔅ, …",
+    formCommunityPlaceholder: "ᐃᖃᓗᐃᑦ, ᓂᐊᖁᖖᒎᑦ, …",
     formSubmit: "ᐊᑎᓕᐅᕐᓗᖓ",
     disclaimer: "ᐊᑎᓕᐅᕐᓗᑎᑦ ᓂᕈᐊᕐᓂᕐᒧᑦ ᑐᓴᒐᒃᓴᓂᒃ ᑐᓂᔭᐅᒍᒪᕗᑎᑦ. ᑐᓴᒐᒃᓴᑎᑦ ᐊᓯᓄᑦ ᑐᓂᔾᔮᙱᓚᕗᑦ. ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ ᑭᒡᒐᖅᑐᖅᑎᖓᓄᑦ ᐊᖏᖅᑕᖅ.",
     footerTag: "ᐃᒡᓗᓂᒃ ᓴᓇᓂᖅ, ᓂᕆᐅᓐᓂᕐᒥᒃ ᓴᓇᓂᖅ. ᐃᓄᓐᓄᑦ, ᐃᓄᓐᓂᑦ, ᐃᓄᐃᑦ ᐱᖃᑎᒋᓪᓗᒋᑦ.",
@@ -2417,7 +2433,7 @@ const SITE_COPY = {
     footerGetInvolved: "ᐃᑲᔪᖅᑐᐃᓂᖅ",
     footerConnect: "ᑐᓴᕐᕕᒃ",
     footerCopyright: "© 2026 ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ ᓂᕈᐊᕐᓂᖓ · ᑭᒡᒐᖅᑐᖅᑎᖓᓄᑦ ᐊᖏᖅᑕᖅ",
-    footerMeta: "ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ ᑭᒡᒐᖅᑐᖅᑎᖓᓄᑦ ᐊᖏᖅᑕᖅ",
+    footerMeta: `${CANDIDATE_NAMES.iu} ᑭᒡᒐᖅᑐᖅᑎᖓᓄᑦ ᐊᖏᖅᑕᖅ`,
   },
 };
 const ISSUE_IU_COPY = {
@@ -2516,6 +2532,7 @@ function langFromUrl() {
 function useLanguage() {
   const [lang, setLang] = React.useState(langFromUrl);
   React.useEffect(() => {
+    document.title = SITE_COPY[lang].pageTitle;
     document.documentElement.lang = lang === "iu" ? "iu" : "en";
     document.body.classList.toggle("inuktut-copy", lang === "iu");
     const url = new URL(window.location.href);
@@ -2713,7 +2730,7 @@ function Hero({ t, lang, c }) {
         </div>
         <div className="hero-media">
           <div className="hero-portrait">
-            <img src={"assets/okalik-portrait.jpg" + location.search} alt="ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ" />
+            <img src={"assets/okalik-portrait.jpg" + location.search} alt={c.candidateName} />
             <div className="caption">{c.portraitCaption}</div>
           </div>
           <VoterBallot c={c} />
@@ -2742,7 +2759,8 @@ function Ticker({ lang }) {
 }
 
 // ─── Promise ─────────────────────────────────────────────────────────
-function PromiseSection({ c }) {
+function PromiseSection({ c, lang }) {
+  const signatureName = lang === "iu" ? CANDIDATE_NAMES.iu : CANDIDATE_NAMES.en;
   return (
     <section className="promise" id="promise">
       <div className="wrap promise-inner">
@@ -2754,7 +2772,7 @@ function PromiseSection({ c }) {
           {c.promiseParagraphs.map((p) => <p key={p}>{p}</p>)}
           <div className="signature">
             <div>
-              <div className="name">ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ</div>
+              <div className="name" data-candidate-name>{signatureName}</div>
               <div className="role">{c.signatureRole}</div>
             </div>
           </div>
@@ -2780,7 +2798,7 @@ function About({ c }) {
               </div>
             ))}
           </div>
-          <a href="assets/Okalik_Eegeesiak_Campaign_Bio.docx" className="about-cta" download>
+          <a key={c.bioFile} href={c.bioFile} className="about-cta" download={c.bioDownloadName}>
             <span className="download-icon" aria-hidden="true"></span>
             {c.downloadBio}
           </a>
@@ -3152,13 +3170,13 @@ function Stand({ t, lang, c }) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const body = lang === "iu" ? [
-      "ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ ᓂᕈᐊᕐᓂᖓᓂ ᐃᑲᔪᖅᑐᐃᔪᒪᕗᖓ.",
+      `${c.candidateName} ᓂᕈᐊᕐᓂᖓᓂ ᐃᑲᔪᖅᑐᐃᔪᒪᕗᖓ.`,
       "",
       `${c.formName}: ${data.get("name") || ""}`,
       `${c.formEmail}: ${data.get("email") || ""}`,
       `${c.formCommunity}: ${data.get("community") || ""}`,
     ] : [
-      "I want to volunteer for ᐅᑲᓕᒃ ᐃᔨᑦᓯᐊᖅ.",
+      "I want to volunteer for Okalik Eegeesiak.",
       "",
       `Name: ${data.get("name") || ""}`,
       `Email: ${data.get("email") || ""}`,
@@ -3206,6 +3224,7 @@ function Stand({ t, lang, c }) {
 
 // ─── Footer ──────────────────────────────────────────────────────────
 function Foot({ t, lang, c }) {
+  const footerMeta = lang === "iu" ? c.footerMeta : `Authorized by the Agent of ${CANDIDATE_NAMES.en}`;
   return (
     <footer className="foot">
       {t.applyFooter && (
@@ -3250,7 +3269,7 @@ function Foot({ t, lang, c }) {
         </div>
         <div className="foot-bottom">
           <div>{c.footerCopyright}</div>
-          <div className="meta">{c.footerMeta}</div>
+          <div className="meta" data-footer-meta>{footerMeta}</div>
         </div>
       </div>
     </footer>
@@ -3294,12 +3313,23 @@ function App() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
   const [lang, setLang] = useLanguage();
   const c = SITE_COPY[lang];
+  React.useEffect(() => {
+    if (lang !== "en") return;
+    document.querySelectorAll("[data-candidate-name]").forEach((node) => {
+      node.textContent = CANDIDATE_NAMES.en;
+      node.style.fontFamily = "var(--serif)";
+    });
+    document.querySelectorAll("[data-footer-meta]").forEach((node) => {
+      node.textContent = `Authorized by the Agent of ${CANDIDATE_NAMES.en}`;
+      node.style.fontFamily = "var(--mono)";
+    });
+  }, [lang]);
   return (
     <div className={lang === "iu" ? "inuktut-copy" : ""}>
       <TopBar lang={lang} setLang={setLang} c={c} />
       <Hero t={t} lang={lang} c={c} />
       <Ticker lang={lang} />
-      <PromiseSection c={c} />
+      <PromiseSection c={c} lang={lang} />
       <About c={c} />
       <Issues t={t} lang={lang} c={c} />
       <Posters c={c} lang={lang} />
@@ -3312,5 +3342,7 @@ function App() {
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 
 </script>
+<script src="assets/analytics-config.js"></script>
+<script src="assets/site-analytics.js"></script>
 </body>
 </html>
