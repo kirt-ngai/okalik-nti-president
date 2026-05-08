@@ -660,6 +660,81 @@ a { color: inherit; }
 .signature .name { font-family: var(--serif); font-weight: 800; font-size: 20px; }
 .signature .role { font-size: 13px; color: var(--muted); }
 
+/* ─── Accountability section ──────────────────────────────────────── */
+.accountability {
+  background: var(--paper);
+  padding: 88px 0 96px;
+  border-bottom: 1px solid var(--rule);
+}
+.accountability-head {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.75fr) minmax(0, 1.25fr);
+  gap: 64px;
+  align-items: start;
+  margin-bottom: 38px;
+}
+.accountability h2 {
+  font-family: var(--serif);
+  font-size: clamp(38px, 4.8vw, 64px);
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin: 16px 0 0;
+  text-wrap: balance;
+}
+.accountability-intro {
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--navy);
+  margin: 0;
+}
+.accountability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--navy);
+  border-left: 1px solid var(--navy);
+}
+.accountability-card {
+  background: var(--ivory);
+  border-right: 1px solid var(--navy);
+  border-bottom: 1px solid var(--navy);
+  padding: 30px;
+}
+.accountability-card h3 {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+  margin: 0 0 14px;
+}
+.accountability-card p {
+  font-size: 16.5px;
+  line-height: 1.58;
+  color: rgba(8,40,69,0.82);
+  margin: 0;
+}
+.accountability-quote {
+  margin: 34px 0 0;
+  padding: 24px 0 0;
+  border-top: 1px solid var(--rule);
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1.18;
+  font-weight: 800;
+  color: var(--navy);
+}
+.accountability-quote cite {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--orange);
+}
+
 /* ─── Issues section ──────────────────────────────────────────────── */
 .issues {
   padding: 96px 0;
@@ -1115,6 +1190,7 @@ a { color: inherit; }
   .hero-portrait,
   .hero-ballot { max-width: 480px; }
   .promise-inner { grid-template-columns: 1fr; gap: 24px; }
+  .accountability-head { grid-template-columns: 1fr; gap: 24px; }
   .priority-motion { grid-template-columns: 1fr; }
   .priority-stage { min-height: 340px; }
   .slogan-lockup.slogan-band { margin-top: -24px; }
@@ -1160,6 +1236,7 @@ a { color: inherit; }
   .issues-head h2 { font-size: clamp(34px, 9vw, 38px); }
   .priority-stat { align-items: flex-start; flex-direction: column; gap: 4px; }
   .issue-card { min-height: auto; }
+  .accountability-grid { grid-template-columns: 1fr; }
   .issues-grid { grid-template-columns: 1fr; }
   .issues-head { flex-direction: column; align-items: flex-start; gap: 16px; }
   .posters { padding: 64px 0 72px; }
@@ -2324,6 +2401,23 @@ const SITE_COPY = {
       "These are the eleven priorities I'm bringing to NTI. Each one is rooted in what Nunavummiut have told me matters. Each one comes with a plan. None of them can wait.",
     ],
     signatureRole: "Candidate for President, Nunavut Tunngavik Inc. · 2026",
+    accountability: {
+      label: "Accountability",
+      title: "Hold governments to account on the Nunavut Agreement.",
+      intro: "Most of what Nunavummiut need is already promised in the Nunavut Agreement. Okalik will fight to make Canada and the Government of Nunavut deliver — every article, on time, with public reporting.",
+      cards: [
+        {
+          title: "Article 23 — Inuit Employment in Government",
+          text: "A binding treaty obligation — not a quota. Real training, real recruitment, and Inuit at every level of decision-making. Targets, timelines, and consequences when they are missed.",
+        },
+        {
+          title: "Article 24 — Inuit Firms & Government Contracts",
+          text: "Every public dollar spent in Nunavut should grow Inuit ownership and Inuit jobs. Strengthen the Inuit Firm Registry. Protect 100% Inuit-owned enterprises. Annual public reporting, every department.",
+        },
+      ],
+      quote: "Implementation is not optional — it is the law. And it is the path to the Nunavut every Inuk deserves.",
+      attribution: "Okalik Eegeesiak",
+    },
     aboutLabel: "About Okalik",
     aboutTitle: "Decades of Inuit leadership — coming home to Nunavut.",
     aboutMeta: [
@@ -2793,6 +2887,37 @@ function PromiseSection({ c, lang }) {
             </div>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Accountability ─────────────────────────────────────────────────
+function AccountabilitySection({ c }) {
+  if (!c.accountability) return null;
+  const a = c.accountability;
+  return (
+    <section className="accountability" id="accountability">
+      <div className="wrap">
+        <div className="accountability-head">
+          <div>
+            <div className="section-label">{a.label}</div>
+            <h2>{a.title}</h2>
+          </div>
+          <p className="accountability-intro">{a.intro}</p>
+        </div>
+        <div className="accountability-grid">
+          {a.cards.map((card) => (
+            <article className="accountability-card" key={card.title}>
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </article>
+          ))}
+        </div>
+        <blockquote className="accountability-quote">
+          “{a.quote}”
+          <cite>— {a.attribution}</cite>
+        </blockquote>
       </div>
     </section>
   );
@@ -3346,6 +3471,7 @@ function App() {
       <Hero t={t} lang={lang} c={c} />
       <Ticker lang={lang} />
       <PromiseSection c={c} lang={lang} />
+      <AccountabilitySection c={c} />
       <About c={c} />
       <Issues t={t} lang={lang} c={c} />
       <Posters c={c} lang={lang} />
